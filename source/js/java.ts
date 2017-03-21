@@ -26,7 +26,16 @@ function Zlecenie(etykieta){
     tresc=tresc+'        <a href="#"><img class="card-img-top img-fluid" src="'+zdjecie+'" alt="HTML5"></a>';
     tresc=tresc+'        <div class="card-block">';
     tresc=tresc+'            <h4 class="card-title"><a href="#">'+tytul+'</a></h4>';
-    tresc=tresc+'            <p class="card-text">'+opis+'</p>';
+    tresc=tresc+'            <div class="row ogloszenie">';
+    tresc=tresc+'                <div class="col-xs-12 col-sm-12 col-md-12 nazwa">nazwa zlecenia, rodzaj zlecenia</div>';
+    tresc=tresc+'                <div class="col-xs-12 col-sm-12 col-md-12 nazwa">lokalizacja, adres</div>';
+    tresc=tresc+'            </div>';
+    tresc=tresc+'            <div class="row ogloszenie">';
+    tresc=tresc+'                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-6 opis">'+opis+'</div>';
+    tresc=tresc+'                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 cena_czas">- cena (maksymalna cena)<br>- czas wykonania (max czas wykonania)</div>';
+    tresc=tresc+'                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 data">- data dodania<br>- czas licytacj</div>';
+    tresc=tresc+'            </div>';
+    tresc=tresc+'            <p class="card-text"></p>';
     tresc=tresc+'        </div>';
     tresc=tresc+'    </div>';
     tresc=tresc+'</div>';
