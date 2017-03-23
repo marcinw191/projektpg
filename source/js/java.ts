@@ -57,7 +57,6 @@ function Zdjecie_zlecenia(id_zl){
     link=Tab_linkow[id_zl];
     return link;
 }
-
 function Opis_zlecenia(id_zl){
     // tablica z przykładowymi opisami
     var Tab_opisy=[];
