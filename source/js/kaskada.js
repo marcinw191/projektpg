@@ -1,16 +1,41 @@
+
+// tablica z przykładowymi linkami do zdjęć
+var Tab_linkow = [
+    'img/przyklady/kuchnia_do_remontu.jpeg',
+    'img/przyklady/lazienka_do_remontu.jpeg',
+    'img/przyklady/podloga_do_remontu.jpg',
+    'img/przyklady/sypialnia_do_remontu.jpg',
+    'img/przyklady/sufit_do_remontu.jpeg',
+    'img/przyklady/umywalka_do_naprawy.jpg',
+    'img/przyklady/umywalka_do_naprawy.jpg',
+    'img/przyklady/umywalka_do_naprawy.jpg'
+];
+
+// tablica z przykładowymi opisami
+var Tab_opisy = [
+    'Do kapitalnego remontu kuchnia o wym. 2m na 3m',
+    'Do kapitalnego remontu łazienka o wym. 1,5m na 2m',
+    'Do ułożenia podłoga drewniana w pomieszczeniu o wym. 4m na 3m',
+    'Do kapitalnego remontu pomieszczenie pełniące funkcję sypialni o wym. 3,5m na 2m',
+    'Do naprawy sufit.',
+    'Do naprawy umywalka : bardzo wolno spływa woda',
+    'Do naprawy umywalka : bardzo wolno spływa woda',
+    'Do naprawy umywalka : bardzo wolno spływa woda'
+];
+
 function WidokGaleria() {
     var widok = "";
     widok = widok + '<span>Widok zleceń :</span>';
-    widok = widok + '<button id="galeria" value="active" title="Galeria" onclick="WidokGaleria()"><img src="../img/kafelki_czerwone.png" alt="HTML5"></button>';
-    widok = widok + '<button id="lista" value="noactive" title="Lista" onclick="WidokLista()"><img src="../img/lista_szara.png" alt="HTML5"></button>';
+    widok = widok + '<button id="galeria" value="active" title="Galeria" onclick="WidokGaleria()"><img src="img/kafelki_czerwone.png" alt="HTML5"></button>';
+    widok = widok + '<button id="lista" value="noactive" title="Lista" onclick="WidokLista()"><img src="img/lista_szara.png" alt="HTML5"></button>';
     document.getElementById('widok').innerHTML = widok;
     Body();
 }
 function WidokLista() {
     var widok = "";
     widok = widok + '<span>Widok zleceń :</span>';
-    widok = widok + '<button id="galeria" value="noactive" title="Galeria" onclick="WidokGaleria()"><img src="../img/kafelki_szare.png" alt="HTML5"></button>';
-    widok = widok + '<button id="lista" value="active" title="Lista" onclick="WidokLista()"><img src="../img/lista_czerwona.png" alt="HTML5"></button>';
+    widok = widok + '<button id="galeria" value="noactive" title="Galeria" onclick="WidokGaleria()"><img src="img/kafelki_szare.png" alt="HTML5"></button>';
+    widok = widok + '<button id="lista" value="active" title="Lista" onclick="WidokLista()"><img src="img/lista_czerwona.png" alt="HTML5"></button>';
     document.getElementById('widok').innerHTML = widok;
     Body();
 }
@@ -62,7 +87,7 @@ function ZlecenieGaleria(etykieta) {
         }
         tresc=tresc+'                <p class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-6 opis">' + opis + '</p>';
         tresc=tresc+'                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 cena_czas">- cena (maksymalna cena)<br>- czas wykonania (max czas wykonania)</div>';
-        tresc=tresc+'                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 data">- data dodania<br>- czas licytacj</div>';
+        tresc=tresc+'                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 data">- data dodania<br>- czas licytacji</div>';
         tresc=tresc+'            </div>';
         tresc=tresc+'        </div>';
         tresc=tresc+'    </div>';
@@ -100,8 +125,8 @@ function ZlecenieLista(etykieta) {
             opis='Brak opisu';
         }
         tresc=tresc+'                <p class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-6 opis">' + opis + '</p>';
-        tresc=tresc+'                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 cena_czas">- cena (maksymalna cena)<br>- czas wykonania (max czas wykonania)</div>';
-        tresc=tresc+'                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 data">- data dodania<br>- czas licytacj</div>';
+        tresc=tresc+'                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 cena_czas">- cena (max)<br>- czas wykonania (max)</div>';
+        tresc=tresc+'                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 data">- data dodania<br>- czas licytacji</div>';
         tresc=tresc+'            </div>';
         tresc=tresc+'        </div>';
         tresc=tresc+'    </div>';
@@ -110,32 +135,10 @@ function ZlecenieLista(etykieta) {
     return tresc;
 }
 // funkcje tymczasowe udostępniające zdjęcia i opisy zleceń
-// docelowo informacj te będą udostępniane z "bazy danych"
+// docelowo informacje te będą udostępniane z "bazy danych"
 function Zdjecie_zlecenia(id_zl) {
-    var Tab_linkow = [];
-    // tablica z przykładowymi linkami do zdjęć
-    Tab_linkow[1] = '../img/przyklady/kuchnia_do_remontu.jpeg';
-    Tab_linkow[2] = '../img/przyklady/lazienka_do_remontu.jpeg';
-    Tab_linkow[3] = '../img/przyklady/podloga_do_remontu.jpg';
-    Tab_linkow[4] = '../img/przyklady/sypialnia_do_remontu.jpg';
-    Tab_linkow[5] = '../img/przyklady/sufit_do_remontu.jpeg';
-    Tab_linkow[6] = '../img/przyklady/umywalka_do_naprawy.jpg';
-// Tab_linkow[7]='../img/przyklady/umywalka_do_naprawy.jpg';
-    Tab_linkow[8] = '../img/przyklady/umywalka_do_naprawy.jpg';
-    Tab_linkow[9] = '../img/przyklady/umywalka_do_naprawy.jpg';
     return Tab_linkow[id_zl];
 }
 function Opis_zlecenia(id_zl) {
-    var Tab_opisy = [];
-    // tablica z przykładowymi opisami
-    Tab_opisy[1] = 'Do kapitalnego remontu kuchnia o wym. 2m na 3m';
-    Tab_opisy[2] = 'Do kapitalnego remontu łazienka o wym. 1,5m na 2m';
-    Tab_opisy[3] = 'Do ułożenia podłoga drewniana w pomieszczeniu o wym. 4m na 3m';
-    Tab_opisy[4] = 'Do kapitalnego remontu pomieszczenie pełniące funkcję sypialni o wym. 3,5m na 2m';
-    Tab_opisy[5] = 'Do naprawy sufit.';
-    Tab_opisy[6] = 'Do naprawy umywalka : bardzo wolno spływa woda';
-    Tab_opisy[7] = 'Do naprawy umywalka : bardzo wolno spływa woda';
-    // Tab_opisy[8]='Do naprawy umywalka : bardzo wolno spływa woda';
-    Tab_opisy[9] = 'Do naprawy umywalka : bardzo wolno spływa woda';
     return Tab_opisy[id_zl];
 }
