@@ -30,8 +30,10 @@
                 </span>
     </div>
   </div>
-  <div class="row" id="main">
-    <h1>miniaturki ogłoszeń</h1>
+  <div class="row">
+    <div *ngFor="let miniatura of miniatury" class="col-lg-4 col-sm-6 portfolio-item">
+      <ogloszenie-miniatura [miniatura]="miniatura"></ogloszenie-miniatura>
+    </div>
   </div>
 
   <!-- Pagination -->
