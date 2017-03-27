@@ -1,28 +1,48 @@
 # KaskadaSerwisUslugowy
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+Serwis do zamieszczania zleceń robót ogólnobudowlanych, licytowania ceny wykonania zleceń przez potencjalnych wykonawców oraz wyboru najlepszej oferty.
+Ten projekt został wygenerowany przy użyciu [Angular CLI](https://github.com/angular/angular-cli) wersja 1.0.0.
 
-## Development server
+#### Interesariusze serwisu:
+ - zleceniodawcy - osoby z potrzebą usługi ogólnobudowlanej
+ - wykonawcy - osoby/firmy świadczące usługi ogólnobudowlane
+ - administrator - osoba mająca możliwość kontroli/moderowania zleceń
+ 
+#### Główne funkcjonalności:
+ - możliwość zamieszczenia zlecenia usługi ogólnobudowlanej
+ - możliwość przeglądania otwartych/aktywnych zleceń
+ - możliwość złożenia oferty wykonania zlecenia wraz z proponowaną ceną
+ - możliwość wyłonienia najlepszej oferty wykonania zlecenia
+ - możliwość komentowania/oceniania konkretnych wykonawców
+ 
+#### Założenia projektowe:
+ - serwis będzie responsywny (RWD)
+ - serwis będzie korzystał z API geolokalizacji
+ - serwis będzie korzystał z usługi logowania poprzez serwisy społecznościowe (Google/FB)
+ - główne widoki serwisu będą pokryte testami automatycznymi
+ - serwis będzie wykorzystywał framework bootstrap
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Serwer deweloperski
 
-## Code scaffolding
+Wykonaj `ng serve` żeby uruchomić serwer deweloperski lokalnie. Otwórz w przeglądarce `http://localhost:4200/`. Aplikacja będzie przeładowywać się automatycznie przy zmianach w plikach źródłowych.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## Generowanie kodu
 
-## Build
+Wykonaj `ng generate component component-name` żeby wygenerować komponent. Możesz także użyć `ng generate directive/pipe/service/class/module`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Budowanie
 
-## Running unit tests
+Wykonaj `ng build` żeby wybudować projekt. Artefakty budowania będą dostępne w katalogu `dist/`. Użyj flagi `-prod` dla buildu produkcyjnego.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Wykonanie testów jednostowkych
 
-## Running end-to-end tests
+Wykonaj `ng test` aby uruchomić testy jednostkowe poprzez [Karma](https://karma-runner.github.io).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+## Wykonanie testów end-to-end
 
-## Further help
+Wykonaj `ng e2e` aby wykonać testy end-to-end poprzez [Protractor](http://www.protractortest.org/).
+Przed uruchomieniem testów upewnij się, że serwujesz aplikacje poprzez `ng serve`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Pomoc/dokumentacja
+
+Więcej informacji o korzystaniu z Angular CLI znajdziesz wykonując `ng help` lub na stronie [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
