@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { OgloszenieMiniaturaComponent } from './ogloszenie-miniatura/ogloszenie-miniatura.component';
+import { OgloszenieComponent } from './ogloszenie/ogloszenie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    OgloszenieMiniaturaComponent
+    OgloszenieMiniaturaComponent,
+    OgloszenieComponent
   ],
   imports: [
     BrowserModule,
