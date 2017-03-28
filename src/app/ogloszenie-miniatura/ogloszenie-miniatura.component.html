@@ -1,0 +1,18 @@
+<div class="card h-100">
+  <a href="#"><img class="card-img-top img-fluid" src="{{miniatura.zdjecie}}" alt="HTML5"></a>
+  <!--if/else based on image existance -->
+  <!--<a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt="HTML5"></a>-->
+  <!--/if/else -->
+  <div class="card-block">
+    <h4 class="card-title"><a href="#">{{miniatura.tytul}}</a></h4>
+    <div class="row ogloszenie">
+      <div class="col-xs-12 col-sm-12 col-md-12 nazwa">{{miniatura.nazwa_zlecenia}}, {{miniatura.rodzaj_zlecenia}}</div>
+      <div class="col-xs-12 col-sm-12 col-md-12 nazwa">{{miniatura.lokalizacja}}</div>
+    </div>
+    <div class="row ogloszenie">
+      <p class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-6 opis">{{miniatura.opis}}</p>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 cena_czas">- {{miniatura.cena_max}} zł<br>- {{miniatura.czas_wykonania}}</div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 data">- {{miniatura.data_dodania}}<br>- {{miniatura.czas_licytacji}}</div>
+    </div>
+  </div>
+</div>
