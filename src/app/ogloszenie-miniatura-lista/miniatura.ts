@@ -1,5 +1,5 @@
 export interface OgloszenieMiniatura {
-  // identyfikator: string,
+  identyfikator: string,
   zdjecie: string,
   tytul: string,
   nazwa_zlecenia: string,
