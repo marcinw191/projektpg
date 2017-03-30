@@ -1,20 +1,29 @@
 .list {
   background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 0px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 .bold {
   font-weight: bold;
 }
-.img_mini{
+.img_galeria{
+  height: 230px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.img_lista{
   height: 230px;
   display: block;
   margin-right: auto;
   margin-left: auto;
 }
 .ogloszenie{
+   font-size: 80%;
+   max-width: 350px;
+}
+.ogloszenie_lista{
   font-size: 80%;
-  max-width: 350px;
 }
 .opis_mini{
   font-size: 130%;

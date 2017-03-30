@@ -9,6 +9,7 @@ import { OgloszenieMiniatura } from './miniatura';
 export class OgloszenieMiniaturaComponent implements OnInit {
 
   @Input() miniatura: OgloszenieMiniatura;
+  @Input() orientacja: string;
 
   constructor() { }
 

@@ -135,5 +135,13 @@ export class AppComponent {
       czas_wykonania: '1 dni',
       czas_licytacji: '10 dni'
     },
-  ]
+  ];
+  orientacja: string = 'lista';
+
+  zmienOrientacje() {
+    if(this.orientacja == 'lista')
+      this.orientacja = 'galeria';
+    else
+      this.orientacja = 'lista';
+  }
 }
