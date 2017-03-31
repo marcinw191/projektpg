@@ -1,6 +1,5 @@
 .list {
   background-color: #fff;
-  border: 0px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 .bold {
@@ -24,6 +23,7 @@
 }
 .ogloszenie_lista{
   font-size: 80%;
+  max-width: 450px;
 }
 .opis_mini{
   font-size: 130%;
@@ -41,6 +41,9 @@
     height: 180px;
   }
   .ogloszenie{
+    font-size: 70%;
+  }
+  .ogloszenie_lista{
     font-size: 70%;
   }
   .opis_mini{
