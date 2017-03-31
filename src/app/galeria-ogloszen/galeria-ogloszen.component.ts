@@ -136,13 +136,10 @@ export class GaleriaOgloszenComponent implements OnInit {
       czas_licytacji: '10 dni'
     },
   ];
-  orientacja: string = 'lista';
+  orientacja: string = 'galeria';
 
-  zmienOrientacje() {
-    if(this.orientacja == 'lista')
-      this.orientacja = 'galeria';
-    else
-      this.orientacja = 'lista';
+  zmienOrientacje(orientacja: string) {
+      this.orientacja = orientacja;
   }
   ngOnInit() {
   }
