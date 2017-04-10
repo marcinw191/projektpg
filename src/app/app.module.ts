@@ -1,46 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { BrowserModule }       from '@angular/platform-browser';
+import { NgModule}             from '@angular/core';
+import { CommonModule }        from '@angular/common';
+import { FormsModule }         from '@angular/forms';
+import { HttpModule }          from '@angular/http';
 
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { OgloszenieMiniaturaComponent } from './ogloszenie-miniatura/ogloszenie-miniatura.component';
-import { OgloszenieComponent } from './ogloszenie/ogloszenie.component';
-import { GaleriaOgloszenComponent } from './galeria-ogloszen/galeria-ogloszen.component';
+import { AppComponent }        from './app.component';
+import { GoogleMapsComponent } from './googlemaps/googlemaps.component';
+import { AgmCoreModule }       from 'angular2-google-maps/core';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    OgloszenieMiniaturaComponent,
-    OgloszenieComponent,
-    GaleriaOgloszenComponent
+    GoogleMapsComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
-    CommonModule,
-    RouterModule.forRoot([
-      {
-        path: 'ogloszenie',
-        component: OgloszenieComponent
-      },
-      {
-        path: 'ogloszenia',
-        component: GaleriaOgloszenComponent
-      },
-      {
-        path: '',
-        redirectTo: '/ogloszenia',
-        pathMatch: 'full'
-      }
-    ])
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU",
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,23 @@
-<app-navbar></app-navbar>
-
-<!-- Page Content -->
-<router-outlet></router-outlet>
-
-<app-footer></app-footer>
+<div class="container">
+  <div class="row">
+    <div id="1">
+      <googlemap [address]="adres1" ></googlemap>
+    </div>
+    <div>
+      <p>----------------------------------------------------------------------------------</p>
+      <p>odstęp</p>
+      <p>----------------------------------------------------------------------------------</p>
+    </div>
+    <div id="1">
+      <googlemap [address]="adres2" ></googlemap>
+    </div>
+    <div>
+      <p>----------------------------------------------------------------------------------</p>
+      <p>odstęp</p>
+      <p>----------------------------------------------------------------------------------</p>
+    </div>
+    <div id="1">
+      <googlemap [address]="adres3" ></googlemap>
+    </div>
+  </div>
+</div>
