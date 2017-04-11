@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+navi {
+  text-align: center;
+}
+
+app-root {
+  display: block;
+  height: 620px;
+}
+
+footer {
+  text-align: center;
+}

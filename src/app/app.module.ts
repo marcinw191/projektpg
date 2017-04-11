@@ -2,45 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+
+import { CookieLawModule } from 'angular2-cookie-law';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { OgloszenieMiniaturaComponent } from './ogloszenie-miniatura/ogloszenie-miniatura.component';
-import { OgloszenieComponent } from './ogloszenie/ogloszenie.component';
-import { GaleriaOgloszenComponent } from './galeria-ogloszen/galeria-ogloszen.component';
+import { CookielawComponent } from './cookielaw/cookielaw.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    OgloszenieMiniaturaComponent,
-    OgloszenieComponent,
-    GaleriaOgloszenComponent
+    CookielawComponent
   ],
   imports: [
     BrowserModule,
+    CookieLawModule,
+    BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
-    CommonModule,
-    RouterModule.forRoot([
-      {
-        path: 'ogloszenie',
-        component: OgloszenieComponent
-      },
-      {
-        path: 'ogloszenia',
-        component: GaleriaOgloszenComponent
-      },
-      {
-        path: '',
-        redirectTo: '/ogloszenia',
-        pathMatch: 'full'
-      }
-    ])
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

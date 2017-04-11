@@ -1,0 +1,14 @@
+<cookie-law position="top">
+  Nasza witryna stosuje pliki Cookies, korzystając z witryny zgadzasz się na korzystanie przez nas z plików cookie. Dowiedz się więcej o naszej <a href="./privacy-policy.html">polityce prywatności.</a>
+</cookie-law>
+
+<div class="container">
+  <button type="button"
+          *ngIf="!cookieLawSeen"
+          (click)="dismiss()">Dismiss Modal</button>
+  <h3 *ngIf="cookieLawSeen">Cookie law dismissed</h3>
+</div>
+
+<cookie-law #cookieLaw (isSeen)="cookieLawSeen = $event"
+  learnMore="./privacy-policy.html"
+  target="_blank"></cookie-law>
