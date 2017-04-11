@@ -10,9 +10,9 @@ export class AppComponent implements OnInit{
   name: string;
 
   constructor() {
-    this.name = 'Angular2 Cookie Law with Angular2'
   }
 
   ngOnInit() {
+    this.name = 'Angular2 Cookie Law with Angular2'
   }
 }
