@@ -1,48 +1,46 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+// import { HttpModule } from '@angular/http';
+import { HttpModule, Http, RequestOptions } from '@angular/http';
+// import { AUTH_PROVIDERS } from 'angular2-jwt';
+// import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { OgloszenieMiniaturaComponent } from './ogloszenie-miniatura/ogloszenie-miniatura.component';
-import { OgloszenieComponent } from './ogloszenie/ogloszenie.component';
-import { GaleriaOgloszenComponent } from './galeria-ogloszen/galeria-ogloszen.component';
+import { routing, appRoutingProviders } from './app.routing';
+
+import { AppComponent }     from './app.component';
+import { HomeComponent }    from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+
+import { AuthService } from './auth.service';
+
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp( new AuthConfig(), http, options);
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    OgloszenieMiniaturaComponent,
-    OgloszenieComponent,
-    GaleriaOgloszenComponent
+    HomeComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    CommonModule,
-    RouterModule.forRoot([
-      {
-        path: 'ogloszenie',
-        component: OgloszenieComponent
-      },
-      {
-        path: 'ogloszenia',
-        component: GaleriaOgloszenComponent
-      },
-      {
-        path: '',
-        redirectTo: '/ogloszenia',
-        pathMatch: 'full'
-      }
-    ])
+    routing,
   ],
-  providers: [],
+  providers: [
+    appRoutingProviders,
+    // AUTH_PROVIDERS,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [ Http, RequestOptions ],
+    },
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
