@@ -3,6 +3,8 @@ import { NgModule }                         from '@angular/core';
 import { FormsModule }                      from '@angular/forms';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig }             from 'angular2-jwt';
+import { CookieLawModule }                  from 'angular2-cookie-law';
+import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
 
 import { AppComponent }                 from './app.component';
 import { NavbarComponent }              from './navbar/navbar.component';
@@ -12,6 +14,8 @@ import { OgloszenieMiniaturaComponent } from './ogloszenie-miniatura/ogloszenie-
 import { OgloszenieComponent }          from './ogloszenie/ogloszenie.component';
 import { ProfileComponent }             from './profile/profile.component';
 import { FooterComponent }              from './footer/footer.component';
+import { CookielawComponent }           from './cookielaw/cookielaw.component';
+import { PolicyComponent }              from './policy/policy.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './auth0/auth.service';
@@ -30,11 +34,15 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     OgloszenieComponent,
     ProfileComponent,
     FooterComponent,
+    CookielawComponent,
+    PolicyComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    CookieLawModule,
+    BrowserAnimationsModule,
     routing,
   ],
   providers: [
