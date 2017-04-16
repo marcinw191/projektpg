@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { OgloszenieMiniatura } from './miniatura';
+import { OgloszenieMiniatura }      from './miniatura';
 
 @Component({
   selector: 'ogloszenie-miniatura',
@@ -11,7 +11,8 @@ export class OgloszenieMiniaturaComponent implements OnInit {
   @Input() miniatura: OgloszenieMiniatura;
   @Input() orientacja: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

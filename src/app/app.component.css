@@ -1,10 +1,4 @@
-#widok{
-  float: right;
-  margin-bottom: 10px;
+.starter-template {
+  min-height: 350px;
+  margin-bottom: 20px;
 }
-
-#ilosc_na_stronie{
-  float: right;
-  margin-bottom: 10px;
-}
-
