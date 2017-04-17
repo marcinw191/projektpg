@@ -2,6 +2,11 @@
 .navbar-toggler {
   z-index: 1;
 }
+
+.fixed-top {
+  z-index: 1050 !important;
+}
+
 @media (max-width: 576px) {
   nav > .container {
     width: 100%;
