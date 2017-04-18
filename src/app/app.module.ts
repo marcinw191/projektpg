@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AlertModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,8 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { OgloszenieMiniaturaComponent } from './ogloszenie-miniatura/ogloszenie-miniatura.component';
 import { OgloszenieComponent } from './ogloszenie/ogloszenie.component';
 import { GaleriaOgloszenComponent } from './galeria-ogloszen/galeria-ogloszen.component';
-import { BazaDanychComponent } from './baza-danych/baza-danych.component';
 import { DodajOgloszenieComponent } from './dodaj-ogloszenie/dodaj-ogloszenie.component';
+import { AlertComponent } from './alert/alert.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
@@ -33,8 +34,8 @@ export const firebaseConfig = {
     OgloszenieMiniaturaComponent,
     OgloszenieComponent,
     GaleriaOgloszenComponent,
-    BazaDanychComponent,
-    DodajOgloszenieComponent
+    DodajOgloszenieComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -51,17 +52,14 @@ export const firebaseConfig = {
         component: GaleriaOgloszenComponent
       },
       {
-        path: 'baza',
-        component: BazaDanychComponent
-      },
-      {
         path: '',
         redirectTo: '/ogloszenia',
         pathMatch: 'full'
       }
     ]),
     AngularFireModule.initializeApp(firebaseConfig),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AlertModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

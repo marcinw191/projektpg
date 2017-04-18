@@ -3,7 +3,7 @@
 </button>
 
 <div class="modal fade" bsModal #lgModal="bs-modal" [config]="{backdrop: 'static'}"
-     tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" (onHide)="clearData()">
+     tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" (onHide)="clearData(); zakonczone = false;">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,11 +13,15 @@
         </button>
       </div>
       <div class="modal-body">
+        <app-alert *ngIf="zakonczone" [type]="statusDodawania.status" [text]="statusDodawania.text"></app-alert>
         <form #ogloszenieForm="ngForm">
           <div class="form-group row">
-            <label for="example-text" class="col-sm-12 col-md-4 col-form-label">Tytuł ogłoszenia</label>
+            <label for="example-text" class="col-sm-12 col-md-4 col-form-label">
+              Tytuł ogłoszenia
+              <p class="limits">(max 50 znaków)</p>
+            </label>
             <div class="col-sm-12 col-md-8">
-              <input class="form-control" [(ngModel)]="tytul" required id="example-text" name="tytul" placeholder="Podaj krótki tytuł ogłoszenia">
+              <input class="form-control" [(ngModel)]="tytul" required id="example-text" maxlength="50" name="tytul" placeholder="Podaj krótki tytuł ogłoszenia">
             </div>
           </div>
           <div class="form-group row">
