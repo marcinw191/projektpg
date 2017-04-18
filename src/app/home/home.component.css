@@ -1,17 +1,13 @@
+#zalogowany{
+  float: right;
+  color: green;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 #niezalogowany{
   float: right;
   color: red;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-#widok{
-  float: right;
-  margin-bottom: 10px;
-}
-
-#ilosc_na_stronie{
-  float: right;
-  margin-bottom: 10px;
-}
-

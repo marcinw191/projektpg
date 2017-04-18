@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }   from '@angular/core';
 import { OgloszenieMiniatura } from '../ogloszenie-miniatura/miniatura';
+import { AuthService }         from '../auth0/auth.service';
 
 @Component({
   selector: 'app-galeria-ogloszen',
@@ -141,6 +142,10 @@ export class GaleriaOgloszenComponent implements OnInit {
   zmienOrientacje(orientacja: string) {
       this.orientacja = orientacja;
   }
+
+  constructor(private auth: AuthService) {
+  }
+
   ngOnInit() {
   }
 
