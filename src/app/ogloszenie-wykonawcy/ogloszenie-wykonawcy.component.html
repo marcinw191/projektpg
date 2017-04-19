@@ -1,23 +1,24 @@
 <h3 class="my-4"> {{title}}</h3>
-<h5>widoczne dla dnaego zlecającego po zalogowaniu - *ngIf / brak zleceń</h5>
+<!--<h5>widoczne dla dnaego zlecającego po zalogowaniu - *ngIf / brak zleceń</h5>-->
 
 <div class="container">
 
+  <div class="zgloszenie">
   <div class="row">
     <div class="col-md-11 col-sm-10">
+      <h4>wiadomość od wykonawcy</h4>
       <div class="row">
         <div class="col-md-6 col-sm-12">
-          <h4>wiadomość od wykonawcy</h4>
           Witam, przyjmuję zlecenie
         </div>
         <div class="col-md-6 col-sm-12">
           <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12">
               Dane kontaktowe:
-              Adam, tel
+              Adam, tel.
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
-              Informacja o cenie
+              Oferowana cena: 2.400 zł
             </div>
           </div>
         </div>
@@ -34,9 +35,88 @@
     </div>
     <div  class="col-12">
       <ul>
-        <li *ngFor="let opinia of opinie" > {{opinia}} </li>
+        <li> nie polecam, wykonanie na granicy akceptowalności, jakość powinna być lepsza. Jakbym mogła, to zmieniłabym wykonawcę</li>
       </ul>
     </div>
+  </div>
+  </div>
+
+  <div class="zgloszenie">
+  <div class="row">
+    <div class="col-md-11 col-sm-10">
+      <h4>wiadomość od wykonawcy</h4>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          Podejmę się wykonania zlecenia. Proszę o więcej szczegółów dot. prac (najlepiej zdjęcia).
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              Dane kontaktowe:
+              Artur, tel.
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              Oferowana cena: 2.900 zł
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 col-sm-2 col-sm-2 ">
+      <button>OK</button>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div  class="col-12">
+      <h4>Opinie innych zlecających</h4><br>
+    </div>
+    <div  class="col-12">
+      <ul>
+        <li> Solidne i terminowe wykonanie, ale cena nieco wygórowana. Niemniej zrobione jak należy, jak kogoś stać, to polecam</li>
+        <li> Poprawnie wykonane, ale Pan jakiś niekontaktowy. Poza tym nie mam uwag</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+
+  <div class="zgloszenie">
+  <div class="row">
+    <div class="col-md-11 col-sm-10">
+      <h4>wiadomość od wykonawcy</h4>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          Mogę zacząć od zaraz, proszę o telefon, umówimy się
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              Dane kontaktowe:
+              Bartek, tel.
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              Oferowana cena: 2.800 zł
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 col-sm-2 col-sm-2 ">
+      <button>OK</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div  class="col-12">
+      <h4>Opinie innych zlecających</h4><br>
+    </div>
+    <div  class="col-12">
+      <ul>
+        <li> brak opinii </li>
+      </ul>
+    </div>
+  </div>
   </div>
 
 </div>
