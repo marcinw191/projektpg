@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarExample">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="zlecenie" *ngIf="auth.authenticated()">Zleć usługę</a>
+          <app-dodaj-ogloszenie *ngIf="auth.authenticated()"></app-dodaj-ogloszenie>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="tablica_ogloszen">Przeglądaj Oferty</a>

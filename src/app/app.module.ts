@@ -5,6 +5,9 @@ import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig }             from 'angular2-jwt';
 import { CookieLawModule }                  from 'angular2-cookie-law';
 import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
+import { AngularFireModule } from 'angularfire2';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AlertModule } from 'ngx-bootstrap';
 
 import { AppComponent }                 from './app.component';
 import { NavbarComponent }              from './navbar/navbar.component';
@@ -16,6 +19,8 @@ import { ProfileComponent }             from './profile/profile.component';
 import { FooterComponent }              from './footer/footer.component';
 import { CookielawComponent }           from './cookielaw/cookielaw.component';
 import { PolicyComponent }              from './policy/policy.component';
+import { DodajOgloszenieComponent } from './dodaj-ogloszenie/dodaj-ogloszenie.component';
+import { AlertComponent } from './alert/alert.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './auth0/auth.service';
@@ -23,6 +28,15 @@ import { AuthService }                  from './auth0/auth.service';
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
 }
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
+  authDomain: "kaskada-5ebd3.firebaseapp.com",
+  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
+  projectId: "kaskada-5ebd3",
+  storageBucket: "kaskada-5ebd3.appspot.com",
+  messagingSenderId: "846477355550"
+};
 
 @NgModule({
   declarations: [
@@ -36,6 +50,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     FooterComponent,
     CookielawComponent,
     PolicyComponent,
+    DodajOgloszenieComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +60,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     CookieLawModule,
     BrowserAnimationsModule,
     routing,
+    AngularFireModule.initializeApp(firebaseConfig),
+    ModalModule.forRoot(),
+    AlertModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,

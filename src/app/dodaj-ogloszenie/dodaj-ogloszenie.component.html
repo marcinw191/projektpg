@@ -1,0 +1,108 @@
+<button type="button" class="btn btn-success btn-lg" (click)="lgModal.show()">
+  Dodaj ogłoszenie
+</button>
+
+<div class="modal fade" bsModal #lgModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" (onHide)="clearData(); zakonczone = false;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Wprowadź ogłoszenie</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="lgModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-alert *ngIf="zakonczone" [type]="statusDodawania.status" [text]="statusDodawania.text"></app-alert>
+        <form #ogloszenieForm="ngForm">
+          <div class="form-group row">
+            <label for="example-text" class="col-sm-12 col-md-4 col-form-label">
+              Tytuł ogłoszenia
+              <p class="limits">(max 50 znaków)</p>
+            </label>
+            <div class="col-sm-12 col-md-8">
+              <input class="form-control" [(ngModel)]="tytul" required id="example-text" maxlength="50" name="tytul" placeholder="Podaj krótki tytuł ogłoszenia">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-text-area" class="col-sm-12 col-md-4 col-form-label">Opis roboty ogólnobudowlanej</label>
+            <div class="col-sm-12 col-md-8">
+              <textarea class="form-control" [(ngModel)]="opis" required id="example-text-area" name="opis" rows="5" placeholder="Napisz opis zakresu robót do wykonania"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-price-input" class="col-sm-12 col-md-4 col-form-label">Maksymalna cena za wykonanie</label>
+            <div class="col-sm-12 col-md-8">
+              <input class="form-control" [(ngModel)]="maxCena" required type="number" name="maxCena" id="example-price-input" placeholder="Podaj cenę w PLN">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-time-input" class="col-sm-12 col-md-4 col-form-label">Maksymalny czas wykonania</label>
+            <div class="col-sm-12 col-md-8">
+              <input class="form-control" [(ngModel)]="czasWykonania" required type="number" name="czasWykonania" id="example-time-input" placeholder="Podaj liczbę dni">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-tel-input" class="col-sm-12 col-md-4 col-form-label">Numer kontaktowy</label>
+            <div class="col-sm-12 col-md-8">
+              <input class="form-control" [(ngModel)]="telefon" required type="number" name="telefon" id="example-tel-input">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-text-input" class="col-sm-12 col-md-4 col-form-label">Lokalizacja nieruchomości</label>
+            <div class="col-sm-12 col-md-8">
+              <input class="form-control" [(ngModel)]="lokalizacja" required type="text" name="lokalizacja" id="example-text-input" placeholder="Ulica, Miasto">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-datetime-local-input" class="col-sm-12 col-md-4 col-form-label">Zakończenie licytacji ofert</label>
+            <div class="col-sm-12 col-md-8">
+              <input class="form-control" [(ngModel)]="koniecLicytacji" required type="date" name="koniecLicytacji" id="example-datetime-local-input">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-file" class="col-sm-12 col-md-4 col-form-label">
+              Dodaj zdjęcia nieruchomości do remontu
+              <p class="limits">(max 5 plików, max rozmiar pliku 300KB, obsługiwane formaty JPEG/PNG)</p>
+            </label>
+            <div class="col-sm-12 col-md-8">
+              <div class="row">
+                <div id="example-file" class="file-upload btn btn-info">
+                  <span>Dodaj pliki</span>
+                  <input type="file" multiple class="upload" (change)="getFiles($event); checkFilesValidity()">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" row">
+            <ul *ngIf="pliki" class="list-unstyled lista-plikow">
+              <li *ngFor="let plik of pliki; index as i;">
+                <!-- TODO - zrobić wyswietlanie plikow w osobnym wierszu ponizej -->
+                <div class="row pliki">
+                  <div class="col-md-12 col-lg-6 nazwa-pliku">
+                    <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                    {{plik.name}}
+                  </div>
+                  <div class="col-md-12 col-lg-6">
+                    <button class="btn btn-sm usun" (click)="removeFile(i); checkFilesValidity()">Usuń</button>
+                    <span *ngIf="checkFileSize(plik.size) && checkFileType(plik.type)" class="badge badge-success">OK</span>
+                    <span *ngIf="!checkFileSize(plik.size)" class="badge badge-danger">Niepoprawny rozmiar</span>
+                    <span *ngIf="!checkFileType(plik.type)" class="badge badge-danger">Niepoprawny format</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group row">
+          <div class="col-12">
+            <button class="btn btn-secondary" (click)="ogloszenieForm.reset(); clearData()">Wyczyść</button>
+            <button class="btn btn-primary" (click)="save()" [disabled]="!ogloszenieForm.form.valid || !poprawneOgloszenie">Dodaj ogłoszenie</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

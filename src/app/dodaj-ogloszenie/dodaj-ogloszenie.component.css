@@ -1,0 +1,47 @@
+.modal-header {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-footer {
+  background-color: #e3e3e9;
+}
+
+.file-upload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+.file-upload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.limits {
+  font-size: x-small;
+}
+
+.pliki {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.nazwa-pliku {
+  font-size: small;
+}
+
+.usun {
+  font-size: small;
+  padding: 1px;
+}
+
+.lista-plikow {
+  width: 100%;
+}
