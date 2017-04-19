@@ -13,6 +13,9 @@ export class DodajOgloszenieComponent implements OnInit {
     telefon: number;
     maxCena: number;
     lokalizacja: string;
+    ulica: string;
+    ulica_numer: number;
+    miasto: string;
     koniecLicytacji: Date;
     dataPublikacji: Date;
     zlecajacy: number;
@@ -104,7 +107,9 @@ export class DodajOgloszenieComponent implements OnInit {
             czasWykonania: _this.czasWykonania,
             telefon: _this.telefon,
             maxCena: _this.maxCena,
-            lokalizacjia: _this.lokalizacja,
+            ulica: _this.ulica,
+            ulica_numer: _this.ulica_numer,
+            miasto: _this.miasto,
             koniecLicytacji: new Date(_this.koniecLicytacji).toISOString(),
             dataPublikacji: _this.dataPublikacji.toISOString(),
             zlecajacy: 'undefined user',

@@ -45,13 +45,22 @@
           <div class="form-group row">
             <label for="example-tel-input" class="col-sm-12 col-md-4 col-form-label">Numer kontaktowy</label>
             <div class="col-sm-12 col-md-8">
-              <input class="form-control" [(ngModel)]="telefon" required type="number" name="telefon" id="example-tel-input">
+              <input class="form-control" [(ngModel)]="telefon" required type="tel" maxlength="9" name="telefon" id="example-tel-input" placeholder="Podaj numer telefonu">
             </div>
           </div>
           <div class="form-group row">
-            <label for="example-text-input" class="col-sm-12 col-md-4 col-form-label">Lokalizacja nieruchomości</label>
+            <label for="example-text-input1" class="col-sm-12 col-md-4 col-form-label">Adres nieruchomości</label>
+            <div class="col-sm-12 col-md-6">
+              <input class="form-control" [(ngModel)]="ulica" required type="text" name="lokalizacja" id="example-text-input1" placeholder="Ulica">
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <input class="form-control" [(ngModel)]="ulica_numer" required type="number" name="lokalizacja" id="example-text-input2" placeholder="Numer">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-text-input3" class="col-sm-12 col-md-4 col-form-label"></label>
             <div class="col-sm-12 col-md-8">
-              <input class="form-control" [(ngModel)]="lokalizacja" required type="text" name="lokalizacja" id="example-text-input" placeholder="Ulica, Miasto">
+              <input class="form-control" [(ngModel)]="miasto" required type="text" name="lokalizacja" id="example-text-input3" placeholder="Miasto">
             </div>
           </div>
           <div class="form-group row">
