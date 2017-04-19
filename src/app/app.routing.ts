@@ -6,10 +6,12 @@ import { GaleriaOgloszenComponent } from './galeria-ogloszen/galeria-ogloszen.co
 import { ProfileComponent }         from './profile/profile.component';
 import { OgloszenieComponent }      from './ogloszenie/ogloszenie.component';
 import { PolicyComponent }          from './policy/policy.component';
+import { DodajOgloszenieComponent } from './dodaj-ogloszenie/dodaj-ogloszenie.component';
 
 const appRoutes: Routes = [
   { path:'',                     component: GaleriaOgloszenComponent},
   { path:'zlecenie',             component: GaleriaOgloszenComponent },
+  { path:'dodaj_ogloszenie',     component: DodajOgloszenieComponent },
   { path:'pomoc',                component: GaleriaOgloszenComponent },
   { path:'kontakt',              component: GaleriaOgloszenComponent },
   { path:'profil',               component: ProfileComponent },
