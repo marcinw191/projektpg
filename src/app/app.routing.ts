@@ -8,11 +8,10 @@ import { OgloszenieComponent }      from './ogloszenie/ogloszenie.component';
 import { PolicyComponent }          from './policy/policy.component';
 
 const appRoutes: Routes = [
-  { path:'',                     component: HomeComponent },
-  { path:'zlecenie',             component: HomeComponent },
-  { path:'tablica_ogloszen',     component: GaleriaOgloszenComponent },
-  { path:'pomoc',                component: HomeComponent },
-  { path:'kontakt',              component: HomeComponent },
+  { path:'',                     component: GaleriaOgloszenComponent},
+  { path:'zlecenie',             component: GaleriaOgloszenComponent },
+  { path:'pomoc',                component: GaleriaOgloszenComponent },
+  { path:'kontakt',              component: GaleriaOgloszenComponent },
   { path:'profil',               component: ProfileComponent },
   { path:'ogloszenie',           component: OgloszenieComponent },
   { path:'polityka_prywatnosci', component: PolicyComponent },
