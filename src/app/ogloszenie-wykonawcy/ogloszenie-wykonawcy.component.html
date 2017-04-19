@@ -1,0 +1,42 @@
+<h3 class="my-4"> {{title}}</h3>
+<h5>widoczne dla dnaego zlecającego po zalogowaniu - *ngIf / brak zleceń</h5>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-11 col-sm-10">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h4>wiadomość od wykonawcy</h4>
+          Witam, przyjmuję zlecenie
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              Dane kontaktowe:
+              Adam, tel
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              Informacja o cenie
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 col-sm-2 col-sm-2 ">
+      <button>OK</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div  class="col-12">
+      <h4>Opinie innych zlecających</h4><br>
+    </div>
+    <div  class="col-12">
+      <ul>
+        <li *ngFor="let opinia of opinie" > {{opinia}} </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
