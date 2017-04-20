@@ -5,22 +5,22 @@ import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig }             from 'angular2-jwt';
 import { CookieLawModule }                  from 'angular2-cookie-law';
 import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
-import { AngularFireModule } from 'angularfire2';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { AlertModule } from 'ngx-bootstrap';
+import { AngularFireModule }                from 'angularfire2';
+import { ModalModule }                      from 'ngx-bootstrap/modal';
+import { AlertModule }                      from 'ngx-bootstrap';
 
 import { AppComponent }                 from './app.component';
 import { NavbarComponent }              from './navbar/navbar.component';
+import { FooterComponent }              from './footer/footer.component';
 import { HomeComponent }                from './home/home.component';
 import { GaleriaOgloszenComponent }     from './galeria-ogloszen/galeria-ogloszen.component';
 import { OgloszenieMiniaturaComponent } from './ogloszenie-miniatura/ogloszenie-miniatura.component';
 import { OgloszenieComponent }          from './ogloszenie/ogloszenie.component';
 import { ProfileComponent }             from './profile/profile.component';
-import { FooterComponent }              from './footer/footer.component';
 import { CookielawComponent }           from './cookielaw/cookielaw.component';
 import { PolicyComponent }              from './policy/policy.component';
-import { DodajOgloszenieComponent } from './dodaj-ogloszenie/dodaj-ogloszenie.component';
-import { AlertComponent } from './alert/alert.component';
+import { DodajOgloszenieComponent }     from './dodaj-ogloszenie/dodaj-ogloszenie.component';
+import { AlertComponent }               from './alert/alert.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './auth0/auth.service';
