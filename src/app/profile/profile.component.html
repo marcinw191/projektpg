@@ -3,7 +3,7 @@
 <h5><br></h5>
 <div class="row">
   <div class="col-md-2">
-    <img class="thumbnail" src="{{profile.picture}}">
+    <img class="thumbnail" src="{{selectedProfil.zdjecie}}">
   </div>
   <div class="col-md-10">
     <form #profileForm="ngForm">
@@ -13,23 +13,24 @@
           <p class="limits">(max 50 znaków)</p>
         </label>
         <div class="col-sm-12 col-md-8">
-          <input class="form-control" [(ngModel)]="profile.name" required id="nazwa" maxlength="50" name="nazwa" placeholder="Podaj imię i nazwisko lub nazwę firmy.">
+          <input class="form-control" [(ngModel)]="selectedProfil.nazwa" required id="nazwa" maxlength="50" name="nazwa" placeholder="Podaj imię i nazwisko lub nazwę firmy.">
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-5 col-md-4">e-mail :</label>
-        <div class="col-sm-7 col-md-8">{{profile.email}}</div>
+        <div class="col-sm-7 col-md-8">{{selectedProfil.email}}</div>
       </div>
       <div class="form-group row">
         <label for="telefon" class="col-6 col-sm-5 col-md-4 col-form-label">Numer kontaktowy :</label>
         <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2">
-          <input class="form-control" [(ngModel)]="telefon" required type="text" maxlength="9" name="telefon" id="telefon" placeholder="123456789">
+          <input class="form-control" [(ngModel)]="selectedProfil.telefon" required type="text" maxlength="9" name="telefon" id="telefon" placeholder="123456789">
         </div>
       </div>
       <div class="form-group row">
         <label for="funkcja" class="col-6 col-sm-5 col-md-4 col-form-label">Funkcja :</label>
         <div class="col-6 col-sm-7 col-md-8">
-          <select id="funkcja" (change)="zmienFunkcja(funkcja)">
+  <!-- TODO - w jaki sposób poprawnie wyświetlić wartość zmiennej selectedProfil.funkcja ? -->
+          <select id="funkcja" (change)="changeRole(funkcja)">
             <option value="zleceniodawca">zleceniodawca</option>
             <option value="wykonawca"    >wykonawca    </option>
           </select>
@@ -43,10 +44,10 @@
         <label for="ulica" class="col-sm-12 col-md-4 col-form-label">ulica :</label>
         <div class="col-sm-12 col-md-8 row">
           <div class="col-8 col-lg-9">
-            <input class="form-control" [(ngModel)]="ulica" required id="ulica" maxlength="50" name="ulica" placeholder="nazwa ulicy">
+            <input class="form-control" [(ngModel)]="selectedProfil.ulica" required id="ulica" maxlength="50" name="ulica" placeholder="nazwa ulicy">
          </div>
           <div class="col-4 col-lg-3">
-            <input class="form-control" [(ngModel)]="nr_bud" required id="nr_bud" maxlength="5" name="nr_bud" placeholder="nr bud.">
+            <input class="form-control" [(ngModel)]="selectedProfil.nr_bud" required id="nr_bud" maxlength="5" name="nr_bud" placeholder="nr bud.">
           </div>
        </div>
       </div>
@@ -54,10 +55,10 @@
         <label for="miejscowosc" class="col-sm-12 col-md-4 col-form-label">miejscowość :</label>
         <div class="col-sm-12 col-md-8 row">
           <div class="col-5 col-sm-4 col-lg-3">
-           <input class="form-control" [(ngModel)]="kod" required id="kod_pocztowy" maxlength="6" name="kod" placeholder="00-000">
+           <input class="form-control" [(ngModel)]="selectedProfil.kod" required id="kod_pocztowy" maxlength="6" name="kod" placeholder="00-000">
           </div>
          <div class="col-7 col-sm-8 col-lg-9">
-           <input class="form-control" [(ngModel)]="miejscowosc" required id="miejscowosc" maxlength="50" name="miejscowosc" placeholder="Miejscowość">
+           <input class="form-control" [(ngModel)]="selectedProfil.miejscowosc" required id="miejscowosc" maxlength="50" name="miejscowosc" placeholder="Miejscowość">
           </div>
         </div>
       </div>
@@ -65,8 +66,8 @@
     <div class="modal-footer">
       <div class="form-group row">
         <div class="col-12">
-          <button class="btn btn-secondary">Rezygnuj</button>
-          <button class="btn btn-primary">Zapisz zmiany</button>
+          <button class="btn btn-secondary" (click)="cancelProfile()">Rezygnuj</button>
+          <button class="btn btn-primary"   (click)="saveProfile()"  >Zapisz zmiany</button>
         </div>
       </div>
     </div>
@@ -77,8 +78,8 @@
   </div>
   <div class="col-md-10">
     <div class="form-group row">
-      <button *ngIf="funkcja=='zleceniodawca'" class="btn btn-primary">Zestawienie zleceń</button>
-      <button *ngIf="funkcja=='wykonawca'"     class="btn btn-primary">Zestawienie ofert </button>
+      <button *ngIf="selectedProfil.funkcja=='zleceniodawca'" class="btn btn-primary" (click)="listOfOrders()" >Zestawienie zleceń</button>
+      <button *ngIf="selectedProfil.funkcja=='wykonawca'"     class="btn btn-primary" (click)="listOfOfferts()">Zestawienie ofert </button>
     </div>
     <div class="form-group row" id="login_time">
       <div  class="col-sm-12 col-md-6">Zalogowany o : {{time}}</div>
