@@ -37,6 +37,7 @@ export class AuthService {
     console.log("logout");
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
+    // routerLink="/";
   }
 
   profile:any;
