@@ -1,5 +1,5 @@
 <div class="dodaj-ogloszenie">
-  <app-alert *ngIf="zakonczone" [type]="statusDodawania.status" [text]="statusDodawania.text"></app-alert>
+  <app-alert *ngIf="zakonczone" [type]="statusDodawania.status" [text]="statusDodawania.text" [id]="statusDodawania.id"></app-alert>
   <form #ogloszenieForm="ngForm">
     <div class="form-group row">
       <label for="example-text" class="col-sm-12 col-md-4 col-form-label">

@@ -1,5 +1,5 @@
 <div *ngIf="orientacja == 'galeria'" class="card h-100">
-  <a routerLink="/ogloszenie">
+  <a [routerLink]="['/ogloszenie', miniatura.numerOgloszenia]">
     <img *ngIf="zdjecie != ''" class="card-img-top img-fluid img_galeria" src="{{zdjecie}}" alt="HTML5">
     <img *ngIf="zdjecie == ''" class="card-img-top img-fluid img_galeria" src="http://placehold.it/700x400" alt="HTML5">
   </a>
@@ -20,7 +20,7 @@
 
 <div *ngIf="orientacja == 'lista'" class="row list h-100">
   <div class="col-md-4">
-    <a routerLink="/ogloszenie">
+    <a [routerLink]="['/ogloszenie', miniatura.numerOgloszenia]">
       <img *ngIf="zdjecie != ''" class="card-img-top img-fluid " src="{{zdjecie}}" alt="HTML5">
       <img *ngIf="zdjecie == ''" class="card-img-top img-fluid " src="http://placehold.it/700x400" alt="HTML5">
     </a>

@@ -36,7 +36,8 @@ export class DodajOgloszenieComponent implements OnInit {
     this.zakonczone = false;
     this.statusDodawania = {
       status: "",
-      text: ""
+      text: "",
+      id: 0
     }
   }
 
@@ -94,13 +95,13 @@ export class DodajOgloszenieComponent implements OnInit {
     this.fbApp.database().ref('/ogloszenia').limitToLast(1).once('value').then(function (snapshot) {
       var ostatnieOgloszenie = snapshot.val();
       var ostatniKlucz = Object.keys(ostatnieOgloszenie)[0];
-      var ostatniNumerOgloszenia = ostatnieOgloszenie[ostatniKlucz].numerOgloszenia;
+      var biezacyNumerOgloszenia = ostatnieOgloszenie[ostatniKlucz].numerOgloszenia + 1;
 
       _this.dataPublikacji = new Date();
       var __this = _this;
 
       _this.items.push({
-        numerOgloszenia: ostatniNumerOgloszenia + 1,
+        numerOgloszenia: biezacyNumerOgloszenia,
         tytul: _this.tytul,
         opis: _this.opis,
         czasWykonania: _this.czasWykonania,
@@ -121,14 +122,16 @@ export class DodajOgloszenieComponent implements OnInit {
             __this.updateFileList(key);
             __this.zakonczone = true;
             __this.statusDodawania.status = "success";
-            __this.statusDodawania.text = "Dodawania ogłoszenia zakończone poprawnie (nr ref: " + key + ")";
+            __this.statusDodawania.text = "";
+            __this.statusDodawania.id = biezacyNumerOgloszenia;
           }
           else
           {
             __this.updateFileList(key);
             __this.zakonczone = true;
             __this.statusDodawania.status = "success";
-            __this.statusDodawania.text = "Dodawania ogłoszenia zakończone poprawnie (nr ref: " + key + ")";
+            __this.statusDodawania.text = "";
+            __this.statusDodawania.id = biezacyNumerOgloszenia;
           }
           __this.clearData();
 

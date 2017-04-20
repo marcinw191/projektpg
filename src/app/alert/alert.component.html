@@ -1,5 +1,5 @@
 <alert *ngIf="type == 'success'" type="success" dismissible="true">
-  {{text}}
+  Dodawania ogłoszenia zakończone poprawnie (<a [routerLink]="['/ogloszenie', id]">nr ref: {{id}}</a>)
 </alert>
 <alert *ngIf="type  == 'info'" type="info" dismissible="true">
   {{text}}
