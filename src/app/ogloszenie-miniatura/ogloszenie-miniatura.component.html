@@ -4,7 +4,7 @@
     <img *ngIf="zdjecie == ''" class="card-img-top img-fluid img_galeria" src="http://placehold.it/700x400" alt="HTML5">
   </a>
   <div class="card-block">
-    <h4 class="card-title"><a routerLink="/ogloszenie">Ogłoszenie nr {{miniatura.numerOgloszenia}}</a></h4>
+    <h4 class="card-title"><a [routerLink]="['/ogloszenie', miniatura.numerOgloszenia]">Ogłoszenie nr {{miniatura.numerOgloszenia}}</a></h4>
     <div class="row ogloszenie">
       <div class="col-12 opis_mini">{{miniatura.tytul}}</div>
       <div class="col-7">- termin wykonania : </div><div align="right" class="col-5 bold">{{miniatura.czasWykonania}}</div>
@@ -26,7 +26,7 @@
     </a>
   </div>
   <div class="col-md-8">
-    <h4 class="card-title"><a routerLink="/ogloszenie">Ogłoszenie nr {{miniatura.numerOgloszenia}}</a></h4>
+    <h4 class="card-title"><a [routerLink]="['/ogloszenie', miniatura.numerOgloszenia]">Ogłoszenie nr {{miniatura.numerOgloszenia}}</a></h4>
     <div class="row ogloszenie_lista">
       <div class="col-12 opis_mini">{{miniatura.tytul}}</div>
       <div class="col-7">- termin wykonania : </div><div align="right" class="col-5 bold">{{miniatura.czasWykonania}}</div>

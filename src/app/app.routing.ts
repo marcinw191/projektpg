@@ -15,7 +15,7 @@ const appRoutes: Routes = [
   { path:'pomoc',                component: GaleriaOgloszenComponent },
   { path:'kontakt',              component: GaleriaOgloszenComponent },
   { path:'profil',               component: ProfileComponent },
-  { path:'ogloszenie',           component: OgloszenieComponent },
+  { path:'ogloszenie/:id',       component: OgloszenieComponent },
   { path:'polityka_prywatnosci', component: PolicyComponent },
 ];
 
