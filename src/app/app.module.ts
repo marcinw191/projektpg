@@ -24,6 +24,7 @@ import { AlertComponent } from './alert/alert.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './auth0/auth.service';
+import { OpisDzialaniaComponent } from './opis-dzialania/opis-dzialania.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
@@ -51,7 +52,8 @@ export const firebaseConfig = {
     CookielawComponent,
     PolicyComponent,
     DodajOgloszenieComponent,
-    AlertComponent
+    AlertComponent,
+    OpisDzialaniaComponent
   ],
   imports: [
     BrowserModule,
