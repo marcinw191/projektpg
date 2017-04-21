@@ -18,6 +18,13 @@ export class ProfileComponent implements OnInit {
   profile:any;
   time:any;
   id:string ='0'; //domyślnie przydzielony id rekordu statycznego z pustymi polami (z pliku profiles.ts)
+  funkcjaDomyslna:string;
+
+
+  funkcje:Array<Object> = [
+    {rola: "zleceniodawca", name: "zleceniodawca"},
+    {rola: "wykonawca", name: "wykonawca"}
+  ];
 
   constructor(private auth: AuthService) {
     this.profile = JSON.parse(localStorage.getItem('profile'));
@@ -26,8 +33,9 @@ export class ProfileComponent implements OnInit {
     // console.log(this.time);
   }
 
-  changeRole(funkcja: string) {
-    this.selectedProfil.funkcja = funkcja;
+  changeRole() {
+    console.log(this.funkcjaDomyslna);
+    this.selectedProfil.funkcja = this.funkcjaDomyslna;
   }
 
   ngOnInit(): void {
@@ -47,6 +55,10 @@ export class ProfileComponent implements OnInit {
       this.selectedProfil.nazwa   = this.profile.name;}
     if (this.selectedProfil.email=='') {
       this.selectedProfil.email   = this.profile.email;}
+    if (this.selectedProfil.funkcja=='') {
+      this.funkcjaDomyslna = 'zleceniodawca';
+      this.selectedProfil.funkcja = this.funkcjaDomyslna;}
+      else {this.funkcjaDomyslna=this.selectedProfil.funkcja;}
   }
 
   saveProfile(){

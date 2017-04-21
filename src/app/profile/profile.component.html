@@ -27,12 +27,10 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="funkcja" class="col-6 col-sm-5 col-md-4 col-form-label">Funkcja :</label>
+        <label for="funkcja" class="col-6 col-sm-5 col-md-4 col-form-label">Typ użytkownika :</label>
         <div class="col-6 col-sm-7 col-md-8">
-  <!-- TODO - w jaki sposób poprawnie wyświetlić wartość zmiennej selectedProfil.funkcja ? -->
-          <select id="funkcja" (change)="changeRole(funkcja)">
-            <option value="zleceniodawca">zleceniodawca</option>
-            <option value="wykonawca"    >wykonawca    </option>
+          <select id="funkcja" type="string" [(ngModel)]="funkcjaDomyslna" (ngModelChange)="changeRole()" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let funkcja of funkcje" [ngValue]="funkcja.rola">{{funkcja.name}}</option>
           </select>
         </div>
       </div>
