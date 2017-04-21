@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
   }
 
   changeRole() {
-    console.log(this.funkcjaDomyslna);
+    // console.log(this.funkcjaDomyslna);
     this.selectedProfil.funkcja = this.funkcjaDomyslna;
   }
 
