@@ -44,7 +44,10 @@
     <h3>Telefon </h3>
     <p>{{telefon}}</p>
     <h3>Mapka google</h3>
-    <div class="mbr-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJwzphW5B0_UYRg6jZzBNBg30" allowfullscreen=""></iframe></div>
+    <div class="mbr-map">
+      <googlemap [address]="adres" ></googlemap>
+      <!--<iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJwzphW5B0_UYRg6jZzBNBg30" allowfullscreen=""></iframe>-->
+    </div>
     <form action="action_page.php" method="post" data-form-title="MESSAGE">
       <input type="hidden" value="J2P3ys61KyXAvi430ihTwm4YDqJ1UyDr0EvUmvC+LBxfMzlHEcIxBm+Pli+iuifdcmSihZQDd97WlrrlNWlV8Z+3n5/P68QnYVCKLpwkiPIxrRdsWrYCttoR2cJUulf/" data-form-email="true">
       <div class="form-group">

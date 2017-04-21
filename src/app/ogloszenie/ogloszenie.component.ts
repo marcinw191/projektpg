@@ -2,6 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
+import {consoleTestResultsHandler} from "tslint/lib/test";
 
 
 @Component({
@@ -25,6 +26,8 @@ export class OgloszenieComponent implements OnInit {
   zdjecie2: string;
   zdjecie3: string;
   zdjecie4: string;
+
+  adres:string ='ul.Siedlicka 4 , Gdańsk';
 
   constructor(private route: ActivatedRoute, private af: AngularFire, @Inject(FirebaseApp) private fbApp: firebase.app.App) {
     this.zdjecie0 = "";
@@ -53,6 +56,8 @@ export class OgloszenieComponent implements OnInit {
         this.ulica = queriedItems[0].ulica;
         this.ulica_numer = queriedItems[0].ulica_numer;
         this.miasto = queriedItems[0].miasto;
+        this.adres = this.ulica + this.ulica_numer + " , " + this.miasto;
+        console.log(this.adres);
         if(queriedItems[0].pliki.length > 0)
         {
           for(let i = 0; i < queriedItems[0].pliki.length; i++)
