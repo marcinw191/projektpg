@@ -1,56 +1,53 @@
 <div class="container">
-<h2 class="my-4">Położenie glazury w łazience <small>Gdańsk</small></h2>
+<h2 class="my-4">{{tytul}}</h2>
+<h6>{{ulica}} {{ulica_numer}}, {{miasto}}</h6>
 
 <!-- Portfolio Item Row -->
 <div class="row">
 
   <div class="col-md-8">
-    <img class="img-fluid" src="http://bi.gazeta.pl/o/a/forum/461/4/461498.jpg" alt="">
-
+    <img *ngIf="zdjecie0 != ''" class="img-fluid" src="{{zdjecie0}}" alt="">
+    <img *ngIf="zdjecie0 == ''" class="img-fluid" src="http://placehold.it/560x420" alt="">
     <h3 class="my-4"></h3>
 
     <div class="row">
 
       <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-          <img class="img-fluid" src="http://bi.gazeta.pl/o/a/forum/461/4/461499.jpg" alt="">
-        </a>
+          <img *ngIf="zdjecie1 != ''" class="img-fluid" src="{{zdjecie1}}" alt="">
+          <img *ngIf="zdjecie1 == ''" class="img-fluid" src="http://placehold.it/160x120" alt="">
       </div>
 
       <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-          <img class="img-fluid" src="http://bi.gazeta.pl/o/a/forum/461/5/461500.jpg" alt="">
-        </a>
+          <img *ngIf="zdjecie2 != ''" class="img-fluid" src="{{zdjecie2}}" alt="">
+          <img *ngIf="zdjecie2 == ''" class="img-fluid" src="http://placehold.it/160x120" alt="">
       </div>
 
       <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-          <img class="img-fluid" src="http://placehold.it/160x120" alt="">
-        </a>
+          <img *ngIf="zdjecie3 != ''" class="img-fluid" src="{{zdjecie3}}" alt="">
+          <img *ngIf="zdjecie3 == ''" class="img-fluid" src="http://placehold.it/160x120" alt="">
       </div>
 
       <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-          <img class="img-fluid" src="http://placehold.it/160x120" alt="">
-        </a>
+          <img *ngIf="zdjecie4 != ''" class="img-fluid" src="{{zdjecie4}}" alt="">
+          <img *ngIf="zdjecie4 == ''" class="img-fluid" src="http://placehold.it/160x120" alt="">
       </div>
 
     </div>
 
     <h3 class="my-3">Opis</h3>
-    <p>Witam, mam do wykafelkowania łazienke. Szukam solidengego fachowca zależy mi na czasie. Cekam na oferty</p>
-    <p>Pozdrawiam</p>
-    <p>Janusz</p>
-
+    <p>{{opis}}</p>
 
   </div>
 
   <div class="col-md-4">
     <h1>Kontakt</h1>
     <h3>Telefon </h3>
-    <p>0800-123-123</p>
+    <p>{{telefon}}</p>
     <h3>Mapka google</h3>
-    <div class="mbr-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJwzphW5B0_UYRg6jZzBNBg30" allowfullscreen=""></iframe></div>
+    <div class="mbr-map">
+      <googlemap [address]="adres" ></googlemap>
+      <!--<iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJwzphW5B0_UYRg6jZzBNBg30" allowfullscreen=""></iframe>-->
+    </div>
     <form action="action_page.php" method="post" data-form-title="MESSAGE">
       <input type="hidden" value="J2P3ys61KyXAvi430ihTwm4YDqJ1UyDr0EvUmvC+LBxfMzlHEcIxBm+Pli+iuifdcmSihZQDd97WlrrlNWlV8Z+3n5/P68QnYVCKLpwkiPIxrRdsWrYCttoR2cJUulf/" data-form-email="true">
       <div class="form-group">
@@ -66,8 +63,8 @@
         <input type="tel" class="form-control input-sm input-inverse" name="phone" data-form-field="Phone" id="contacts4-3-phone">
       </div>
       <div class="form-group">
-        <label class="form-control-label" for="contacts4-3-phone">Oferta cenowa</label>
-        <input type="tel" class="form-control input-sm input-inverse" name="phone" data-form-field="Phone" id="contacts4-3-phone">
+        <label class="form-control-label" for="contacts4-3-offert">Oferta cenowa</label>
+        <input type="tel" class="form-control input-sm input-inverse" name="phone" data-form-field="Phone" id="contacts4-3-offert">
       </div>
       <div class="form-group">
         <label class="form-control-label" for="contacts4-3-message">Wiadomość</label>

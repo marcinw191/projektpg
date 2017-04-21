@@ -6,15 +6,17 @@ import { GaleriaOgloszenComponent } from './galeria-ogloszen/galeria-ogloszen.co
 import { ProfileComponent }         from './profile/profile.component';
 import { OgloszenieComponent }      from './ogloszenie/ogloszenie.component';
 import { PolicyComponent }          from './policy/policy.component';
+import { DodajOgloszenieComponent } from './dodaj-ogloszenie/dodaj-ogloszenie.component';
+import { OpisDzialaniaComponent }   from './opis-dzialania/opis-dzialania.component';
 
 const appRoutes: Routes = [
-  { path:'',                     component: HomeComponent },
-  { path:'zlecenie',             component: HomeComponent },
-  { path:'tablica_ogloszen',     component: GaleriaOgloszenComponent },
-  { path:'pomoc',                component: HomeComponent },
-  { path:'kontakt',              component: HomeComponent },
+  { path:'',                     component: GaleriaOgloszenComponent},
+  { path:'zlecenie',             component: GaleriaOgloszenComponent },
+  { path:'dodaj_ogloszenie',     component: DodajOgloszenieComponent },
+  { path:'pomoc',                component: OpisDzialaniaComponent},
+  { path:'kontakt',              component: GaleriaOgloszenComponent },
   { path:'profil',               component: ProfileComponent },
-  { path:'ogloszenie',           component: OgloszenieComponent },
+  { path:'ogloszenie/:id',       component: OgloszenieComponent },
   { path:'polityka_prywatnosci', component: PolicyComponent },
 ];
 

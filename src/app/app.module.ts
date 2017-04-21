@@ -1,10 +1,12 @@
 import { BrowserModule }                    from '@angular/platform-browser';
 import { NgModule }                         from '@angular/core';
+import { CommonModule }                     from '@angular/common';
 import { FormsModule }                      from '@angular/forms';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
+import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
 import { AuthHttp, AuthConfig }             from 'angular2-jwt';
 import { CookieLawModule }                  from 'angular2-cookie-law';
-import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
+import { AgmCoreModule }                    from 'angular2-google-maps/core';
 import { AngularFireModule }                from 'angularfire2';
 import { ModalModule }                      from 'ngx-bootstrap/modal';
 import { AlertModule }                      from 'ngx-bootstrap';
@@ -21,6 +23,8 @@ import { CookielawComponent }           from './cookielaw/cookielaw.component';
 import { PolicyComponent }              from './policy/policy.component';
 import { DodajOgloszenieComponent }     from './dodaj-ogloszenie/dodaj-ogloszenie.component';
 import { AlertComponent }               from './alert/alert.component';
+import { GoogleMapsComponent }          from './googlemaps/googlemaps.component';
+import { OpisDzialaniaComponent }       from './opis-dzialania/opis-dzialania.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './auth0/auth.service';
@@ -51,10 +55,13 @@ export const firebaseConfig = {
     CookielawComponent,
     PolicyComponent,
     DodajOgloszenieComponent,
-    AlertComponent
+    AlertComponent,
+    GoogleMapsComponent,
+    OpisDzialaniaComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
     CookieLawModule,
@@ -63,6 +70,9 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     ModalModule.forRoot(),
     AlertModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU",
+    })
   ],
   providers: [
     appRoutingProviders,

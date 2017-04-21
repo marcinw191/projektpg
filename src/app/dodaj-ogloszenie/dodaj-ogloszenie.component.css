@@ -1,10 +1,5 @@
-.modal-header {
-  background-color: #5cb85c;
-  color: white;
-}
-
-.modal-footer {
-  background-color: #e3e3e9;
+.dodaj-ogloszenie {
+  margin-top: 50px;
 }
 
 .file-upload {
