@@ -56,7 +56,7 @@ export class OgloszenieComponent implements OnInit {
         this.ulica = queriedItems[0].ulica;
         this.ulica_numer = queriedItems[0].ulica_numer;
         this.miasto = queriedItems[0].miasto;
-        this.adres = this.ulica + this.ulica_numer + " , " + this.miasto;
+        this.adres = this.ulica + " " + this.ulica_numer + " , " + this.miasto;
         console.log(this.adres);
         if(queriedItems[0].pliki.length > 0)
         {
