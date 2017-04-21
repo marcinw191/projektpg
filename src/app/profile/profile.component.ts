@@ -17,13 +17,13 @@ export class ProfileComponent implements OnInit {
   selectedProfil: Profil;
   profile:any;
   time:any;
-  id:string ='0';
+  id:string ='0'; //domyślnie przydzielony id rekordu statycznego z pustymi polami (z pliku profiles.ts)
 
   constructor(private auth: AuthService) {
     this.profile = JSON.parse(localStorage.getItem('profile'));
-    console.log(this.profile);
+    // console.log(this.profile);
     this.time = moment(this.profile.updated_at).tz("Europe/Warsaw").format('YYYY-MM-DD HH:mm:ss');
-    console.log(this.time);
+    // console.log(this.time);
   }
 
   changeRole(funkcja: string) {
