@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   { path:'zlecenie',             component: GaleriaOgloszenComponent },
   { path:'dodaj_ogloszenie',     component: DodajOgloszenieComponent },
   { path:'pomoc',                component: OpisDzialaniaComponent},
-  { path:'kontakt',              component: HomeComponent },
+  { path:'kontakt',              component: GaleriaOgloszenComponent },
   { path:'profil',               component: ProfileComponent },
   { path:'ogloszenie/:id',       component: OgloszenieComponent },
   { path:'polityka_prywatnosci', component: PolicyComponent },

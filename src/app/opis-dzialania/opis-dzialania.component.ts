@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService }       from '../auth0/auth.service';
 
 @Component({
   selector: 'app-opis-dzialania',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpisDzialaniaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
