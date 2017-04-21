@@ -24,6 +24,7 @@ import { PolicyComponent }              from './policy/policy.component';
 import { DodajOgloszenieComponent }     from './dodaj-ogloszenie/dodaj-ogloszenie.component';
 import { AlertComponent }               from './alert/alert.component';
 import { GoogleMapsComponent }          from './googlemaps/googlemaps.component';
+import { OpisDzialaniaComponent }       from './opis-dzialania/opis-dzialania.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './auth0/auth.service';
@@ -56,6 +57,7 @@ export const firebaseConfig = {
     DodajOgloszenieComponent,
     AlertComponent,
     GoogleMapsComponent,
+    OpisDzialaniaComponent,
   ],
   imports: [
     BrowserModule,
