@@ -40,3 +40,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Other
+velocity.xlsx
+story_points.png
+issues.png
