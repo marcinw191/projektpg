@@ -25,21 +25,31 @@ import { DodajOgloszenieComponent }     from './dodaj-ogloszenie/dodaj-ogloszeni
 import { AlertComponent }               from './alert/alert.component';
 import { GoogleMapsComponent }          from './googlemaps/googlemaps.component';
 import { OpisDzialaniaComponent }       from './opis-dzialania/opis-dzialania.component';
+import { DodajUzytkownikaComponent }    from './dodaj-uzytkownika/dodajuzytkownika.component';
+import { SzukajUzytkownikaComponent }   from './szukaj-uzytkownika/szukajuzytkownika.component';
+import { DaneUzytkownikaComponent }     from './dane-uzytkownika/daneuzytkownika.component';
 
 import { routing, appRoutingProviders } from './app.routing';
-import { AuthService }                  from './auth0/auth.service';
+import { AuthService }                  from './serwisy/auth0/auth.service';
+import { BazaUzytkownikowService }      from './serwisy/bazauzytkownikow.service';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
 }
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
+  apiKey: 'AIzaSyA9WXFvzvefMSWpBcnHIU2TaF7h6f9rWU0',
+  authDomain: 'kaskada-165611.firebaseapp.com',
+  databaseURL: 'https://kaskada-165611.firebaseio.com',
+  projectId: 'kaskada-165611',
+  storageBucket: 'kaskada-165611.appspot.com',
+  messagingSenderId: '44558647394'
+  // apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
+  // authDomain: "kaskada-5ebd3.firebaseapp.com",
+  // databaseURL: "https://kaskada-5ebd3.firebaseio.com",
+  // projectId: "kaskada-5ebd3",
+  // storageBucket: "kaskada-5ebd3.appspot.com",
+  // messagingSenderId: "846477355550"
 };
 
 @NgModule({
@@ -58,6 +68,9 @@ export const firebaseConfig = {
     AlertComponent,
     GoogleMapsComponent,
     OpisDzialaniaComponent,
+    DodajUzytkownikaComponent,
+    SzukajUzytkownikaComponent,
+    DaneUzytkownikaComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +95,7 @@ export const firebaseConfig = {
       deps: [ Http, RequestOptions ],
     },
     AuthService,
+    BazaUzytkownikowService,
   ],
   bootstrap: [AppComponent]
 })
