@@ -1,0 +1,13 @@
+<form (submit)="onAddSubmit()">
+  <td><input class="form-control" type="number" [(ngModel)]="id"  name="id" required></td>
+  <td><input class="form-control" type="text" [(ngModel)]="e_mail" name="e_mail" required></td>
+  <td><input class="form-control" type="text" [(ngModel)]="nazwa" name="nazwa" required></td>
+  <td>
+    <select class="form-control" type="text" [(ngModel)]="typ" name="typ" required>
+      <option value="zleceniodawca">zleceniodawca</option>
+      <option value="wykonawca">wykonawca</option>
+      <option value="administrator">administrator</option>
+    </select>
+  </td>
+  <td><input type="submit" value="Add" class="btn btn-success"></td>
+</form>

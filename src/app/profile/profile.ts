@@ -1,5 +1,5 @@
 export class Profil {
-  id          : string;
+  id          : number;
   zdjecie     : string;
   nazwa       : string;
   email       : string;
