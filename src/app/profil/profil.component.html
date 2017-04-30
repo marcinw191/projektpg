@@ -1,0 +1,7 @@
+<div *ngIf="edycja==false">
+  <app-profil-podglad [profil]="profil"></app-profil-podglad>
+</div>
+<div *ngIf="edycja==true">
+  <app-profil-edycja [profil]="profil"></app-profil-edycja>
+</div>
+<app-login-time></app-login-time>
