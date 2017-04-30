@@ -1,0 +1,22 @@
+<form (submit)="onSearchSubmit()">
+  <td>Wprowadź poszukiwany adres e-mail :</td>
+  <td><input class="form-control" type="text" [(ngModel)]="e_mail" name="e_mail"></td>
+  <td><input type="submit" value="Search" class="btn btn-success"></td>
+  <!--<td><button (click)="onSearchSubmit()">Search2</button></td>-->
+</form>
+<div *ngIf="id">
+  <table>
+    <tr>
+      <td>Dane osoby :</td>
+      <td>{{key}}</td>
+    </tr>
+    <tr>
+      <td>Nazwa : </td>
+      <td>{{nazwa}}</td>
+    </tr>
+    <tr>
+      <td>Typ : </td>
+      <td>{{typ}}</td>
+    </tr>
+  </table>
+</div>

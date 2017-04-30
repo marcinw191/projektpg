@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 interface User {
-  id?        : number;
   nazwa?     : string;
   e_mail?    : string;
   typ?       : string;
