@@ -18,16 +18,21 @@ import { HomeComponent }                from './home/home.component';
 import { GaleriaOgloszenComponent }     from './galeria-ogloszen/galeria-ogloszen.component';
 import { OgloszenieMiniaturaComponent } from './ogloszenie-miniatura/ogloszenie-miniatura.component';
 import { OgloszenieComponent }          from './ogloszenie/ogloszenie.component';
-import { ProfileComponent }             from './profile/profile.component';
 import { CookielawComponent }           from './cookielaw/cookielaw.component';
 import { PolicyComponent }              from './policy/policy.component';
 import { DodajOgloszenieComponent }     from './dodaj-ogloszenie/dodaj-ogloszenie.component';
 import { AlertComponent }               from './alert/alert.component';
 import { GoogleMapsComponent }          from './googlemaps/googlemaps.component';
 import { OpisDzialaniaComponent }       from './opis-dzialania/opis-dzialania.component';
-import { DodajUzytkownikaComponent }    from './dodaj-uzytkownika/dodajuzytkownika.component';
-import { SzukajUzytkownikaComponent }   from './szukaj-uzytkownika/szukajuzytkownika.component';
-import { DaneUzytkownikaComponent }     from './dane-uzytkownika/daneuzytkownika.component';
+import { DodajUzytkownikaComponent }    from './uzytkownik-dodaj/dodajuzytkownika.component';
+import { SzukajUzytkownikaComponent }   from './uzytkownik-szukaj/szukajuzytkownika.component';
+import { DaneUzytkownikaComponent }     from './uzytkownik-dane/daneuzytkownika.component';
+import { ProfilComponent }              from './profil/profil.component';
+import { ProfilEdycjaComponent }        from './profil-edycja/profil-edycja.component';
+import { ProfilPodgladComponent }       from './profil-podglad/profil-podglad.component';
+import { LoginTimeComponent }           from './login-time/login-time.component';
+import { AdministratorComponent }       from './administrator/administrator.component';
+import { AdministratorObszarComponent } from './administrator-obszar/administrator-obszar.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './serwisy/auth0/auth.service';
@@ -60,7 +65,6 @@ export const firebaseConfig = {
     GaleriaOgloszenComponent,
     OgloszenieMiniaturaComponent,
     OgloszenieComponent,
-    ProfileComponent,
     FooterComponent,
     CookielawComponent,
     PolicyComponent,
@@ -71,6 +75,12 @@ export const firebaseConfig = {
     DodajUzytkownikaComponent,
     SzukajUzytkownikaComponent,
     DaneUzytkownikaComponent,
+    LoginTimeComponent,
+    ProfilComponent,
+    ProfilEdycjaComponent,
+    ProfilPodgladComponent,
+    AdministratorComponent,
+    AdministratorObszarComponent,
   ],
   imports: [
     BrowserModule,
