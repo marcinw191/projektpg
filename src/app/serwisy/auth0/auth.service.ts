@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { options } from './auth.options';
 import { Router} from '@angular/router';
 
-declare var Auth0Lock: any;
+declare let Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
+  profile:any;
   // Configure Auth0
   lock = new Auth0Lock('1OdxsiT2ns9Gg66V8bVRC450DoAfV4G2','kaskada.eu.auth0.com',options);
 
@@ -13,23 +14,18 @@ export class AuthService {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
       this.lock.getProfile(authResult.idToken, function (error:any, profile:any) {
-        if(error){
+        if(error) {
           console.log("error-auth0");
           throw new Error(error);
         }
-        // Set Profile
-        localStorage.setItem('profile', JSON.stringify(profile));
-        //console.log("profile: "+JSON.stringify(profile));
-        // Set Token
-        localStorage.setItem('id_token', authResult.idToken);
-        //console.log("idToken: "+authResult.idToken);
+        localStorage.setItem('profile', JSON.stringify(profile)); // Set Profile
+        localStorage.setItem('id_token', authResult.idToken);     // Set Token
       })
     });
   }
 
   public login() {
-    // Call the show method to display the widget.
-    this.lock.show();
+    this.lock.show();     // Call the show method to display the widget.
   }
 
   public logout() {
@@ -39,7 +35,6 @@ export class AuthService {
     this.router.navigateByUrl('/');
   }
 
-  profile:any;
   public authenticated() {
     // Check if there's an unexpired JWT
     // This searches for an item in localStorage with key == 'profile'
@@ -47,4 +42,8 @@ export class AuthService {
     return Boolean(this.profile);
   }
 
+  public getProfileAuth() {
+    this.profile = JSON.parse(localStorage.getItem('profile'));
+    return this.profile;
+  }
 }
