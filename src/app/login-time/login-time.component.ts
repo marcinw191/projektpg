@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService }             from '../serwisy/auth0/auth.service';
+
+import { AuthService }       from '../serwisy/auth0/auth.service';
 
 import * as moment from 'moment-timezone';
 
@@ -15,10 +16,12 @@ export class LoginTimeComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.profile = JSON.parse(localStorage.getItem('profile'));
-    console.log(this.profile);
-    this.time = moment(this.profile.updated_at).tz("Europe/Warsaw").format('YYYY-MM-DD HH:mm:ss');
-    console.log(this.time);
+    if (this.auth.authenticated()) {
+      this.profile = JSON.parse(localStorage.getItem('profile'));
+      console.log(this.profile);
+      this.time = moment(this.profile.updated_at).tz("Europe/Warsaw").format('YYYY-MM-DD HH:mm:ss');
+      console.log(this.time);
+    }
   }
 
 }
