@@ -11,28 +11,29 @@ import { AngularFireModule }                from 'angularfire2';
 import { ModalModule }                      from 'ngx-bootstrap/modal';
 import { AlertModule }                      from 'ngx-bootstrap';
 
-import { AppComponent }                 from './app.component';
-import { NavbarComponent }              from './navbar/navbar.component';
-import { FooterComponent }              from './footer/footer.component';
-import { HomeComponent }                from './home/home.component';
-import { GaleriaOgloszenComponent }     from './galeria-ogloszen/galeria-ogloszen.component';
-import { OgloszenieMiniaturaComponent } from './ogloszenie-miniatura/ogloszenie-miniatura.component';
-import { OgloszenieComponent }          from './ogloszenie/ogloszenie.component';
-import { CookielawComponent }           from './cookielaw/cookielaw.component';
-import { PolicyComponent }              from './policy/policy.component';
-import { DodajOgloszenieComponent }     from './dodaj-ogloszenie/dodaj-ogloszenie.component';
-import { AlertComponent }               from './alert/alert.component';
-import { GoogleMapsComponent }          from './googlemaps/googlemaps.component';
-import { OpisDzialaniaComponent }       from './opis-dzialania/opis-dzialania.component';
-import { DodajUzytkownikaComponent }    from './uzytkownik-dodaj/dodajuzytkownika.component';
-import { SzukajUzytkownikaComponent }   from './uzytkownik-szukaj/szukajuzytkownika.component';
-import { DaneUzytkownikaComponent }     from './uzytkownik-dane/daneuzytkownika.component';
-import { ProfilComponent }              from './profil/profil.component';
-import { ProfilEdycjaComponent }        from './profil-edycja/profil-edycja.component';
-import { ProfilPodgladComponent }       from './profil-podglad/profil-podglad.component';
-import { LoginTimeComponent }           from './login-time/login-time.component';
-import { AdministratorComponent }       from './administrator/administrator.component';
-import { AdministratorObszarComponent } from './administrator-obszar/administrator-obszar.component';
+import { AppComponent }                      from './app.component';
+import { NavbarComponent }                   from './navbar/navbar.component';
+import { FooterComponent }                   from './footer/footer.component';
+import { HomeComponent }                     from './home/home.component';
+import { GaleriaOgloszenComponent }          from './galeria-ogloszen/galeria-ogloszen.component';
+import { OgloszenieMiniaturaComponent }      from './ogloszenie-miniatura/ogloszenie-miniatura.component';
+import { OgloszenieComponent }               from './ogloszenie/ogloszenie.component';
+import { CookielawComponent }                from './cookielaw/cookielaw.component';
+import { PolicyComponent }                   from './policy/policy.component';
+import { DodajOgloszenieComponent }          from './dodaj-ogloszenie/dodaj-ogloszenie.component';
+import { AlertComponent }                    from './alert/alert.component';
+import { GoogleMapsComponent }               from './googlemaps/googlemaps.component';
+import { OpisDzialaniaComponent }            from './opis-dzialania/opis-dzialania.component';
+import { DodajUzytkownikaComponent }         from './uzytkownik-dodaj/dodajuzytkownika.component';
+import { SzukajUzytkownikaComponent }        from './uzytkownik-szukaj/szukajuzytkownika.component';
+import { DaneUzytkownikaComponent }          from './uzytkownik-dane/daneuzytkownika.component';
+import { ProfilComponent }                   from './profil/profil.component';
+import { LoginTimeComponent }                from './login-time/login-time.component';
+import { AdministratorComponent }            from './administrator/administrator.component';
+import { AdministratorUzytkownicyComponent } from './administrator-uzytkownicy/administrator-uzytkownicy.component';
+import { AdministratorUzytkownikComponent }  from './administrator-uzytkownik/administrator-uzytkownik.component';
+import { AdministratorOgloszeniaComponent }  from './administrator-ogloszenia/administrator-ogloszenia.component';
+import { AdministratorOfertyComponent }      from './administrator-oferty/administrator-oferty.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './serwisy/auth0/auth.service';
@@ -77,10 +78,11 @@ export const firebaseConfig = {
     DaneUzytkownikaComponent,
     LoginTimeComponent,
     ProfilComponent,
-    ProfilEdycjaComponent,
-    ProfilPodgladComponent,
     AdministratorComponent,
-    AdministratorObszarComponent,
+    AdministratorUzytkownicyComponent,
+    AdministratorUzytkownikComponent,
+    AdministratorOgloszeniaComponent,
+    AdministratorOfertyComponent,
   ],
   imports: [
     BrowserModule,
