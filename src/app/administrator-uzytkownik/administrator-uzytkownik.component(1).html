@@ -1,0 +1,17 @@
+<form (submit)="onEditSubmit(key)">
+  <div class="col-md-3">{{user.e_mail}}</div>
+  <div class="col-md-3"><input class="form-control" type="text" [(ngModel)]="user.nazwa" name="nazwa" required></div>
+    <div class="col-md-3">
+      <select class="form-control" type="text" [(ngModel)]="user.typ" name="typ" required>
+        <option value="zleceniodawca">zleceniodawca</option>
+        <option value="wykonawca">wykonawca</option>
+        <option value="administrator">administrator</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <input type="submit" value="Update" class="btn btn-success">
+      <button (click)="blockUser(key)">Block</button>
+      <button (click)="unblockUser(key)">Unblock</button>
+      <button (click)="deleteUser(key)">Delete</button>
+    </div>
+</form>

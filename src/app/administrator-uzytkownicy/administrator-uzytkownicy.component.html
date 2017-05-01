@@ -1,0 +1,6 @@
+<h5>Wykaz użytkowników</h5>
+<table>
+  <tr *ngFor="let user of users">
+    <app-administrator-uzytkownik [key]="user.$key"></app-administrator-uzytkownik>
+  </tr>
+</table>
