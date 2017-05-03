@@ -5,18 +5,18 @@ interface User {
   nazwa?     : string;
   e_mail?    : string;
   typ?       : string;
-  id_zlecen? : Array<string>;
-  id_ofert?  : Array<string>;
+  // id_zlecen? : Array<string>;
+  // id_ofert?  : Array<string>;
 }
 
 @Injectable()
 export class BazaUzytkownikowService {
   users: FirebaseListObservable<any[]>;
   user:  FirebaseObjectObservable<any>;
-  folder: any;
+  // folder: any;
 
   constructor(private af:AngularFire) {
-    this.folder = 'userimages';
+    // this.folder = 'userimages';
     this.users  = this.af.database.list('/users') as FirebaseListObservable<User[]>
   }
 
