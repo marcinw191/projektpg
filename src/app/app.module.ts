@@ -24,9 +24,6 @@ import { DodajOgloszenieComponent }          from './dodaj-ogloszenie/dodaj-oglo
 import { AlertComponent }                    from './alert/alert.component';
 import { GoogleMapsComponent }               from './googlemaps/googlemaps.component';
 import { OpisDzialaniaComponent }            from './opis-dzialania/opis-dzialania.component';
-import { DodajUzytkownikaComponent }         from './uzytkownik-dodaj/dodajuzytkownika.component';
-import { SzukajUzytkownikaComponent }        from './uzytkownik-szukaj/szukajuzytkownika.component';
-import { DaneUzytkownikaComponent }          from './uzytkownik-dane/daneuzytkownika.component';
 import { ProfilComponent }                   from './profil/profil.component';
 import { LoginTimeComponent }                from './login-time/login-time.component';
 import { AdministratorComponent }            from './administrator/administrator.component';
@@ -44,18 +41,18 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 }
 
 export const firebaseConfig = {
-  apiKey: 'AIzaSyA9WXFvzvefMSWpBcnHIU2TaF7h6f9rWU0',
-  authDomain: 'kaskada-165611.firebaseapp.com',
-  databaseURL: 'https://kaskada-165611.firebaseio.com',
-  projectId: 'kaskada-165611',
-  storageBucket: 'kaskada-165611.appspot.com',
-  messagingSenderId: '44558647394'
-  // apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  // authDomain: "kaskada-5ebd3.firebaseapp.com",
-  // databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  // projectId: "kaskada-5ebd3",
-  // storageBucket: "kaskada-5ebd3.appspot.com",
-  // messagingSenderId: "846477355550"
+  // apiKey: 'AIzaSyA9WXFvzvefMSWpBcnHIU2TaF7h6f9rWU0',
+  // authDomain: 'kaskada-165611.firebaseapp.com',
+  // databaseURL: 'https://kaskada-165611.firebaseio.com',
+  // projectId: 'kaskada-165611',
+  // storageBucket: 'kaskada-165611.appspot.com',
+  // messagingSenderId: '44558647394'
+  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
+  authDomain: "kaskada-5ebd3.firebaseapp.com",
+  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
+  projectId: "kaskada-5ebd3",
+  storageBucket: "kaskada-5ebd3.appspot.com",
+  messagingSenderId: "846477355550"
 };
 
 @NgModule({
@@ -73,9 +70,6 @@ export const firebaseConfig = {
     AlertComponent,
     GoogleMapsComponent,
     OpisDzialaniaComponent,
-    DodajUzytkownikaComponent,
-    SzukajUzytkownikaComponent,
-    DaneUzytkownikaComponent,
     LoginTimeComponent,
     ProfilComponent,
     AdministratorComponent,
