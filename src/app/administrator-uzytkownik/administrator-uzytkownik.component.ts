@@ -10,39 +10,38 @@ import { BazaUzytkownikowService } from '../serwisy/bazauzytkownikow.service';
 })
 export class AdministratorUzytkownikComponent implements OnInit {
   @Input() key;
-  user :any;
+  user   :any;
   result :boolean;
+  blokada :boolean = false;
 
   constructor(private bazaUzytkownikowService:BazaUzytkownikowService) { }
 
   ngOnInit() {
     this.bazaUzytkownikowService.getUserDetails(this.key).subscribe(user =>
     { this.user = user;
+      this.blokada = (this.user.blokada == "tak");
     });
   }
 
-  onEditSubmit(key){
-    let user = {
-      nazwa: this.user.nazwa,
-      typ:   this.user.typ,
-    };
+  updateUser(key){
+    let user = { typ: this.user.typ };
     this.bazaUzytkownikowService.updateUser(key, user);
+    alert('Typ użytkownika zmieniony !!!');
   }
 
   blockUser(key){
-    let user = {
-      blokada: 'tak',
-    };
+    let user: any;
+    console.log(this.blokada);
+    console.log(this.key);
+    if (this.blokada) {
+      user = { blokada: 'tak' };
+      alert('Użytkownik zablokowany !!!');
+    }
+    else {
+      user = { blokada: 'nie' };
+      alert('Użytkownik odblokowany !!!');
+    }
     this.bazaUzytkownikowService.updateUser(key, user);
-    alert('Użytkownik zablokowany !!!');
-  }
-
-  unblockUser(key){
-    let user = {
-      blokada: 'nie',
-    };
-    this.bazaUzytkownikowService.updateUser(key, user);
-    alert('Użytkownik odblokowany !!!');
   }
 
   deleteUser(key) {
@@ -50,6 +49,6 @@ export class AdministratorUzytkownikComponent implements OnInit {
     if (this.result) {
       this.bazaUzytkownikowService.deleteUser(key);
     }
-
   }
+
 }

@@ -16,7 +16,9 @@ export class AdministratorComponent implements OnInit {
   //  - typ_zestawienia = 2   - zestawienie ogłoszeń/zleceń
   //  - typ_zestawienia = 3   - zestawienie ofert
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService,
+              private router: Router){
+  }
 
   ngOnInit() {
     if (this.auth.authenticated()) {

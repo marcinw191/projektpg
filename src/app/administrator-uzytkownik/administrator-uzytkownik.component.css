@@ -1,0 +1,15 @@
+* {
+  font-size: 1rem;
+}
+
+select {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+
+@media (max-width: 540px) {
+  * {
+    font-size: .7rem;
+  }
+
+}

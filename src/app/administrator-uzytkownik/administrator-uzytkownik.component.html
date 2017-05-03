@@ -1,13 +1,11 @@
-<td>{{user.e_mail}}</td>
-<td><input type="text" [(ngModel)]="user.nazwa" required></td>
-<td>
-  <select type="text" [(ngModel)]="user.typ" required>
+<div class="col-6 col-md-3">{{user.nazwa}}</div>
+<div class="col-6 col-md-4">{{user.e_mail}}</div>
+<div class="col-6 col-md-3">
+  <select type="text" [(ngModel)]="user.typ" (change)="updateUser(key)">
     <option value="zleceniodawca">zleceniodawca</option>
     <option value="wykonawca">wykonawca</option>
     <option value="administrator">administrator</option>
   </select>
-</td>
-<td><button (click)="onEditSubmit(key)">Update </button></td>
-<td><button (click)="blockUser(key)"   >Block  </button></td>
-<td><button (click)="unblockUser(key)" >Unblock</button></td>
-<td><button (click)="deleteUser(key)"  >Delete </button></td>
+</div>
+<div class="checkbox col-1"><input type="checkbox" (change)="deleteUser(key)"></div>
+<div class="checkbox col-1"><input type="checkbox" (change)="blockUser(key)" [(ngModel)]="blokada" ></div>

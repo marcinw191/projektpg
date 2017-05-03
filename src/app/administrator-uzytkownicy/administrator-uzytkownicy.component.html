@@ -1,6 +1,11 @@
 <h5>Wykaz użytkowników</h5>
-<table>
-  <tr *ngFor="let user of users">
-    <app-administrator-uzytkownik [key]="user.$key"></app-administrator-uzytkownik>
-  </tr>
-</table>
+<div class="col-12 row">
+  <div class="col-6 col-md-3">Nazwa użytkownika</div>
+  <div class="col-6 col-md-4" id="e-mail">Adres e-mail</div>
+  <div class="col-6 col-md-3" id="typ">Typ użytkownika</div>
+  <div class="col-1">Usuń</div>
+  <div class="col-1">Blokuj<br></div>
+</div>
+<div class="col-12">
+  <app-administrator-uzytkownik *ngFor="let user of users" [key]="user.$key" class="row"></app-administrator-uzytkownik>
+</div>

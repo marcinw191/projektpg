@@ -8,14 +8,15 @@ import { BazaUzytkownikowService } from '../serwisy/bazauzytkownikow.service';
   styleUrls: ['./administrator-uzytkownicy.component.css']
 })
 export class AdministratorUzytkownicyComponent implements OnInit {
-  users : any[];
+  users: any[];
 
-  constructor(private bazaUzytkownikowService:BazaUzytkownikowService) { }
+  constructor(private bazaUzytkownikowService: BazaUzytkownikowService) {
+  }
 
   ngOnInit() {
-    alert('Trwa przygotowywanie zestawienia użytkowników');
-    this.bazaUzytkownikowService.getUsers().subscribe(users =>
-    { this.users = users;
+    // alert('Trwa przygotowywanie zestawienia użytkowników');
+    this.bazaUzytkownikowService.getUsers().subscribe(users => {
+      this.users = users;
     });
   }
 
