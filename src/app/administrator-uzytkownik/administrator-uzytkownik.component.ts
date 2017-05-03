@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { AuthService }       from '../serwisy/auth0/auth.service';
 import { BazaUzytkownikowService } from '../serwisy/bazauzytkownikow.service';
 
 @Component({
@@ -11,16 +12,21 @@ import { BazaUzytkownikowService } from '../serwisy/bazauzytkownikow.service';
 export class AdministratorUzytkownikComponent implements OnInit {
   @Input() key;
   user   :any;
+  user_auth :any;
   result :boolean;
   blokada :boolean = false;
+  disable :boolean;
 
-  constructor(private bazaUzytkownikowService:BazaUzytkownikowService) { }
+  constructor(private auth: AuthService,
+              private bazaUzytkownikowService:BazaUzytkownikowService) { }
 
   ngOnInit() {
+    this.user_auth=this.auth.getProfileAuth();
     this.bazaUzytkownikowService.getUserDetails(this.key).subscribe(user =>
     { this.user = user;
       this.blokada = (this.user.blokada == "tak");
     });
+    this.disable=(this.user.e_mail==this.user_auth.email);
   }
 
   updateUser(key){
