@@ -37,7 +37,6 @@ export class ProfilComponent implements OnInit {
       this.edycja=false;
       // profil pobrany z pliku cookie procesu auth0
       this.profil_auth = this.auth.getProfileAuth();
-      // console.log(this.profil_auth);
       // pobranie profilu z bazy użytkowników na podstawie adresu e-mail
       this.bazaUzytkownikowService.getUsers().subscribe(users =>
         {
@@ -48,7 +47,6 @@ export class ProfilComponent implements OnInit {
               this.wybor=x;
             }
           }
-          // console.log(this.wybor);
           // jeśli adresu nie ma w bazie, to profil jest tworzony w bazie
           if (this.wybor == null)  {
             this.profil.zdjecie = this.profil_auth.picture;
@@ -56,12 +54,10 @@ export class ProfilComponent implements OnInit {
             this.profil.e_mail = this.profil_auth.email;
             this.profil.typ = 'zleceniodawca';
             this.bazaUzytkownikowService.addUser(this.profil);
-            // console.log(this.profil);
           }
           // jeśli adresy są identyczne, to pobierany jest profil z bazy
           else {
             this.profil = this.users[this.wybor];
-            // console.log(this.profil);
           }
         }
       );

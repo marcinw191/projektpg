@@ -14,7 +14,6 @@ export class AdministratorUzytkownicyComponent implements OnInit {
   }
 
   ngOnInit() {
-    // alert('Trwa przygotowywanie zestawienia użytkowników');
     this.bazaUzytkownikowService.getUsers().subscribe(users => {
       this.users = users;
     });
