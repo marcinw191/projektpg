@@ -91,7 +91,6 @@
   </form>
   <div class="form-group row">
     <div class="col-12">
-      <button class="btn btn-secondary" (click)="ogloszenieForm.reset(); clearData()">Wyczyść</button>
       <button class="btn btn-primary" (click)="save()" [disabled]="!ogloszenieForm.form.valid || !poprawneOgloszenie">Dodaj ogłoszenie</button>
     </div>
   </div>
