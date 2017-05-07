@@ -1,0 +1,27 @@
+* {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+.checkbox {
+  text-align: center;
+}
+
+select {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+
+@media (max-width: 540px) {
+  * {
+    font-size: .7rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+}

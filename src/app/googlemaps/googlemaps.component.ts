@@ -21,16 +21,11 @@ export class GoogleMapsComponent implements OnInit{
 
   ngOnInit () {
     this.mapsAPILoader.load().then(() => {
-      console.log('google script loaded');
-      console.log(this.address);
       this.geocoder = new google.maps.Geocoder();
       this.geocoder.geocode({ 'address': this.address }, (results, status) => {
-        // console.log(status);
         if (status == google.maps.GeocoderStatus.OK) {
           this.lat = results[0].geometry.location.lat();
           this.lng = results[0].geometry.location.lng();
-          console.log(results);
-          // console.log("lat: " + this.lat + ", lng: " + this.lng);
         }
         else {
           if (status == "ZERO_RESULTS") {

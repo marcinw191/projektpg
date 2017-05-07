@@ -1,0 +1,27 @@
+<h5><br></h5>
+<h3>Narzędzia Administratora</h3>
+<h5><br></h5>
+<div class="row">
+  <div class="col-6 col-md-3">
+    <div class="row">
+      <button class="btn btn-primary" (click)="zestawienie_uzytkownikow()">Wykaz użytkowników</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary" (click)="zestawienie_ogloszen()">Wykaz ogłoszeń</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary" (click)="zestawienie_ofert()">Wykaz ofert</button>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <button class="btn btn-primary" (click)="wyjscie()">Wyjście</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-9">
+    <!--<div></div>-->
+    <app-administrator-uzytkownicy *ngIf="typ_zestawienia==1"></app-administrator-uzytkownicy>
+    <app-administrator-ogloszenia  *ngIf="typ_zestawienia==2"></app-administrator-ogloszenia>
+    <app-administrator-oferty      *ngIf="typ_zestawienia==3"></app-administrator-oferty>
+  </div>
+</div>

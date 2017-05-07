@@ -1,5 +1,5 @@
 import { Component, OnInit }   from '@angular/core';
-import { AuthService }         from '../auth0/auth.service';
+import { AuthService }         from '../serwisy/auth0/auth.service';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({

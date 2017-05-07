@@ -1,0 +1,140 @@
+<div *ngIf="edycja==false">
+  <h5><br></h5>
+  <h3>Profil użytkownika</h3>
+  <h5><br></h5>
+  <div class="row">
+    <div class="col-md-2">
+      <img class="thumbnail" src="{{profil.zdjecie}}">
+    </div>
+    <div class="col-md-10">
+      <form>
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-4 col-form-label">
+            Imię i nazwisko / Nazwa firmy :
+          </label>
+          <div class="col-sm-12 col-md-8">{{profil.nazwa}}</div>
+        </div>
+        <div class="form-group row">
+          <label class="col-6 col-sm-5 col-md-4">e-mail :</label>
+          <div class="col-6 col-sm-7 col-md-8">{{profil.e_mail}}</div>
+        </div>
+        <div class="form-group row">
+          <label class="col-6 col-sm-5 col-md-4 col-form-label">Numer kontaktowy :</label>
+          <div class="col-6 col-sm-7 col-md-8">{{profil.telefon}}</div>
+        </div>
+        <div class="form-group row">
+          <label class="col-6 col-sm-5 col-md-4 col-form-label">Typ użytkownika :</label>
+          <div class="col-6 col-sm-7 col-md-8">{{profil.typ}}</div>
+        </div>
+        <div class="form-group row">
+          <p><br></p>
+          <label class="col-12">Adres zamieszkania / siedziba firmy :</label>
+        </div>
+        <div class="form-group row">
+          <label class="col-6 col-sm-5 col-md-4 col-form-label">ulica :</label>
+          <div class="col-6 col-sm-7 col-md-8">{{profil.ulica}} {{profil.nr_bud}}</div>
+        </div>
+        <div class="form-group row">
+          <label class="col-6 col-sm-5 col-md-4  col-form-label">miejscowość :</label>
+          <div class="col-6 col-sm-7 col-md-8">{{profil.kod}} {{profil.miejscowosc}}</div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <div class="form-group row">
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="edytujProfil()">Edytuj dane</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <div class="form-group row">
+        <button *ngIf="profil.typ=='zleceniodawca'" class="btn btn-primary" (click)="listaOgloszen()">Zestawienie zleceń</button>
+        <button *ngIf="profil.typ=='wykonawca'"     class="btn btn-primary" (click)="listaOfert()"   >Zestawienie ofert </button>
+        <button *ngIf="profil.typ=='administrator'" class="btn btn-primary" (click)="Administrator()">Narzędzia administratora</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="edycja==true">
+  <h5><br></h5>
+  <h3>Edycja profilu użytkownika</h3>
+  <h5><br></h5>
+  <div class="row">
+    <div class="col-md-2">
+      <img class="thumbnail" src="{{profil.zdjecie}}">
+    </div>
+    <div class="col-md-10">
+      <form #profileForm="ngForm">
+        <div class="form-group row">
+          <label for="nazwa" class="col-sm-12 col-md-4 col-form-label">
+            Imię i nazwisko / Nazwa firmy :
+            <p class="limits">(max 50 znaków)</p>
+          </label>
+          <div class="col-sm-12 col-md-8">
+            <input class="form-control" [(ngModel)]="profil.nazwa" required id="nazwa" maxlength="50" name="nazwa" placeholder="Podaj imię i nazwisko lub nazwę firmy.">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-5 col-md-4">e-mail :</label>
+          <div class="col-sm-7 col-md-8">{{profil.e_mail}}</div>
+        </div>
+        <div class="form-group row">
+          <label for="telefon" class="col-6 col-sm-5 col-md-4 col-form-label">Numer kontaktowy :</label>
+          <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+            <input class="form-control" [(ngModel)]="profil.telefon" required type="text" maxlength="9" name="telefon" id="telefon" placeholder="123456789">
+          </div>
+        </div>
+        <div *ngIf="profil.typ!=='administrator'" class="form-group row">
+          <label for="typ" class="col-6 col-sm-5 col-md-4 col-form-label">Typ użytkownika :</label>
+          <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+            <select class="form-control" type="text" [(ngModel)]="profil.typ" name="typ" id="typ" required>
+              <option value="zleceniodawca">zleceniodawca</option>
+              <option value="wykonawca">wykonawca</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <p><br></p>
+          <label class="col-12">Adres zamieszkania / siedziba firmy :</label>
+        </div>
+        <div class="form-group row">
+          <label for="ulica" class="col-sm-12 col-md-4 col-form-label">ulica :</label>
+          <div class="col-sm-12 col-md-8 row">
+            <div class="col-8 col-lg-9">
+              <input class="form-control" [(ngModel)]="profil.ulica" required id="ulica" maxlength="50" name="ulica" placeholder="nazwa ulicy">
+            </div>
+            <div class="col-4 col-lg-3">
+              <input class="form-control" [(ngModel)]="profil.nr_bud" required id="nr_bud" maxlength="5" name="nr_bud" placeholder="nr bud.">
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="miejscowosc" class="col-sm-12 col-md-4 col-form-label">miejscowość :</label>
+          <div class="col-sm-12 col-md-8 row">
+            <div class="col-5 col-sm-4 col-lg-3">
+              <input class="form-control" [(ngModel)]="profil.kod" required id="kod_pocztowy" maxlength="6" name="kod" placeholder="00-000">
+            </div>
+            <div class="col-7 col-sm-8 col-lg-9">
+              <input class="form-control" [(ngModel)]="profil.miejscowosc" required id="miejscowosc" maxlength="50" name="miejscowosc" placeholder="Miejscowość">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <div class="form-group row">
+          <div class="col-12">
+            <button class="btn btn-primary"   (click)="zapiszProfil()">Zapisz zmiany</button>
+            <button class="btn btn-secondary" (click)="powrotProfil()">Powrót</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-login-time></app-login-time>

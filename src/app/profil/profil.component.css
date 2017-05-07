@@ -10,9 +10,6 @@ p.limits {
   font-weight: normal;
   font-size: 70%;
 }
-div#login_time{
-  font-size: 70%;
-}
 
 @media (max-width: 380px) {
   label{
@@ -25,7 +22,7 @@ div#login_time{
   input.form-control {
     font-size: 80%;
   }
-  select#funkcja{
+  select#typ {
     font-size: 80%;
   }
 }
