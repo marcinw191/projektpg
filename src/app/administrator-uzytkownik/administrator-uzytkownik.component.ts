@@ -37,8 +37,6 @@ export class AdministratorUzytkownikComponent implements OnInit {
 
   blockUser(key){
     let user: any;
-    console.log(this.blokada);
-    console.log(this.key);
     if (this.blokada) {
       user = { blokada: 'tak' };
       alert('Użytkownik zablokowany !!!');

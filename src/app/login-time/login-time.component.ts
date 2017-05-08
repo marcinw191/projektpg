@@ -18,9 +18,7 @@ export class LoginTimeComponent implements OnInit {
   ngOnInit() {
     if (this.auth.authenticated()) {
       this.profile = JSON.parse(localStorage.getItem('profile'));
-      console.log(this.profile);
       this.time = moment(this.profile.updated_at).tz("Europe/Warsaw").format('YYYY-MM-DD HH:mm:ss');
-      console.log(this.time);
     }
   }
 
