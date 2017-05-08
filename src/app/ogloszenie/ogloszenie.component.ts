@@ -67,8 +67,8 @@ export class OgloszenieComponent implements OnInit {
         this.maxCena = queriedItems[0].maxCena;
         this.zlecajacy = queriedItems[0].zlecajacy;
         this.czasWykonania = queriedItems[0].czasWykonania;
-        this.adres = this.ulica + " " + this.ulica_numer + " , " + this.miasto;
-        console.log(this.adres);
+        this.adres = this.ulica + " " + this.ulica_numer + ", " + this.miasto;
+
         if(queriedItems[0].pliki.length > 0)
         {
           for(let i = 0; i < queriedItems[0].pliki.length; i++)
