@@ -1,79 +1,82 @@
-<div class="container">
-<h2 class="my-4">{{tytul}}</h2>
-<h6>{{ulica}} {{ulica_numer}}, {{miasto}}</h6>
-
-<!-- Portfolio Item Row -->
-<div class="row">
-
-  <div class="col-md-8">
-    <img *ngIf="zdjecie0 != ''" class="img-fluid" src="{{zdjecie0}}" alt="">
-    <img *ngIf="zdjecie0 == ''" class="img-fluid" src="http://placehold.it/560x420" alt="">
-    <h3 class="my-4"></h3>
-
-    <div class="row">
-
-      <div class="col-md-3 col-sm-6 mb-4">
-          <img *ngIf="zdjecie1 != ''" class="img-fluid" src="{{zdjecie1}}" alt="">
-          <img *ngIf="zdjecie1 == ''" class="img-fluid" src="http://placehold.it/160x120" alt="">
+<div class="container ogloszenie">
+  <!-- Portfolio Item Row -->
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <div class="row zdjecia rounded">
+        <div class="col-md-8 col-sm-12">
+          <img *ngIf="zdjecie0 != ''" class="img-fluid duzeZdjecie rounded" src="{{zdjecie0}}" alt="">
+          <img *ngIf="zdjecie0 == ''" class="img-fluid duzeZdjecie rounded" src="http://placehold.it/560x420" alt="">
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <img *ngIf="zdjecie1 != ''" class="img-fluid maleZdjecie rounded" src="{{zdjecie1}}" alt="">
+              <img *ngIf="zdjecie1 == ''" class="img-fluid maleZdjecie rounded" src="http://placehold.it/560x420" alt="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <img *ngIf="zdjecie2 != ''" class="img-fluid maleZdjecie rounded" src="{{zdjecie2}}" alt="">
+              <img *ngIf="zdjecie2 == ''" class="img-fluid maleZdjecie rounded" src="http://placehold.it/560x420" alt="">
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="col-md-3 col-sm-6 mb-4">
-          <img *ngIf="zdjecie2 != ''" class="img-fluid" src="{{zdjecie2}}" alt="">
-          <img *ngIf="zdjecie2 == ''" class="img-fluid" src="http://placehold.it/160x120" alt="">
+      <div class="row">
+        <h3 class="tytul">{{tytul}}</h3>
       </div>
-
-      <div class="col-md-3 col-sm-6 mb-4">
-          <img *ngIf="zdjecie3 != ''" class="img-fluid" src="{{zdjecie3}}" alt="">
-          <img *ngIf="zdjecie3 == ''" class="img-fluid" src="http://placehold.it/160x120" alt="">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 lokalizacja">
+          <i class="fa fa-map-marker" aria-hidden="true"></i> {{miasto}}, {{ulica}} {{ulica_numer}}
+        </div>
+        <div class="col-lg-6 col-md-12 lokalizacja">
+          <i class="fa fa-calendar" aria-hidden="true"></i> Data publikacji: {{dataPublikacji}} {{godzinaPublikacji}}
+        </div>
+        <div class="col-lg-2 col-md-0"> </div>
       </div>
-
-      <div class="col-md-3 col-sm-6 mb-4">
-          <img *ngIf="zdjecie4 != ''" class="img-fluid" src="{{zdjecie4}}" alt="">
-          <img *ngIf="zdjecie4 == ''" class="img-fluid" src="http://placehold.it/160x120" alt="">
+      <div class="row opis">
+        {{opis}}
       </div>
-
     </div>
-
-    <h3 class="my-3">Opis</h3>
-    <p>{{opis}}</p>
-
-  </div>
-
-  <div class="col-md-4">
-    <h1>Kontakt</h1>
-    <h3>Telefon </h3>
-    <p>{{telefon}}</p>
-    <h3>Mapka google</h3>
-    <div class="mbr-map">
-      <googlemap [address]="adres" ></googlemap>
-      <!--<iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJwzphW5B0_UYRg6jZzBNBg30" allowfullscreen=""></iframe>-->
+    <div class="col-md-4">
+      <ul class="list-unstyled">
+        <li class="maxCena rounded">
+          <h6 class="opis">Maksymalna cena za wykonanie</h6>
+          <h3 class="wartosc">{{maxCena}} zł</h3>
+        </li>
+        <li class="maxCzas rounded">
+          <h6 class="opis">Maksymalny czas wykonania</h6>
+          <h3 *ngIf="czasWykonania < 2" class="wartosc">{{czasWykonania}} dzień</h3>
+          <h3 *ngIf="czasWykonania > 1" class="wartosc">{{czasWykonania}} dni</h3>
+        </li>
+        <li>
+          <div>
+            <googlemap [adres]="adres"></googlemap>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <div class="col-lg-4 col-md-12">
+              <img class="thumbnail rounded-circle profil" src="http://placehold.it/100x100" alt="profile">
+            </div>
+            <div class="col-lg-8 col-md-12">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3 class="zlecajacy">{{zlecajacy}}</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h6 class="opisMaly">
+                    Telefon kontaktowy
+                  </h6>
+                  <h3 class="zlecajacy">{{telefon}}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
-    <form action="action_page.php" method="post" data-form-title="MESSAGE">
-      <input type="hidden" value="J2P3ys61KyXAvi430ihTwm4YDqJ1UyDr0EvUmvC+LBxfMzlHEcIxBm+Pli+iuifdcmSihZQDd97WlrrlNWlV8Z+3n5/P68QnYVCKLpwkiPIxrRdsWrYCttoR2cJUulf/" data-form-email="true">
-      <div class="form-group">
-        <label class="form-control-label" for="contacts4-3-name">Imię</label>
-        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-3-name">
-      </div>
-      <div class="form-group">
-        <label class="form-control-label" for="contacts4-3-email">Email<span class="form-asterisk">*</span></label>
-        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-3-email">
-      </div>
-      <div class="form-group">
-        <label class="form-control-label" for="contacts4-3-phone">Telefon</label>
-        <input type="tel" class="form-control input-sm input-inverse" name="phone" data-form-field="Phone" id="contacts4-3-phone">
-      </div>
-      <div class="form-group">
-        <label class="form-control-label" for="contacts4-3-offert">Oferta cenowa</label>
-        <input type="tel" class="form-control input-sm input-inverse" name="phone" data-form-field="Phone" id="contacts4-3-offert">
-      </div>
-      <div class="form-group">
-        <label class="form-control-label" for="contacts4-3-message">Wiadomość</label>
-        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-3-message"></textarea>
-      </div>
-      <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Wyślij zapytanie</button></div>
-    </form>
-
   </div>
-
-</div>
 </div>

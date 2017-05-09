@@ -1,5 +1,74 @@
-body {
-  padding-top: 54px;
+.ogloszenie {
+  padding-top: 60px;
+}
+
+.zdjecia {
+  background-color: #eceeef;
+  padding: 20px;
+}
+
+.duzeZdjecie {
+  padding: 10px;
+}
+
+.maleZdjecie {
+  padding: 10px;
+}
+
+.maxCena {
+  background-color: deepskyblue;
+  text-align: center;
+  color: white;
+}
+
+.maxCzas {
+  background-color: #d9d9df;
+  text-align: center;
+  color: #616161;
+}
+
+.opis {
+  padding-top: 10px;
+  font-size: small;
+  font-weight: lighter;
+}
+
+.opisMaly {
+  font-size: x-small;
+  font-weight: lighter;
+}
+
+.wartosc {
+  padding-bottom: 15px;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.zlecajacy {
+  font-size: large;
+  font-weight: bold;
+}
+
+.profil {
+  padding-bottom: 5px;
+}
+
+.tytul {
+  font-size: large;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.lokalizacja {
+  font-size: smaller;
+  padding-left: 20px;
+}
+
+.opis {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  font-size: small;
 }
 
 @media (min-width: 992px) {
