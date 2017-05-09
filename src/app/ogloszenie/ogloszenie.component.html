@@ -57,12 +57,13 @@
         <li>
           <div class="row">
             <div class="col-lg-4 col-md-12">
-              <img class="thumbnail rounded-circle profil" src="http://placehold.it/100x100" alt="profile">
+              <img *ngIf="zlecajacy_zdjecie != ''" class="thumbnail rounded-circle profil" src="{{zlecajacy_zdjecie}}" alt="profile">
+              <img *ngIf="zlecajacy_zdjecie == ''" class="thumbnail rounded-circle profil" src="http://placehold.it/100x100" alt="profile">
             </div>
             <div class="col-lg-8 col-md-12">
               <div class="row">
                 <div class="col-lg-12">
-                  <h3 class="zlecajacy">{{zlecajacy}}</h3>
+                  <h3 class="zlecajacy">{{zlecajacy_nazwa}}</h3>
                 </div>
               </div>
               <div class="row">

@@ -49,6 +49,11 @@
   font-weight: bold;
 }
 
+.thumbnail {
+  width: 100px;
+  heigh: 100px;
+}
+
 .profil {
   padding-bottom: 5px;
 }

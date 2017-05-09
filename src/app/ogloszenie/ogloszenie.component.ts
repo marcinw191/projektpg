@@ -2,7 +2,8 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
-import {consoleTestResultsHandler} from "tslint/lib/test";
+import { AuthService }             from '../serwisy/auth0/auth.service';
+import { BazaUzytkownikowService } from '../serwisy/bazauzytkownikow.service';
 
 
 @Component({
@@ -23,7 +24,10 @@ export class OgloszenieComponent implements OnInit {
   godzinaPublikacji: string;
   koniecLicytacji: string;
   maxCena: number;
-  zlecajacy: string;
+  zlecajacy_email: string;
+  zlecajacy_nazwa: string;
+  zlecajacy_zdjecie: string;
+  zlecajacy: any;
   czasWykonania: number;
   miasto: string;
   istnieje: boolean;
@@ -34,7 +38,11 @@ export class OgloszenieComponent implements OnInit {
   zdjecie4: string;
   adres: string;
 
-  constructor(private route: ActivatedRoute, private af: AngularFire, @Inject(FirebaseApp) private fbApp: firebase.app.App) {
+  constructor(private route: ActivatedRoute,
+              private af: AngularFire,
+              @Inject(FirebaseApp) private fbApp: firebase.app.App,
+              private bazaDanychUzytkownikow: BazaUzytkownikowService
+    ) {
     this.zdjecie0 = "";
     this.zdjecie1 = "";
     this.zdjecie2 = "";
@@ -65,9 +73,14 @@ export class OgloszenieComponent implements OnInit {
         this.godzinaPublikacji = queriedItems[0].dataPublikacji.split("T")[1].split(".")[0];
         this.koniecLicytacji = queriedItems[0].koniecLicytacji;
         this.maxCena = queriedItems[0].maxCena;
-        this.zlecajacy = queriedItems[0].zlecajacy;
+        this.zlecajacy_email = queriedItems[0].zlecajacy;
         this.czasWykonania = queriedItems[0].czasWykonania;
         this.adres = this.ulica + " " + this.ulica_numer + ", " + this.miasto;
+
+        this.bazaDanychUzytkownikow.getUserByEmail(this.zlecajacy_email).subscribe(user => {
+          __this.zlecajacy_nazwa = user[0].nazwa;
+          __this.zlecajacy_zdjecie = user[0].zdjecie;
+        });
 
         if(queriedItems[0].pliki.length > 0)
         {
