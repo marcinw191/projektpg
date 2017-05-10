@@ -31,6 +31,7 @@ import { AdministratorUzytkownicyComponent } from './administrator-uzytkownicy/a
 import { AdministratorUzytkownikComponent }  from './administrator-uzytkownik/administrator-uzytkownik.component';
 import { AdministratorOgloszeniaComponent }  from './administrator-ogloszenia/administrator-ogloszenia.component';
 import { AdministratorOfertyComponent }      from './administrator-oferty/administrator-oferty.component';
+import { Strona404Component }                from './strona404/strona404.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './serwisy/auth0/auth.service';
@@ -77,6 +78,7 @@ export const firebaseConfig = {
     AdministratorUzytkownikComponent,
     AdministratorOgloszeniaComponent,
     AdministratorOfertyComponent,
+    Strona404Component,
   ],
   imports: [
     BrowserModule,
