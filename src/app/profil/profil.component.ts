@@ -24,6 +24,8 @@ export class ProfilComponent implements OnInit {
     miejscowosc : '',
   };
   profil_auth: any;
+  edit_telefon: string;
+  edit_kod: string;
   edycja:boolean;
   wybor:number = null;
 
@@ -69,6 +71,8 @@ export class ProfilComponent implements OnInit {
   }
 
   edytujProfil(){
+    this.edit_telefon=this.profil.telefon;
+    this.edit_kod=this.profil.kod;
     this.edycja=true;
   }
 
@@ -89,8 +93,45 @@ export class ProfilComponent implements OnInit {
   }
 
   zapiszProfil(){
-    this.bazaUzytkownikowService.updateUser(this.profil.$key,this.profil);
-    alert('Profil zapisany');
+    if (((this.walidacja("telefon",this.edit_telefon)) || (this.edit_telefon.length==0)) &&
+        ((this.walidacja("kod",this.edit_kod))         || (this.edit_kod.length==0))) {
+      this.profil.telefon=this.edit_telefon;
+      this.profil.kod=this.edit_kod;
+      this.bazaUzytkownikowService.updateUser(this.profil.$key,this.profil);
+      alert('Profil zapisany');
+    }
+    else {
+      if (!this.walidacja("telefon",this.edit_telefon)) {
+        alert('Numer telefonu niepoprawny');
+        this.edit_telefon=this.profil.telefon;
+      }
+      if (!this.walidacja("kod",this.edit_kod)) {
+        alert('Kod pocztowy niepoprawny');
+        this.edit_kod=this.profil.kod;
+      }
+    }
   }
 
+  walidacja(typ:string, wartosc:string){
+    // funkcja sprawdzająca poprawność "wartosc" dla pól typu :
+    // - "kod pocztowy" (w skrócie "kod")     : czy są to tylko cyfry i znak "-" oraz czy ma długość 6 znaków
+    // - "nr telefonu"  (w skrócie "telefon") : czy są to tylko cyfry            oraz czy ma długość 9 znaków
+    // w odpowiedzi zwraca wartość true (gdy oba warunki są spełnione) lub false
+    // docelowo można dodać dodatkowe typy pól
+    let wzorzec;
+    let dlugosc :boolean;
+    // for (let i=0;length.walidacja_wzorzec;i++){
+    // }
+    if (typ=="kod") {
+      wzorzec = /^\d{2}-\d{3}$/;
+      dlugosc=((wartosc.length>=6)&&(wartosc.length<=6));}
+    if (typ=="telefon") {
+      wzorzec = /^\d{9}$/;
+      dlugosc=((wartosc.length>=9)&&(wartosc.length<=9));}
+    console.log(wzorzec);
+    console.log(wartosc);
+    console.log(dlugosc);
+    console.log(wzorzec.test(wartosc));
+    return (dlugosc && wzorzec.test(wartosc));
+  }
 }

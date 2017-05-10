@@ -25,4 +25,7 @@ p.limits {
   select#typ {
     font-size: 80%;
   }
+  div.tekst {
+    font-size: 80%;
+  }
 }
