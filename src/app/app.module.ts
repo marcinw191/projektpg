@@ -28,6 +28,8 @@ import { OpisDzialaniaComponent }       from './opis-dzialania/opis-dzialania.co
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './auth0/auth.service';
+import { OgloszenieWykonawcyComponent } from './ogloszenie-wykonawcy/ogloszenie-wykonawcy.component';
+import { KontaktComponent } from './kontakt/kontakt.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
@@ -58,6 +60,8 @@ export const firebaseConfig = {
     AlertComponent,
     GoogleMapsComponent,
     OpisDzialaniaComponent,
+    OgloszenieWykonawcyComponent,
+    KontaktComponent,
   ],
   imports: [
     BrowserModule,

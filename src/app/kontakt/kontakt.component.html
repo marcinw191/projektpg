@@ -1,0 +1,31 @@
+  <div id="formularzglowny" class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-6">
+        <div id="dane1" >
+        Kaskada Sp. z o.o. <br>
+        ul. Kaskadowa 1A, 80-880 Gdańsk <br>
+        NIP: 000-00-00-000 <br> Regon: 00000000 <br><br>
+        </div>
+        <div id="dane2">
+          Zarząd:<br>
+          - <br>
+          -
+        </div>
+
+      </div>
+      <div class="col-sm-12 col-lg-6">
+        <div id="formularz">
+          <form>
+            <h2>W przypadku pytań, wniosków <br> lub skarg prosimy o kontakt</h2>
+            <label>Imię i nazwisko</label>
+            <input name="name" placeholder="Jan kowalski">
+            <label>Email</label>
+            <input name="email" type="email" placeholder="imie.nazwisko@mail.pl">
+            <label>Wiadomość</label>
+            <textarea name="message" placeholder="Tu napisz wiadomość"></textarea>
+            <button (click)="wyslij()" id="wyslij" name="submit" type="submit" value="">Wyślij</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
