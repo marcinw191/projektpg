@@ -3,19 +3,21 @@
     <span id="niezalogowany">
       <h6 *ngIf="!auth.authenticated()">Nie jesteś zalogowany, wciśnij przycisk <strong>Login</strong> powyżej</h6>
     </span>
-  <div class="row">
-    <h1 class="my-4">Oferty <small>przeglądaj</small></h1>
 
-  </div>
-  <div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="czego szuaksz?">
-
+    <div class="input-group my-4">
+      <input type="text" class="form-control" placeholder="czego szukasz...">
       <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button">SZUKAJ</button>
+        <button class="btn btn-secondary" type="button">SZUKAJ
+        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+
+        </button>
       </span>
     </div>
+  <div class="row">
+    <h1 class="my-0">Oferty <small>przeglądaj
+    </small></h1>
   </div>
+
 
 
 
