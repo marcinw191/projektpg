@@ -9,6 +9,7 @@ import { OgloszenieComponent }      from './ogloszenie/ogloszenie.component';
 import { PolicyComponent }          from './policy/policy.component';
 import { DodajOgloszenieComponent } from './dodaj-ogloszenie/dodaj-ogloszenie.component';
 import { OpisDzialaniaComponent }   from './opis-dzialania/opis-dzialania.component';
+import { Strona404Component }       from './strona404/strona404.component';
 
 const appRoutes: Routes = [
   { path:'',                     component: GaleriaOgloszenComponent},
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   { path:'ogloszenie/:id',       component: OgloszenieComponent },
   { path:'polityka_prywatnosci', component: PolicyComponent },
   { path:'administrator',        component: AdministratorComponent },
-];
+  { path:'**',                   component: Strona404Component } // musi być na końcu tablicy routingu];
+  ];
 
 export const appRoutingProviders: any[] = [];
 

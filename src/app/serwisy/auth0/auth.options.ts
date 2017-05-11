@@ -3,7 +3,7 @@ export const options = {
   allowedConnections: [
     'Username-Password-Authentication',
     'google-oauth2',
-    // 'twitter',
+    'twitter',
     // 'facebook',
   ],
 

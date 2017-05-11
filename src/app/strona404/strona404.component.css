@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'ethnocentric';
+  src: url('../../assets/font/ethnocentric_rg.ttf');
+}
+
+* {
+  text-align: center;
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: bold;
+  font-family: ethnocentric;
+}
+
+#wyjasnienie{
+  color: red;
+  font-family: ethnocentric;
+  font-size: 1rem;
+  /*font-weight: bold;*/
+}
