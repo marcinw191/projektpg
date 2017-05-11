@@ -35,6 +35,7 @@ import { AdministratorOfertyComponent }      from './administrator-oferty/admini
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './serwisy/auth0/auth.service';
 import { BazaUzytkownikowService }      from './serwisy/bazauzytkownikow.service';
+import { OfertaWykonaniaComponent } from './oferta-wykonania/oferta-wykonania.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
@@ -77,6 +78,7 @@ export const firebaseConfig = {
     AdministratorUzytkownikComponent,
     AdministratorOgloszeniaComponent,
     AdministratorOfertyComponent,
+    OfertaWykonaniaComponent,
   ],
   imports: [
     BrowserModule,

@@ -57,13 +57,13 @@
         <li>
           <div class="row">
             <div class="col-lg-4 col-md-12">
-              <img *ngIf="zlecajacy_zdjecie != ''" class="thumbnail rounded-circle profil" src="{{zlecajacy_zdjecie}}" alt="profile">
-              <img *ngIf="zlecajacy_zdjecie == ''" class="thumbnail rounded-circle profil" src="http://placehold.it/100x100" alt="profile">
+              <img *ngIf="zlecajacy.zdjecie != ''" class="thumbnail rounded-circle profil" src="{{zlecajacy.zdjecie}}" alt="profile">
+              <img *ngIf="zlecajacy.zdjecie == ''" class="thumbnail rounded-circle profil" src="http://placehold.it/80x80" alt="profile">
             </div>
             <div class="col-lg-8 col-md-12">
               <div class="row">
                 <div class="col-lg-12">
-                  <h3 class="zlecajacy">{{zlecajacy_nazwa}}</h3>
+                  <h3 class="zlecajacy">{{zlecajacy.nazwa}}</h3>
                 </div>
               </div>
               <div class="row">
@@ -79,5 +79,62 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <app-alert *ngIf="oferta_dodana" [text]="oferta_text" [type]="oferta_status"></app-alert>
+      <div class="dodaj-oferte rounded container">
+        <div class="row">
+          <h3 class="tytul-oferta">Dodaj swoją ofertę wykonania</h3>
+        </div>
+        <div class="row">
+          <div class="col-xl-2 col-lg-12 col-md-12">
+            <img *ngIf="oferent.zdjecie != ''" class="thumbnail rounded-circle profil" src="{{oferent.zdjecie}}" alt="profile">
+            <img *ngIf="oferent.zdjecie == ''" class="thumbnail rounded-circle profil" src="http://placehold.it/80x80" alt="profile">
+          </div>
+          <div class="col-xl-8 col-lg-12 col-md-12">
+            <div class="row">
+              <h6 class="zlecajacy">{{oferent.nazwa}}</h6>
+            </div>
+            <form #ofertaForm="ngForm">
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="cena">Twoja cena wykonania</label>
+                    <input type="number" required [(ngModel)]="oferta.cena" name="cena" class="form-control" id="cena" placeholder="cena w PLN" [disabled] = "oferta_dodana">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="telefon">Telefon kontaktowy</label>
+                    <input required type="tel" maxlength="9" [(ngModel)]="oferta.telefon" name="telefon" class="form-control" id="telefon" placeholder="numer telefonu" [disabled] = "oferta_dodana">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <label for="wiadomosc">Wiadomość dla zlecającego</label>
+                    <textarea required type="text" maxlength="100" class="form-control" [(ngModel)]="oferta.wiadomosc" name="wiadomosc" id="wiadomosc" placeholder="Krótka wiadomość dla zlecającego" rows="3" [disabled] = "oferta_dodana"></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-xl-2 col-lg-12 col-md-12">
+            <button class="btn btn-primary dodaj" (click)="dodajOferte()" [disabled]="!ofertaForm.form.valid || oferta_dodana ">Dodaj<br>ofertę</button>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let oferta of oferty | async">
+        <app-oferta-wykonania [oferta]="oferta" [email]="oferta.oferent"></app-oferta-wykonania>
+      </div>
+    </div>
+    <div class="col-md-4 cols-sm-0">
+      &nbsp;
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
   </div>
 </div>

@@ -1,0 +1,23 @@
+<div class="container rounded oferta">
+  <div class="row">
+    <div class="col-xl-2 col-lg-2 col-md-12">
+      <img *ngIf="oferent.zdjecie != ''" class="thumbnail rounded-circle profil" src="{{oferent.zdjecie}}" alt="profile">
+      <img *ngIf="oferent.zdjecie == ''" class="thumbnail rounded-circle profil" src="http://placehold.it/80x80" alt="profile">
+    </div>
+    <div class="col-xl-6 col-lg-6 col-sm-12">
+      <div class="row data-publikacji">
+        Data publikacji: {{dataPublikacji}} {{godzinaPublikacji}}
+      </div>
+      <div class="row">
+        <h6 class="wykonawca">Wykonawca:</h6>
+        <h3 class="oferent">{{oferent.nazwa}}</h3>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-12">
+      <div class="rounded cena">
+        <h6 class="cenaOpis">Cena wykonania</h6>
+        <h3 class="cenaWykonania">{{oferta.cena}} PLN</h3>
+      </div>
+    </div>
+  </div>
+</div>
