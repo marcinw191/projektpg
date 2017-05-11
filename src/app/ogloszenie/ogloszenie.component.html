@@ -82,8 +82,14 @@
   </div>
   <div class="row">
     <div class="col-md-8 col-sm-12">
+      <div class="zlozone-oferty">
+        Złożone oferty wykonania
+      </div>
+      <div *ngFor="let oferta of oferty | async">
+        <app-oferta-wykonania [oferta]="oferta" [email]="oferta.oferent"></app-oferta-wykonania>
+      </div>
       <app-alert *ngIf="oferta_dodana" [text]="oferta_text" [type]="oferta_status"></app-alert>
-      <div class="dodaj-oferte rounded container">
+      <div *ngIf="auth.authenticated()" class="dodaj-oferte rounded container">
         <div class="row">
           <h3 class="tytul-oferta">Dodaj swoją ofertę wykonania</h3>
         </div>
@@ -125,9 +131,6 @@
             <button class="btn btn-primary dodaj" (click)="dodajOferte()" [disabled]="!ofertaForm.form.valid || oferta_dodana ">Dodaj<br>ofertę</button>
           </div>
         </div>
-      </div>
-      <div *ngFor="let oferta of oferty | async">
-        <app-oferta-wykonania [oferta]="oferta" [email]="oferta.oferent"></app-oferta-wykonania>
       </div>
     </div>
     <div class="col-md-4 cols-sm-0">

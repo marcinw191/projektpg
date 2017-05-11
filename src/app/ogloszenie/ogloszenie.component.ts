@@ -64,9 +64,12 @@ export class OgloszenieComponent implements OnInit {
   ngOnInit() {
 
     //pobierz obecnego uzytkownika(oferenta) z bazy
-    this.bazaDanychUzytkownikow.getUserByEmail(this.auth.getProfileAuth().email).subscribe(user => {
-      this.oferent.zaladujZBazy(user[0]);
-    });
+    if(this.auth.authenticated())
+    {
+      this.bazaDanychUzytkownikow.getUserByEmail(this.auth.getProfileAuth().email).subscribe(user => {
+        this.oferent.zaladujZBazy(user[0]);
+      });
+    }
 
     //pobierz dane ogloszenia z bazy
     this.numerOgloszenia = this.route.snapshot.params.id;

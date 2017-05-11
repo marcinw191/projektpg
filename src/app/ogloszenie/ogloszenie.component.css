@@ -80,6 +80,7 @@
 
 .dodaj-oferte {
   background-color: #5cb85c;
+  margin-top: 10px;
 }
 
 .tytul-oferta {
@@ -90,6 +91,13 @@
 
 .dodaj {
   margin: 10px;
+}
+
+.zlozone-oferty {
+  font-size: large;
+  font-weight: bold;
+  padding-left: 15px;
+  padding-top: 10px;
 }
 
 @media (min-width: 992px) {
