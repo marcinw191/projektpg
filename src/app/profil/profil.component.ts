@@ -146,10 +146,6 @@ export class ProfilComponent implements OnInit {
     if (typ=="telefon") {
       wzorzec = /^\d{9}$/;
       dlugosc=((wartosc.length>=9)&&(wartosc.length<=9));}
-    console.log(wzorzec);
-    console.log(wartosc);
-    console.log(dlugosc);
-    console.log(wzorzec.test(wartosc));
     return (dlugosc && wzorzec.test(wartosc));
   }
 }
