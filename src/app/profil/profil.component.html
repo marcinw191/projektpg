@@ -74,7 +74,7 @@
             <p class="limits">(max 50 znaków)</p>
           </label>
           <div class="col-sm-12 col-md-8">
-            <input class="form-control" [(ngModel)]="profil.nazwa" required id="nazwa" maxlength="50" name="nazwa" placeholder="Podaj imię i nazwisko lub nazwę firmy.">
+            <input class="form-control" [(ngModel)]="edit_nazwa" required id="nazwa" maxlength="50" name="nazwa" placeholder="Podaj imię i nazwisko lub nazwę firmy.">
           </div>
         </div>
         <div class="form-group row">
@@ -87,10 +87,10 @@
             <input class="form-control" type="text" [(ngModel)]="edit_telefon" minlength="9" maxlength="9" name="telefon" id="telefon" placeholder="np. 123456789">
           </div>
         </div>
-        <div *ngIf="profil.typ!=='administrator'" class="form-group row">
+        <div *ngIf="edit_typ!=='administrator'" class="form-group row">
           <label for="typ" class="col-6 col-sm-5 col-md-4 col-form-label">Typ użytkownika :</label>
           <div class="col-6 col-sm-4 col-md-4 col-lg-3">
-            <select class="form-control" type="text" [(ngModel)]="profil.typ" name="typ" id="typ">
+            <select class="form-control" type="text" [(ngModel)]="edit_typ" name="typ" id="typ">
               <option value="zleceniodawca">zleceniodawca</option>
               <option value="wykonawca">wykonawca</option>
             </select>
@@ -104,10 +104,10 @@
           <label for="ulica" class="col-sm-12 col-md-4 col-form-label">ulica :</label>
           <div class="col-sm-12 col-md-8 row">
             <div class="col-8 col-lg-9">
-              <input class="form-control" type="text" [(ngModel)]="profil.ulica" id="ulica" minlength="3" maxlength="50" name="ulica" placeholder="nazwa ulicy">
+              <input class="form-control" type="text" [(ngModel)]="edit_ulica" id="ulica" minlength="3" maxlength="50" name="ulica" placeholder="nazwa ulicy">
             </div>
             <div class="col-4 col-lg-3">
-              <input class="form-control" type="text" [(ngModel)]="profil.nr_bud" id="nr_bud" minlength="1" maxlength="5" name="nr_bud" placeholder="nr bud.">
+              <input class="form-control" type="text" [(ngModel)]="edit_nr_bud" id="nr_bud" minlength="1" maxlength="5" name="nr_bud" placeholder="nr bud.">
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@
               <input class="form-control" type="text" [(ngModel)]="edit_kod" id="kod_pocztowy" minlength="6" maxlength="6" name="kod" placeholder="np. 00-000">
             </div>
             <div class="col-7 col-sm-8 col-lg-9">
-              <input class="form-control" type="text" [(ngModel)]="profil.miejscowosc" id="miejscowosc" minlength="2" maxlength="50" name="miejscowosc" placeholder="Miejscowość">
+              <input class="form-control" type="text" [(ngModel)]="edit_miejscowosc" id="miejscowosc" minlength="2" maxlength="50" name="miejscowosc" placeholder="Miejscowość">
             </div>
           </div>
         </div>

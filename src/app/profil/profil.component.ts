@@ -24,8 +24,13 @@ export class ProfilComponent implements OnInit {
     miejscowosc : '',
   };
   profil_auth: any;
+  edit_nazwa: string;
+  edit_typ: string;
   edit_telefon: string;
+  edit_ulica: string;
+  edit_nr_bud: string;
   edit_kod: string;
+  edit_miejscowosc: string;
   edycja:boolean;
   wybor:number = null;
 
@@ -39,6 +44,7 @@ export class ProfilComponent implements OnInit {
       this.edycja=false;
       // profil pobrany z pliku cookie procesu auth0
       this.profil_auth = this.auth.getProfileAuth();
+      console.log(this.profil_auth);
       // pobranie profilu z bazy użytkowników na podstawie adresu e-mail
       this.bazaUzytkownikowService.getUsers().subscribe(users =>
         {
@@ -71,8 +77,14 @@ export class ProfilComponent implements OnInit {
   }
 
   edytujProfil(){
+    this.edit_nazwa=this.profil.nazwa;
+    this.edit_typ=this.profil.typ;
+    this.edit_telefon=this.profil.telefon;
+    this.edit_ulica=this.profil.ulica;
+    this.edit_nr_bud=this.profil.nr_bud;
     this.edit_telefon=this.profil.telefon;
     this.edit_kod=this.profil.kod;
+    this.edit_miejscowosc=this.profil.miejscowosc;
     this.edycja=true;
   }
 
@@ -95,8 +107,14 @@ export class ProfilComponent implements OnInit {
   zapiszProfil(){
     if (((this.walidacja("telefon",this.edit_telefon)) || (this.edit_telefon.length==0)) &&
         ((this.walidacja("kod",this.edit_kod))         || (this.edit_kod.length==0))) {
+      this.profil.nazwa=this.edit_nazwa;
+      this.profil.typ=this.edit_typ;
+      this.profil.telefon=this.edit_telefon;
+      this.profil.ulica=this.edit_ulica;
+      this.profil.nr_bud=this.edit_nr_bud;
       this.profil.telefon=this.edit_telefon;
       this.profil.kod=this.edit_kod;
+      this.profil.miejscowosc=this.edit_miejscowosc;
       this.bazaUzytkownikowService.updateUser(this.profil.$key,this.profil);
       alert('Profil zapisany');
     }
