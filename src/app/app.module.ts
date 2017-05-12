@@ -31,6 +31,7 @@ import { AdministratorUzytkownicyComponent } from './administrator-uzytkownicy/a
 import { AdministratorUzytkownikComponent }  from './administrator-uzytkownik/administrator-uzytkownik.component';
 import { AdministratorOgloszeniaComponent }  from './administrator-ogloszenia/administrator-ogloszenia.component';
 import { AdministratorOfertyComponent }      from './administrator-oferty/administrator-oferty.component';
+import { Strona404Component }                from './strona404/strona404.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './serwisy/auth0/auth.service';
@@ -42,12 +43,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 }
 
 export const firebaseConfig = {
-  // apiKey: 'AIzaSyA9WXFvzvefMSWpBcnHIU2TaF7h6f9rWU0',
-  // authDomain: 'kaskada-165611.firebaseapp.com',
-  // databaseURL: 'https://kaskada-165611.firebaseio.com',
-  // projectId: 'kaskada-165611',
-  // storageBucket: 'kaskada-165611.appspot.com',
-  // messagingSenderId: '44558647394'
   apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
   authDomain: "kaskada-5ebd3.firebaseapp.com",
   databaseURL: "https://kaskada-5ebd3.firebaseio.com",
@@ -78,6 +73,7 @@ export const firebaseConfig = {
     AdministratorUzytkownikComponent,
     AdministratorOgloszeniaComponent,
     AdministratorOfertyComponent,
+    Strona404Component,
     OfertaWykonaniaComponent,
   ],
   imports: [
