@@ -14,6 +14,9 @@ select {
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
+button {
+  font-size: small;
+}
 
 @media (max-width: 540px) {
   * {
@@ -22,6 +25,10 @@ select {
 
   h5 {
     font-size: 1rem;
+  }
+
+  button {
+    font-size: smaller;
   }
 
 }

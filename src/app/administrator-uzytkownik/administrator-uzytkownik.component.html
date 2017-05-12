@@ -7,5 +7,5 @@
     <option value="administrator">administrator</option>
   </select>
 </div>
-<div class="checkbox col-1"><input type="checkbox" (change)="deleteUser(key)" [disabled]="disable"></div>
 <div class="checkbox col-1"><input type="checkbox" (change)="blockUser(key)"  [disabled]="disable" [(ngModel)]="blokada"></div>
+<div class="button col-1"><button type="button"    (click)="deleteUser(key)"  [disabled]="disable">Usuń</button></div>
