@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { Oferta } from '../klasy/oferta';
 import { Uzytkownik } from '../klasy/uzytkownik';
-import { BazaUzytkownikowService } from '../serwisy/bazauzytkownikow.service';
+import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 
 @Component({
   selector: 'app-oferta-wykonania',

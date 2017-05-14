@@ -4,8 +4,8 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-galeria-ogloszen',
-  templateUrl: './galeria-ogloszen.component.html',
-  styleUrls: ['./galeria-ogloszen.component.css']
+  templateUrl: './ogloszenia-galeria.component.html',
+  styleUrls: ['./ogloszenia-galeria.component.css']
 })
 export class GaleriaOgloszenComponent implements OnInit {
 
