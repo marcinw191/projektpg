@@ -3,7 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
 import { AuthService }             from '../serwisy/auth0/auth.service';
-import { BazaUzytkownikowService } from '../serwisy/bazauzytkownikow.service';
+import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 import { Uzytkownik } from '../klasy/uzytkownik';
 import { Oferta } from '../klasy/oferta';
 

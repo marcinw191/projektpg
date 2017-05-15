@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router}             from '@angular/router';
 
 import { AuthService }             from '../serwisy/auth0/auth.service';
-import { BazaUzytkownikowService } from '../serwisy/bazauzytkownikow.service';
+import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 
 @Component({
   selector: 'app-profil',

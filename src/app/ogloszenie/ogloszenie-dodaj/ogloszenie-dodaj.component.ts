@@ -3,8 +3,8 @@ import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
 
 @Component({
   selector: 'app-dodaj-ogloszenie',
-  templateUrl: './dodaj-ogloszenie.component.html',
-  styleUrls: ['./dodaj-ogloszenie.component.css']
+  templateUrl: './ogloszenie-dodaj.component.html',
+  styleUrls: ['./ogloszenie-dodaj.component.css']
 })
 export class DodajOgloszenieComponent implements OnInit {
   tytul: string;

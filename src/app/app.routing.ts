@@ -3,11 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent }            from './home/home.component';
 import { AdministratorComponent }   from './administrator/administrator.component';
-import { GaleriaOgloszenComponent } from './galeria-ogloszen/galeria-ogloszen.component';
+import { GaleriaOgloszenComponent } from './ogloszenia-galeria/ogloszenia-galeria.component';
 import { ProfilComponent }          from './profil/profil.component';
 import { OgloszenieComponent }      from './ogloszenie/ogloszenie.component';
-import { PolicyComponent }          from './policy/policy.component';
-import { DodajOgloszenieComponent } from './dodaj-ogloszenie/dodaj-ogloszenie.component';
+import { PolicyComponent }          from './cookielaw/policy/policy.component';
+import { DodajOgloszenieComponent } from './ogloszenie/ogloszenie-dodaj/ogloszenie-dodaj.component';
 import { OpisDzialaniaComponent }   from './opis-dzialania/opis-dzialania.component';
 import { Strona404Component }       from './strona404/strona404.component';
 

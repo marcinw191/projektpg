@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BazaUzytkownikowService } from '../serwisy/bazauzytkownikow.service';
+import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 
 @Component({
   selector: 'app-administrator-uzytkownicy',
