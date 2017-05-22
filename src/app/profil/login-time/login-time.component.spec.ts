@@ -1,6 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router, RouterModule } from '@angular/router'
 
 import { LoginTimeComponent } from './login-time.component';
+import { AuthService } from '../../serwisy/auth0/auth.service';
+
+let mockRouter = {
+  navigate: jasmine.createSpy('navigate'),
+  navigateByUrl: jasmine.createSpy('navigateByUrl'),
+};
 
 describe('LoginTimeComponent', () => {
   let component: LoginTimeComponent;
@@ -8,7 +15,11 @@ describe('LoginTimeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginTimeComponent ]
+      declarations: [ LoginTimeComponent ],
+      providers: [
+        AuthService,
+        { provide: Router, useValue: mockRouter },
+      ]
     })
     .compileComponents();
   }));

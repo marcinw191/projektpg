@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { options } from './auth.options';
 import { Router} from '@angular/router';
 
-declare let Auth0Lock: any;
+let Auth0Lock: any = require('auth0-lock').default;
 
 @Injectable()
 export class AuthService {

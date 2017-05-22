@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
-import { MapsAPILoader }            from 'angular2-google-maps/core';
+import { MapsAPILoader } from 'angular2-google-maps/core';
+
 declare var google: any;
 
 @Component({

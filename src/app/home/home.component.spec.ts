@@ -1,6 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { AuthService } from '../serwisy/auth0/auth.service'
+import { Router } from '@angular/router';
+
 import { HomeComponent } from './home.component';
+
+let mockRouter = {
+  navigate: jasmine.createSpy('navigate'),
+  navigateByUrl: jasmine.createSpy('navigateByUrl')
+};
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,7 +16,11 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ],
+      providers: [
+        AuthService,
+        { provide: Router, useValue: mockRouter },
+      ]
     })
     .compileComponents();
   }));

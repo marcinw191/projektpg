@@ -1,6 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../serwisy/auth0/auth.service'
 
 import { NavbarComponent } from './navbar.component';
+
+let mockRouter = {
+  navigate: jasmine.createSpy('navigate'),
+  navigateByUrl: jasmine.createSpy('navigateByUrl')
+};
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -8,7 +16,11 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ NavbarComponent ],
+      providers: [
+        AuthService,
+        { provide: Router, useValue: mockRouter },
+      ]
     })
     .compileComponents();
   }));
