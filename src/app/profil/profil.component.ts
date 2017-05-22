@@ -35,7 +35,7 @@ export class ProfilComponent implements OnInit {
   wybor:number = null;
 
   constructor(private auth: AuthService,
-              private bazaUzytkownikowService:BazaUzytkownikowService,
+              private bazaUzytkownikowService: BazaUzytkownikowService,
               private router: Router){
   }
 
@@ -44,28 +44,16 @@ export class ProfilComponent implements OnInit {
       this.edycja=false;
       // profil pobrany z pliku cookie procesu auth0
       this.profil_auth = this.auth.getProfileAuth();
-      console.log(this.profil_auth);
       // pobranie profilu z bazy użytkowników na podstawie adresu e-mail
       this.bazaUzytkownikowService.getUsers().subscribe(users =>
         {
-        this.users = users;
+          this.users = users;
           // porównanie adresu e-mail z autoryzacji z adresami e-mail z "bazy"
           for (let x=0; x<this.users.length; x++) {
             if (this.users[x].e_mail ==  this.profil_auth.email) {
               this.wybor=x;
+              this.profil = this.users[this.wybor];
             }
-          }
-          // jeśli adresu nie ma w bazie, to profil jest tworzony w bazie
-          if (this.wybor == null)  {
-            this.profil.zdjecie = this.profil_auth.picture;
-            this.profil.nazwa = this.profil_auth.name;
-            this.profil.e_mail = this.profil_auth.email;
-            this.profil.typ = 'zleceniodawca';
-            this.bazaUzytkownikowService.addUser(this.profil);
-          }
-          // jeśli adresy są identyczne, to pobierany jest profil z bazy
-          else {
-            this.profil = this.users[this.wybor];
           }
         }
       );
@@ -106,7 +94,7 @@ export class ProfilComponent implements OnInit {
 
   zapiszProfil(){
     if (((this.walidacja("telefon",this.edit_telefon)) || (this.edit_telefon.length==0)) &&
-        ((this.walidacja("kod",this.edit_kod))         || (this.edit_kod.length==0))) {
+      ((this.walidacja("kod",this.edit_kod))         || (this.edit_kod.length==0))) {
       this.profil.nazwa=this.edit_nazwa;
       this.profil.typ=this.edit_typ;
       this.profil.telefon=this.edit_telefon;
