@@ -34,6 +34,15 @@ export class BazaUzytkownikowService {
     });
   }
 
+  getUserById(id: string) {
+    return this.users = this.af.database.list('/users', {
+      query: {
+        orderByChild: 'user_id',
+        equalTo: id
+      }
+    });
+  }
+
   addUser(user) {
     return this.users.push(user);
   }

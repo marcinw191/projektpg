@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
+import { AuthService } from '../../serwisy/auth0/auth.service';
 
 @Component({
   selector: 'app-dodaj-ogloszenie',
@@ -17,16 +18,16 @@ export class DodajOgloszenieComponent implements OnInit {
   miasto: string;
   koniecLicytacji: Date;
   dataPublikacji: Date;
-  zlecajacy: number;
+  zlecajacy: string;
   pliki: Array<File>;
   poprawneOgloszenie: boolean;
   zakonczone: boolean;
   statusDodawania: any;
   items: FirebaseListObservable<any>;
 
-  constructor(private af: AngularFire, @Inject(FirebaseApp) private fbApp: firebase.app.App) {
+  constructor(private af: AngularFire, @Inject(FirebaseApp) private fbApp: firebase.app.App, private auth: AuthService) {
     this.dataPublikacji = new Date();
-    this.zlecajacy = 1;
+    this.zlecajacy = "";
     this.poprawneOgloszenie = true;
     this.pliki = new Array<File>();
     this.items = af.database.list('/ogloszenia', {
@@ -112,7 +113,7 @@ export class DodajOgloszenieComponent implements OnInit {
         miasto: _this.miasto,
         koniecLicytacji: new Date(_this.koniecLicytacji).toISOString(),
         dataPublikacji: _this.dataPublikacji.toISOString(),
-        zlecajacy: 'undefined user',
+        zlecajacy: _this.auth.getProfileAuth().user_id,
       }).then(function(data){
           var key = data.key;
 

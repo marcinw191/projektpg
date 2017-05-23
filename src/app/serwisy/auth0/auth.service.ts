@@ -21,26 +21,30 @@ export class AuthService {
           console.log("error-auth0");
           throw new Error(error);
         }
+        console.log(profile);
         let _profile = profile;
         _this.bazaUzytkownikowService.getUsers().subscribe(users => {
           let wybor = null;
           for (let x = 0; x < users.length; x++) {
-            if (users[x].e_mail ==  _profile.email) {
+            if (users[x].user_id ==  _profile.user_id) {
               wybor = x;
             }
           }
           if (wybor == null)
           {
+            let email = _profile.user_id.indexOf("twitter") != -1 ? "" : _profile.email;
             _this.bazaUzytkownikowService.addUser({
-              zdjecie     : _profile.picture,
-              nazwa       : _profile.name,
-              e_mail      : _profile.email,
-              typ         : 'zleceniodawca',
-              telefon     : '',
-              ulica       : '',
-              nr_bud      : '',
-              kod         : '',
-              miejscowosc : '',
+              numerUzytkownika: users.length + 1,
+              user_id: _profile.user_id,
+              zdjecie: _profile.picture,
+              nazwa: _profile.name,
+              e_mail: email,
+              typ: 'zleceniodawca',
+              telefon: '',
+              ulica: '',
+              nr_bud: '',
+              kod: '',
+              miejscowosc: '',
             })
           }
         });

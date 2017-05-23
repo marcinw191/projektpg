@@ -27,7 +27,7 @@ export class OgloszenieComponent implements OnInit {
   godzinaPublikacji: string;
   koniecLicytacji: string;
   maxCena: number;
-  email: string;
+  user_id: string;
   zlecajacy: Uzytkownik;
   oferent: Uzytkownik;
   czasWykonania: number;
@@ -66,7 +66,7 @@ export class OgloszenieComponent implements OnInit {
     //pobierz obecnego uzytkownika(oferenta) z bazy
     if(this.auth.authenticated())
     {
-      this.bazaDanychUzytkownikow.getUserByEmail(this.auth.getProfileAuth().email).subscribe(user => {
+      this.bazaDanychUzytkownikow.getUserById(this.auth.getProfileAuth().user_id).subscribe(user => {
         this.oferent.zaladujZBazy(user[0]);
       });
     }
@@ -94,12 +94,12 @@ export class OgloszenieComponent implements OnInit {
         this.godzinaPublikacji = queriedItems[0].dataPublikacji.split("T")[1].split(".")[0];
         this.koniecLicytacji = queriedItems[0].koniecLicytacji;
         this.maxCena = queriedItems[0].maxCena;
-        this.email = queriedItems[0].zlecajacy;
+        this.user_id = queriedItems[0].zlecajacy;
         this.czasWykonania = queriedItems[0].czasWykonania;
         this.adres = this.ulica + " " + this.ulica_numer + ", " + this.miasto;
 
         //pobierz uzytkownika zlecajacego z bazy
-        this.bazaDanychUzytkownikow.getUserByEmail(this.email).subscribe(user => {
+        this.bazaDanychUzytkownikow.getUserById(this.user_id).subscribe(user => {
           __this.zlecajacy.zaladujZBazy(user[0]);
         });
 
@@ -144,7 +144,7 @@ export class OgloszenieComponent implements OnInit {
   public dodajOferte()
   {
     let _this = this;
-    let oferta = new Oferta(this.oferent.email,
+    let oferta = new Oferta(this.oferent.user_id,
                         this.oferta.cena,
                         this.oferta.wiadomosc,
                         this.oferta.telefon,

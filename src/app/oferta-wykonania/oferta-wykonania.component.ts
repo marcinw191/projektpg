@@ -10,7 +10,7 @@ import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzy
 })
 export class OfertaWykonaniaComponent implements OnInit, OnChanges {
 
-  @Input() email: string;
+  @Input() user_id: string;
   @Input() oferta: any;
   dataPublikacji: string;
   godzinaPublikacji: string;
@@ -23,7 +23,7 @@ export class OfertaWykonaniaComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     //pobierz oferenta z bazy
-    this.bazaDanychUzytkownikow.getUserByEmail(this.email).subscribe(user => {
+    this.bazaDanychUzytkownikow.getUserById(this.user_id).subscribe(user => {
       this.oferent.zaladujZBazy(user[0]);
     });
 

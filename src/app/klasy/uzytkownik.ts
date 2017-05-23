@@ -8,6 +8,7 @@ export class Uzytkownik {
   public kod: string;
   public zdjecie: string;
   public id: string;
+  public user_id: string;
 
   constructor(nazwa = "",
               email = "",
@@ -17,7 +18,9 @@ export class Uzytkownik {
               miejscowosc = "",
               kod = "",
               zdjecie = "",
-              id = "") {  }
+              id = "",
+              user_id = ""
+  ) {  }
 
   public zaladujZBazy(user: any) {
     this.nazwa = user.nazwa;
@@ -29,6 +32,7 @@ export class Uzytkownik {
     this.kod = user.kod;
     this.zdjecie = user.zdjecie;
     this.id = user.$key;
+    this.user_id = user.user_id;
   }
 
 }

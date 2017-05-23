@@ -50,7 +50,7 @@ export class ProfilComponent implements OnInit {
           this.users = users;
           // porównanie adresu e-mail z autoryzacji z adresami e-mail z "bazy"
           for (let x=0; x<this.users.length; x++) {
-            if (this.users[x].e_mail ==  this.profil_auth.email) {
+            if (this.users[x].user_id ==  this.profil_auth.user_id) {
               this.wybor=x;
               this.profil = this.users[this.wybor];
             }
