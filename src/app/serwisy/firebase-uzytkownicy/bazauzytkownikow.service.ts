@@ -21,7 +21,7 @@ export class BazaUzytkownikowService {
   }
 
   getUserDetails(key){
-    this.user = this.af.database.object('/users/'+key) as FirebaseObjectObservable<User>
+    this.user = this.af.database.object('/users/'+key) as FirebaseObjectObservable<User>;
     return this.user;
   }
 

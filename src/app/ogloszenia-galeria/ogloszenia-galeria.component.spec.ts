@@ -6,6 +6,7 @@ import { AngularFireModule }  from 'angularfire2';
 import { GaleriaOgloszenComponent } from './ogloszenia-galeria.component';
 import { OgloszenieMiniaturaComponent } from '../ogloszenie/ogloszenie-miniatura/ogloszenie-miniatura.component';
 import { AuthService } from '../serwisy/auth0/auth.service';
+import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service'
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
@@ -32,7 +33,8 @@ describe('GaleriaOgloszenComponent', () => {
       providers: [
         AuthService,
         { provide: Router, useValue: mockRouter },
-        AngularFireModule
+        AngularFireModule,
+        BazaUzytkownikowService
         ]
     })
     .compileComponents();

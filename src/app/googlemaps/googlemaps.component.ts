@@ -23,7 +23,6 @@ export class GoogleMapsComponent implements OnChanges{
   ngOnChanges () {
 
     var _this = this;
-
     this.mapsAPILoader.load().then(function() {
 
       _this.geocoder = new google.maps.Geocoder();

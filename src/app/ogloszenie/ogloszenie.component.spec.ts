@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router'
 import { AngularFireModule }  from 'angularfire2';
 import { MapsAPILoader } from 'angular2-google-maps/core';
+import {Observable} from 'rxjs/Rx';
 
 import { AuthService } from '../serwisy/auth0/auth.service';
 import { OgloszenieComponent } from './ogloszenie.component';
@@ -12,6 +13,12 @@ import { GoogleMapsComponent } from '../googlemaps/googlemaps.component'
 import { OfertaWykonaniaComponent } from '../oferta-wykonania/oferta-wykonania.component'
 import { AlertComponent } from '../alert/alert.component'
 import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service'
+
+class mapsAPILoader{
+  public load() {
+    return new Promise((resolve, reject) => { });
+  }
+}
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
@@ -44,7 +51,7 @@ describe('OgloszenieComponent', () => {
         AngularFireModule,
         BazaUzytkownikowService,
         AuthService,
-        MapsAPILoader
+        { provide: MapsAPILoader, useClass: mapsAPILoader }
       ],
       schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
     })
