@@ -4,8 +4,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing';
-import { AngularFireModule }  from 'angularfire2';
+import { AngularFireModule, AngularFire }  from 'angularfire2';
 import { AlertModule } from 'ngx-bootstrap';
+import {Observable} from 'rxjs/Rx';
 
 import { GaleriaOgloszenComponent } from './ogloszenia-galeria.component';
 import { OgloszenieMiniaturaComponent } from '../ogloszenie/ogloszenie-miniatura/ogloszenie-miniatura.component';
@@ -32,6 +33,44 @@ let firebaseConfig = {
   storageBucket: "kaskada-5ebd3.appspot.com",
   messagingSenderId: "846477355550"
 };
+
+class MockAngularFire {
+  public database: any;
+
+  constructor(){
+    this.database = {
+      list: function(data){
+        return Observable.of(
+          [
+            {
+              numerOgloszenia: 1,
+              tytul: 'Kuchnia do remontu',
+              czasWykonania: 2,
+              miasto: 'Gdansk',
+              ulica: 'Szczecinska',
+              ulica_numer: '12',
+              dataPublikacji: '01-01-2014T0',
+              koniecLicytacji: '01-01-2016T0',
+              pliki: []
+            },
+            {
+              numerOgloszenia: 2,
+              tytul: 'Salon do malowania',
+              czasWykonania: 2,
+              miasto: 'Gdansk',
+              ulica: 'Szczecinska',
+              ulica_numer: '12',
+              dataPublikacji: '01-01-2014T0',
+              koniecLicytacji: '01-01-2016T0',
+              pliki: []
+            },
+          ]
+        )
+      }
+    }
+  }
+
+}
 
 describe('GaleriaOgloszenComponent', () => {
   let component: GaleriaOgloszenComponent;
@@ -73,7 +112,8 @@ describe('GaleriaOgloszenComponent', () => {
       ]) ],
       providers: [
         AuthService,
-        AngularFireModule,
+        //AngularFireModule,
+        { provide: AngularFire, useClass: MockAngularFire },
         BazaUzytkownikowService,
         ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
@@ -112,12 +152,12 @@ describe('GaleriaOgloszenComponent', () => {
     expect(component.miniatury).toEqual(component.miniaturyBezFiltrowania);
   });
 
-  it('powinien wyszukac 5 elementow', () => {
+  it('powinien wyszukac 1 element', () => {
     component.fraza = "remont";
     component.szukaj();
     expect(component.fraza).toEqual("remont");
     expect(component.pofiltrowane).toEqual(true);
-    expect(component.miniatury.length).toEqual(5);
+    expect(component.miniatury.length).toEqual(1);
   });
 
 });
