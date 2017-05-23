@@ -9,6 +9,7 @@ export class Uzytkownik {
   public zdjecie: string;
   public id: string;
   public user_id: string;
+  public telefon: string;
 
   constructor(nazwa = "",
               email = "",
@@ -19,7 +20,8 @@ export class Uzytkownik {
               kod = "",
               zdjecie = "",
               id = "",
-              user_id = ""
+              user_id = "",
+              telefon = ""
   ) {  }
 
   public zaladujZBazy(user: any) {
@@ -33,6 +35,7 @@ export class Uzytkownik {
     this.zdjecie = user.zdjecie;
     this.id = user.$key;
     this.user_id = user.user_id;
+    this.telefon = user.telefon;
   }
 
 }
