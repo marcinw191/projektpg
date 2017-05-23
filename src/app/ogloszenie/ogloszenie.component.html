@@ -86,7 +86,7 @@
         Złożone oferty wykonania
       </div>
       <div *ngFor="let oferta of oferty | async">
-        <app-oferta-wykonania [oferta]="oferta" [email]="oferta.oferent"></app-oferta-wykonania>
+        <app-oferta-wykonania [oferta]="oferta" [user_id]="oferta.oferent"></app-oferta-wykonania>
       </div>
       <app-alert *ngIf="oferta_dodana" [text]="oferta_text" [type]="oferta_status"></app-alert>
       <div *ngIf="auth.authenticated()" class="dodaj-oferte rounded container">
