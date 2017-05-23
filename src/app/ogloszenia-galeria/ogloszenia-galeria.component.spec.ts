@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { FormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router, RouterModule, ActivatedRoute } from '@angular/router'
+import { Router } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularFireModule }  from 'angularfire2';
 import { AlertModule } from 'ngx-bootstrap';
@@ -23,11 +23,6 @@ import { Strona404Component }       from '../strona404/strona404.component';
 import { AlertComponent} from '../alert/alert.component';
 import { LoginTimeComponent } from '../profil/login-time/login-time.component';
 import { GoogleMapsComponent } from '../googlemaps/googlemaps.component';
-
-let mockRouter = {
-  navigate: jasmine.createSpy('navigate'),
-  navigateByUrl: jasmine.createSpy('navigateByUrl')
-};
 
 let firebaseConfig = {
   apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
