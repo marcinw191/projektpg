@@ -1,4 +1,4 @@
-import {browser, element, by, ExpectedConditions, ProtractorExpectedConditions} from 'protractor';
+import {browser, element, by, ProtractorExpectedConditions} from 'protractor';
 
 export class GaleriaOgloszenPage {
 
@@ -19,7 +19,7 @@ export class GaleriaOgloszenPage {
 
   wyswietlOgloszenia() {
     let card = element(by.css('.h-100'));
-    browser.wait(this.EC.visibilityOf(card),5000);
+    browser.wait(this.EC.visibilityOf(card), 5000);
     return element.all(by.css('.h-100'));
   }
 
@@ -36,4 +36,3 @@ export class GaleriaOgloszenPage {
   }
 
 }
-
