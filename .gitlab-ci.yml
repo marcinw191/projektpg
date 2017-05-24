@@ -5,6 +5,7 @@ cache:
 build:
   stage: build
   script:
+    - npm update npm -g
     - npm install
 
 test:
