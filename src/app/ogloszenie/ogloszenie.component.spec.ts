@@ -67,4 +67,5 @@ describe('OgloszenieComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });
