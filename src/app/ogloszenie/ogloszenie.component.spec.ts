@@ -67,5 +67,18 @@ describe('OgloszenieComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
+  it('powinien stworzyć obiekt z ustawionymi polami', () => {
+    expect(component.zdjecie0).toEqual("");
+    expect(component.zdjecie1).toEqual("");
+    expect(component.zdjecie2).toEqual("");
+    expect(component.zdjecie3).toEqual("");
+    expect(component.zdjecie4).toEqual("");
+    expect(component.zlecajacy).toBeDefined();
+    expect(component.oferent).toBeDefined();
+    expect(component.oferta).toEqual({});
+    expect(component.oferta_dodana).toBe(false);
+
+  });
+
 });

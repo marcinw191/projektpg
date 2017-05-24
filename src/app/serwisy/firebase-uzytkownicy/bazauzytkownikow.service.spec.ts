@@ -23,7 +23,7 @@ describe('BazauzytkownikowService', () => {
     });
   });
 
-  it('should ...', inject([BazaUzytkownikowService], (service: BazaUzytkownikowService) => {
+  it('should create', inject([BazaUzytkownikowService], (service: BazaUzytkownikowService) => {
     expect(service).toBeTruthy();
   }));
 });
