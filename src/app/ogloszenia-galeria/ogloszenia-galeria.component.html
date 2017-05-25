@@ -21,9 +21,24 @@
   <div class="row justify-content-lg-end">
     <div class="col">
 
-      <span class="container">
+      <span class="ustawienia">
 
-      </span>
+ <span>Widok zleceń :</span>
+
+<button  title="Galeria" (click)="zmienOrientacje('galeria')">
+
+ <img *ngIf="orientacja == 'galeria'" src="../assets/img/kafelki_czerwone.png" alt="HTML5">
+ <img *ngIf="orientacja == 'lista'" src="../assets/img/kafelki_szare.png" alt="HTML5">
+  </button>
+
+<button  title="Lista" (click)="zmienOrientacje('lista')">
+<img *ngIf="orientacja == 'galeria'" src="../assets/img/lista_szara.png" alt="HTML5">
+<img *ngIf="orientacja == 'lista'" src="../assets/img/lista_czerwona.png" alt="HTML5">
+
+ </button>
+
+</span>
+
 
 
     </div>
