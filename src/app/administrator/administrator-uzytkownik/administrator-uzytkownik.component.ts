@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+
 import { AuthService }       from '../../serwisy/auth0/auth.service';
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 
@@ -17,9 +18,10 @@ export class AdministratorUzytkownikComponent implements OnInit {
   disable :boolean;
 
   constructor(private auth: AuthService,
-              private bazaUzytkownikowService:BazaUzytkownikowService) { }
+              private bazaUzytkownikowService: BazaUzytkownikowService) { }
 
   ngOnInit() {
+    console.log('doint it !!!!');
     this.user_auth=this.auth.getProfileAuth();
     this.bazaUzytkownikowService.getUserDetails(this.key).subscribe(user => {
       this.user = user;
