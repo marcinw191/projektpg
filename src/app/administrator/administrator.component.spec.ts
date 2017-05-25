@@ -10,6 +10,9 @@ import { AdministratorOgloszeniaComponent } from '../administrator/administrator
 import { AdministratorOfertyComponent } from '../administrator/administrator-oferty/administrator-oferty.component';
 import { AdministratorUzytkownikComponent } from '../administrator/administrator-uzytkownik/administrator-uzytkownik.component';
 import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service'
+import {AdministratorOgloszenieComponent} from "./administrator-ogloszenie/administrator-ogloszenie.component";
+import {AdministratorOfertaComponent} from "./administrator-oferta/administrator-oferta.component";
+import {ProfilUzytkownikComponent} from "../profil/profil-uzytkownik/profil-uzytkownik.component";
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
@@ -32,7 +35,7 @@ describe('AdministratorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdministratorComponent, AdministratorUzytkownikComponent, AdministratorUzytkownicyComponent, AdministratorOgloszeniaComponent, AdministratorOfertyComponent ],
+      declarations: [ AdministratorComponent, AdministratorUzytkownikComponent, AdministratorUzytkownicyComponent, AdministratorOgloszeniaComponent, AdministratorOfertyComponent, AdministratorOgloszenieComponent, AdministratorOfertaComponent, ProfilUzytkownikComponent ],
       imports: [ FormsModule, AngularFireModule.initializeApp(firebaseConfig) ],
       providers: [
         AuthService,

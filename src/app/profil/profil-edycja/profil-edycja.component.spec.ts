@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfilEdycjaComponent } from './profil-edycja.component';
+import {FormsModule} from "@angular/forms";
 
 describe('ProfilEdycjaComponent', () => {
   let component: ProfilEdycjaComponent;
@@ -8,7 +9,8 @@ describe('ProfilEdycjaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfilEdycjaComponent ]
+      declarations: [ ProfilEdycjaComponent ],
+      imports: [ FormsModule ]
     })
     .compileComponents();
   }));
@@ -16,6 +18,7 @@ describe('ProfilEdycjaComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProfilEdycjaComponent);
     component = fixture.componentInstance;
+    component.profil_edit = { telefon: "1234" };
     fixture.detectChanges();
   });
 

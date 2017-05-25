@@ -16,6 +16,7 @@ describe('ProfilWidokPrzyciskiComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProfilWidokPrzyciskiComponent);
     component = fixture.componentInstance;
+    component.profil_view = { typ: "" };
     fixture.detectChanges();
   });
 

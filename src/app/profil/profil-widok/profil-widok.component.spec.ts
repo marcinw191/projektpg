@@ -16,6 +16,7 @@ describe('ProfilWidokComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProfilWidokComponent);
     component = fixture.componentInstance;
+    component.profil_view = { zdjecie: "" };
     fixture.detectChanges();
   });
 
