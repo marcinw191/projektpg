@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router}             from '@angular/router';
-
-import { AuthService }       from '../serwisy/auth0/auth.service';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-administrator',
   templateUrl: './administrator.component.html',
   styleUrls: ['./administrator.component.css']
 })
+
 export class AdministratorComponent implements OnInit {
+  @Output() zestawienie  = new EventEmitter<any>();
   typ_zestawienia :number;
   // przyjęta zasada :
   //  - typ_zestawienia = 0   - brak zestawienia
@@ -16,18 +15,11 @@ export class AdministratorComponent implements OnInit {
   //  - typ_zestawienia = 2   - zestawienie ogłoszeń/zleceń
   //  - typ_zestawienia = 3   - zestawienie ofert
 
-  constructor(private auth: AuthService,
-              private router: Router){
+  constructor() {
   }
 
   ngOnInit() {
-    if (this.auth.authenticated()) {
-      this.typ_zestawienia=0;
-    }
-    else {
-      alert('Nie jesteś zalogowany !!!');
-      this.router.navigateByUrl('/');
-    }
+    this.typ_zestawienia=0;
   }
 
   zestawienie_uzytkownikow() {
@@ -43,7 +35,7 @@ export class AdministratorComponent implements OnInit {
   }
 
   wyjscie() {
-    this.router.navigateByUrl('/');
+    this.zestawienie.emit({typ: 0});
   }
 
 }

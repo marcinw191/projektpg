@@ -1,138 +1,35 @@
-<div *ngIf="edycja==false">
-  <h5><br></h5>
-  <h3>Profil użytkownika</h3>
-  <h5><br></h5>
-  <div class="row">
-    <div class="col-md-2">
-      <img class="thumbnail" src="{{profil.zdjecie}}">
-    </div>
-    <div class="col-md-10">
-      <form>
-        <div class="form-group row">
-          <label class="col-sm-12 col-md-4">Imię i nazwisko / Nazwa firmy :</label>
-          <div class="col-sm-12 col-md-8 tekst">{{profil.nazwa}}</div>
-        </div>
-        <div class="form-group row">
-          <label class="col-6 col-sm-5 col-md-4">e-mail :</label>
-          <div class="col-6 col-sm-7 col-md-8 tekst">{{profil.e_mail}}</div>
-        </div>
-        <div class="form-group row">
-          <label class="col-6 col-sm-5 col-md-4">Numer telefonu :</label>
-          <div class="col-6 col-sm-7 col-md-8 tekst">{{profil.telefon}}</div>
-        </div>
-        <div class="form-group row">
-          <label class="col-6 col-sm-5 col-md-4">Typ użytkownika :</label>
-          <div class="col-6 col-sm-7 col-md-8 tekst">{{profil.typ}}</div>
-        </div>
-        <div class="form-group row">
-          <p><br></p>
-          <label class="col-12">Adres zamieszkania / siedziba firmy :</label>
-        </div>
-        <div class="form-group row">
-          <label class="col-6 col-sm-5 col-md-4">ulica :</label>
-          <div class="col-6 col-sm-7 col-md-8 tekst">{{profil.ulica}} {{profil.nr_bud}}</div>
-        </div>
-        <div class="form-group row">
-          <label class="col-6 col-sm-5 col-md-4">miejscowość :</label>
-          <div class="col-6 col-sm-7 col-md-8 tekst">{{profil.kod}} {{profil.miejscowosc}}</div>
-        </div>
-      </form>
-      <div class="modal-footer">
-        <div class="form-group row">
-          <div class="col-12">
-            <button class="btn btn-primary" (click)="edytujProfil()">Edytuj dane</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-10">
-      <div class="form-group row">
-        <button *ngIf="profil.typ=='zleceniodawca'" class="btn btn-primary" (click)="listaOgloszen()">Zestawienie zleceń</button>
-        <button *ngIf="profil.typ=='wykonawca'"     class="btn btn-primary" (click)="listaOfert()"   >Zestawienie ofert</button>
-        <button *ngIf="profil.typ=='administrator'" class="btn btn-primary" (click)="Administrator()">Narzędzia administratora</button>
-      </div>
-    </div>
-  </div>
+<div *ngIf="edycja==false && typ_zestawienia==0">
+  <app-profil-widok
+    [profil_view]="profil"
+    (edycja_stan)="updateStanEdycja($event)">
+  </app-profil-widok>
+  <app-profil-widok-przyciski
+    [profil_view]="profil"
+    (zestawienie)="updateTypZestawienia($event)">
+  </app-profil-widok-przyciski>
 </div>
-
-<div *ngIf="edycja==true">
-  <h5><br></h5>
-  <h3>Edycja profilu użytkownika</h3>
-  <h5><br></h5>
-  <div class="row">
-    <div class="col-md-2">
-      <img class="thumbnail" src="{{profil.zdjecie}}">
-    </div>
-    <div class="col-md-10">
-      <form #profileForm="ngForm">
-        <div class="form-group row">
-          <label for="nazwa" class="col-sm-12 col-md-4 col-form-label">
-            Imię i nazwisko / Nazwa firmy :
-            <p class="limits">(max 50 znaków)</p>
-          </label>
-          <div class="col-sm-12 col-md-8">
-            <input class="form-control" [(ngModel)]="edit_nazwa" required id="nazwa" maxlength="50" name="nazwa" placeholder="Podaj imię i nazwisko lub nazwę firmy.">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-5 col-md-4">e-mail :</label>
-          <div class="col-sm-7 col-md-8 tekst">{{profil.e_mail}}</div>
-        </div>
-        <div class="form-group row">
-          <label for="telefon" class="col-6 col-sm-5 col-md-4 col-form-label">Numer telefonu :</label>
-          <div class="col-6 col-sm-4 col-md-4 col-lg-3">
-            <input class="form-control" type="text" [(ngModel)]="edit_telefon" minlength="9" maxlength="9" name="telefon" id="telefon" placeholder="np. 123456789">
-          </div>
-        </div>
-        <div *ngIf="edit_typ!=='administrator'" class="form-group row">
-          <label for="typ" class="col-6 col-sm-5 col-md-4 col-form-label">Typ użytkownika :</label>
-          <div class="col-6 col-sm-4 col-md-4 col-lg-3">
-            <select class="form-control" type="text" [(ngModel)]="edit_typ" name="typ" id="typ">
-              <option value="zleceniodawca">zleceniodawca</option>
-              <option value="wykonawca">wykonawca</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row">
-          <p><br></p>
-          <label class="col-12">Adres zamieszkania / siedziba firmy :</label>
-        </div>
-        <div class="form-group row">
-          <label for="ulica" class="col-sm-12 col-md-4 col-form-label">ulica :</label>
-          <div class="col-sm-12 col-md-8 row">
-            <div class="col-8 col-lg-9">
-              <input class="form-control" type="text" [(ngModel)]="edit_ulica" id="ulica" minlength="3" maxlength="50" name="ulica" placeholder="nazwa ulicy">
-            </div>
-            <div class="col-4 col-lg-3">
-              <input class="form-control" type="text" [(ngModel)]="edit_nr_bud" id="nr_bud" minlength="1" maxlength="5" name="nr_bud" placeholder="nr bud.">
-            </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="miejscowosc" class="col-sm-12 col-md-4 col-form-label">miejscowość :</label>
-          <div class="col-sm-12 col-md-8 row">
-            <div class="col-5 col-sm-4 col-lg-3">
-              <input class="form-control" type="text" [(ngModel)]="edit_kod" id="kod_pocztowy" minlength="6" maxlength="6" name="kod" placeholder="np. 00-000">
-            </div>
-            <div class="col-7 col-sm-8 col-lg-9">
-              <input class="form-control" type="text" [(ngModel)]="edit_miejscowosc" id="miejscowosc" minlength="2" maxlength="50" name="miejscowosc" placeholder="Miejscowość">
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <div class="form-group row">
-            <div class="col-12">
-              <button class="btn btn-primary"   (click)="zapiszProfil()" [disabled]="!profileForm.form.valid">Zapisz zmiany</button>
-              <button class="btn btn-secondary" (click)="powrotProfil()">Powrót</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+<div *ngIf="edycja==true && typ_zestawienia==0">
+  <app-profil-edycja
+    [profil_edit]="profil"
+    (profil_zm)="updateProfil($event)"
+    (edycja_stan)="updateStanEdycja($event)">
+  </app-profil-edycja>
 </div>
-
-<app-login-time></app-login-time>
+<div *ngIf="typ_zestawienia==1">
+  <app-ogloszenia-wykaz
+    [profil]="profil"
+    (zestawienie)="updateTypZestawienia($event)">
+  </app-ogloszenia-wykaz>
+</div>
+<div *ngIf="typ_zestawienia==2">
+   <app-oferty-wykaz
+     [profil]="profil"
+     (zestawienie)="updateTypZestawienia($event)">
+   </app-oferty-wykaz>
+</div>
+<div *ngIf="typ_zestawienia==3">
+  <app-administrator
+    (zestawienie)="updateTypZestawienia($event)">
+  </app-administrator>
+</div>
+<app-login-time *ngIf="typ_zestawienia==0"></app-login-time>

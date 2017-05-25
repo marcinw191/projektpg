@@ -1,0 +1,31 @@
+.galeria-ogloszen {
+  padding-top: 50px;
+}
+
+.oferty-przegladaj {
+  background-color: #d9d9df;
+  padding: 50px;
+}
+
+.znajdz-ogloszenie {
+  padding: 10px;
+  font-size: large;
+}
+
+#niezalogowany{
+  float: right;
+  color: red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ustawienia {
+  float: right;
+  padding: 10px;
+}
+
+.wyczysc-szukanie {
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

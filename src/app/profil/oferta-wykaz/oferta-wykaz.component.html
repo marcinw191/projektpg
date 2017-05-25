@@ -1,0 +1,10 @@
+<div class="col-9 col-lg-4" id="tytul">
+  <a [routerLink]="['/ogloszenie', oferta.numerOgloszenia]">
+    {{tytul}}
+  </a>
+</div>
+<div class="col-3 col-lg-2">nr {{oferta.numerOgloszenia}}</div>
+<div class="col-4 col-lg-2">{{dzien}}</div>
+<div class="col-4 col-lg-2">{{oferta.cena}} PLN</div>
+<div class="checkbox col-2 col-lg-1"><input type="checkbox" (change)="blockOferta(key)" [(ngModel)]="blokada" [disabled]="true"></div>
+<div class="button col-2 col-lg-1"><button type="button"    (click)="deleteOferta(key)">Usuń</button></div>

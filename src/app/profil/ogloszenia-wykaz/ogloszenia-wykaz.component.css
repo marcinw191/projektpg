@@ -1,0 +1,58 @@
+* {
+  font-size: 1rem;
+}
+
+#tytul {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#komunikat {
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+.naglowek {
+  border-bottom: 1px solid #eceeef;
+}
+
+app-ogloszenie-wykaz {
+  border-bottom: 1px solid #eceeef;
+}
+
+h3 {
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+h5 {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: .4rem .6rem;
+  font-size: .8rem;
+  margin-bottom: .2rem;
+}
+
+@media (max-width: 540px) {
+  * {
+    font-size: .7rem;
+  }
+
+  h3{
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: .3rem .5rem;
+    font-size: .6rem;
+    margin-bottom: .2rem;
+  }
+}

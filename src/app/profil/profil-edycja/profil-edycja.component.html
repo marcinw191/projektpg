@@ -1,0 +1,71 @@
+<h5><br></h5>
+<h3>Edycja profilu użytkownika</h3>
+<h5><br></h5>
+<div class="row">
+  <div class="col-md-2">
+    <img class="thumbnail" src="{{profil_edit.zdjecie}}">
+  </div>
+  <div class="col-md-10">
+    <form #profileForm="ngForm">
+      <div class="form-group row">
+        <label for="nazwa" class="col-sm-12 col-md-4 col-form-label">Imię i nazwisko / Nazwa firmy :<p class="limits">(max 50 znaków)</p></label>
+        <div class="col-sm-12 col-md-8">
+          <input class="form-control" [(ngModel)]="profil_temp.nazwa" required id="nazwa" maxlength="50" name="nazwa" placeholder="Podaj imię i nazwisko lub nazwę firmy.">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-5 col-md-4">e-mail :</label>
+        <div class="col-sm-7 col-md-8 tekst">{{profil_edit.e_mail}}</div>
+      </div>
+      <div class="form-group row">
+        <label for="telefon" class="col-6 col-sm-5 col-md-4 col-form-label">Numer telefonu :</label>
+        <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+          <input class="form-control" type="text" [(ngModel)]="edit_telefon" minlength="9" maxlength="9" name="telefon" id="telefon" placeholder="np. 123456789">
+        </div>
+      </div>
+      <div *ngIf="profil_temp.typ!=='administrator'" class="form-group row">
+        <label for="typ" class="col-6 col-sm-5 col-md-4 col-form-label">Typ użytkownika :</label>
+        <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+          <select class="form-control" type="text" [(ngModel)]="profil_temp.typ" name="typ" id="typ">
+            <option value="zleceniodawca">zleceniodawca</option>
+            <option value="wykonawca">wykonawca</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <p><br></p>
+        <label class="col-12">Adres zamieszkania / siedziba firmy :</label>
+      </div>
+      <div class="form-group row">
+        <label for="ulica" class="col-sm-12 col-md-4 col-form-label">ulica :</label>
+        <div class="col-sm-12 col-md-8 row">
+          <div class="col-8 col-lg-9">
+            <input class="form-control" type="text" [(ngModel)]="profil_temp.ulica" id="ulica" minlength="3" maxlength="50" name="ulica" placeholder="nazwa ulicy">
+          </div>
+          <div class="col-4 col-lg-3">
+            <input class="form-control" type="text" [(ngModel)]="profil_temp.nr_bud" id="nr_bud" minlength="1" maxlength="5" name="nr_bud" placeholder="nr bud.">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="miejscowosc" class="col-sm-12 col-md-4 col-form-label">miejscowość :</label>
+        <div class="col-sm-12 col-md-8 row">
+          <div class="col-5 col-sm-4 col-lg-3">
+            <input class="form-control" type="text" [(ngModel)]="edit_kod" id="kod_pocztowy" minlength="6" maxlength="6" name="kod" placeholder="np. 00-000">
+          </div>
+          <div class="col-7 col-sm-8 col-lg-9">
+            <input class="form-control" type="text" [(ngModel)]="profil_temp.miejscowosc" id="miejscowosc" minlength="2" maxlength="50" name="miejscowosc" placeholder="Miejscowość">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group row">
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="zapiszProfil()" [disabled]="!profileForm.form.valid">Zapisz zmiany</button>
+            <button class="btn btn-secondary" (click)="powrotProfil()">Powrót</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

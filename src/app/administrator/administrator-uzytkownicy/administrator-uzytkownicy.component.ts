@@ -8,7 +8,7 @@ import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/baza
   styleUrls: ['./administrator-uzytkownicy.component.css']
 })
 export class AdministratorUzytkownicyComponent implements OnInit {
-  users: any[];
+  private users: any[];
 
   constructor(private bazaUzytkownikowService: BazaUzytkownikowService) {
   }

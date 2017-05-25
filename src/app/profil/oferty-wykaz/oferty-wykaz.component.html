@@ -1,0 +1,35 @@
+<h5><br></h5>
+<h3>Wykaz ofert :</h3>
+<h5><br></h5>
+<div class="row col-12">
+  <div class="row col-12">
+    <div class="col-12">
+      <div class="row naglowek">
+        <div class="col-9 col-lg-4" id="tytul">Tytuł ogłoszenia</div>
+        <div class="col-3 col-lg-2">Ogłoszenie</div>
+        <div class="col-4 col-lg-2">Data publikacji</div>
+        <div class="col-4 col-lg-2">Cena oferty</div>
+        <div class="col-2 col-lg-1">Blokuj<br></div>
+        <div class="col-2 col-lg-1">Usuń</div>
+      </div>
+    </div>
+    <div *ngIf="komunikat" class="col-12" id="komunikat">
+      <p>Nie dałeś żadnej oferty na zamieszczone ogłoszenia.</p>
+    </div>
+    <div *ngFor="let oferta of oferty" class="col-12">
+      <app-oferta-wykaz
+        *ngIf="profil.user_id==oferta.oferent"
+        [key]="oferta.$key"
+        [profil]="profil"
+        class="row">
+      </app-oferta-wykaz>
+    </div>
+  </div>
+  <div class="row col-12">
+    <div class="modal-footer col-12">
+      <div class="row">
+        <button class="btn btn-secondary" (click)="powrot()">Powrót</button>
+      </div>
+    </div>
+  </div>
+</div>
