@@ -1,4 +1,4 @@
-{
+  {
   "name": "kaskada-serwis-uslugowy",
   "version": "0.0.0",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
-    "angularfire2": "^2.0.0-beta.8",
+    "angularfire2": "2.0.0-beta.8",
     "auth0-lock": "^10.16.0",
     "bootstrap": "^4.0.0-alpha.6",
     "codelyzer": "~2.0.0",
