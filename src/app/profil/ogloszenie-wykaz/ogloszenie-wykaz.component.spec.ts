@@ -128,6 +128,8 @@ describe('OgloszenieWykazComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    setTimeout(()=>{
+      expect(component).toBeTruthy();
+    }, 5000);
   });
 });
