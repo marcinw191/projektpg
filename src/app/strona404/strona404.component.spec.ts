@@ -14,17 +14,17 @@ import { AdministratorUzytkownicyComponent } from '../administrator/administrato
 import { AdministratorOgloszeniaComponent } from '../administrator/administrator-ogloszenia/administrator-ogloszenia.component';
 import { AdministratorOfertyComponent } from '../administrator/administrator-oferty/administrator-oferty.component';
 import { ProfilComponent }          from '../profil/profil.component';
-import { OgloszenieComponent }      from '../ogloszenie/ogloszenie.component';
+import { OgloszenieComponent }      from '../ogloszenia/ogloszenie/ogloszenie.component';
 import { PolicyComponent }          from '../cookielaw/policy/policy.component';
-import { DodajOgloszenieComponent } from '../ogloszenie/ogloszenie-dodaj/ogloszenie-dodaj.component';
+import { DodajOgloszenieComponent } from '../ogloszenia/ogloszenie-dodaj/ogloszenie-dodaj.component';
 import { OpisDzialaniaComponent }   from '../opis-dzialania/opis-dzialania.component';
-import { Strona404Component }       from '../strona404/strona404.component';
+import { Strona404Component }       from './strona404.component';
 import { AlertComponent} from '../alert/alert.component';
 import { LoginTimeComponent } from '../profil/login-time/login-time.component';
 import { GoogleMapsComponent } from '../googlemaps/googlemaps.component';
-import { GaleriaOgloszenComponent } from '../ogloszenia-galeria/ogloszenia-galeria.component';
-import { OgloszenieMiniaturaComponent } from '../ogloszenie/ogloszenie-miniatura/ogloszenie-miniatura.component';
-import { OfertaWykonaniaComponent } from '../oferta-wykonania/oferta-wykonania.component';
+import { GaleriaOgloszenComponent } from '../ogloszenia/ogloszenia-galeria/ogloszenia-galeria.component';
+import { OgloszenieMiniaturaComponent } from '../ogloszenia/ogloszenie-miniatura/ogloszenie-miniatura.component';
+import { OfertaWykonaniaComponent } from '../oferty/oferta-wykonania/oferta-wykonania.component';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),

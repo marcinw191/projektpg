@@ -22,10 +22,11 @@ export class ProfilComponent implements OnInit {
     nr_bud      : '',
     kod         : '',
     miejscowosc : '',
+    user_id     : '',
   };
   profil_auth: any;
   edycja: boolean;
-  typ_zestawienia: number =0;
+  typ_zestawienia: number = 0;
   wybor:number = null;
 
   constructor(private auth: AuthService,

@@ -22,9 +22,10 @@
   </app-ogloszenia-wykaz>
 </div>
 <div *ngIf="typ_zestawienia==2">
-  <p><br></p>
-  <p>Wstawić komponent zestawienia ofert</p>
-  <!-- np. : <app-oferty-wykaz></app-oferty-wykaz>-->
+   <app-oferty-wykaz
+     [profil]="profil"
+     (zestawienie)="updateTypZestawienia($event)">
+   </app-oferty-wykaz>
 </div>
 <div *ngIf="typ_zestawienia==3">
   <app-administrator

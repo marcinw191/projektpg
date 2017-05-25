@@ -11,14 +11,16 @@ export class OgloszeniaWykazComponent implements OnInit {
   @Input() profil: any;
   @Output() zestawienie  = new EventEmitter<any>();
   ogloszenia: any[];
+  komunikat: boolean;
 
   constructor(private bazaOgloszenService: BazaOgloszenService){
   }
 
   ngOnInit() {
-    this.bazaOgloszenService.getOgloszenia()
+    this.bazaOgloszenService.getOgloszeniaByUser(this.profil.user_id)
       .subscribe(ogloszenia => {
         this.ogloszenia = ogloszenia;
+        this.komunikat = (this.ogloszenia.length == 0);
       });
   }
 

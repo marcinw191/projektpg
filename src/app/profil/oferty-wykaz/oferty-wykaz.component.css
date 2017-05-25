@@ -7,17 +7,11 @@
   margin-bottom: 5px;
 }
 
-#komunikat {
-  margin-top: 10px;
-  color: red;
-  font-weight: bold;
-}
-
 .naglowek {
   border-bottom: 1px solid #eceeef;
 }
 
-app-ogloszenie-wykaz {
+app-oferta-wykaz {
   border-bottom: 1px solid #eceeef;
 }
 

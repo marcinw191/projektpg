@@ -1,5 +1,5 @@
 <h5><br></h5>
-<h3>Wykaz ogłoszeń :</h3>
+<h3>Wykaz ofert :</h3>
 <h5><br></h5>
 <div class="row col-12">
   <div class="row col-12">
@@ -7,22 +7,22 @@
       <div class="row naglowek">
         <div class="col-9 col-lg-4" id="tytul">Tytuł ogłoszenia</div>
         <div class="col-3 col-lg-2">Ogłoszenie</div>
-        <div class="col-4 col-lg-2">Koniec licytacji</div>
-        <div class="col-4 col-lg-2">Ilość ofert</div>
+        <div class="col-4 col-lg-2">Data publikacji</div>
+        <div class="col-4 col-lg-2">Cena oferty</div>
         <div class="col-2 col-lg-1">Blokuj<br></div>
         <div class="col-2 col-lg-1">Usuń</div>
       </div>
     </div>
     <div *ngIf="komunikat" class="col-12" id="komunikat">
-      <p>Nie zamieściłeś żadnego ogłoszenia.</p>
+      <p>Nie dałeś żadnej oferty na zamieszczone ogłoszenia.</p>
     </div>
-    <div *ngFor="let ogloszenie of ogloszenia" class="col-12">
-      <app-ogloszenie-wykaz
-        *ngIf="profil.user_id==ogloszenie.zlecajacy"
-        [key]="ogloszenie.$key"
+    <div *ngFor="let oferta of oferty" class="col-12">
+      <app-oferta-wykaz
+        *ngIf="profil.user_id==oferta.oferent"
+        [key]="oferta.$key"
         [profil]="profil"
         class="row">
-      </app-ogloszenie-wykaz>
+      </app-oferta-wykaz>
     </div>
   </div>
   <div class="row col-12">

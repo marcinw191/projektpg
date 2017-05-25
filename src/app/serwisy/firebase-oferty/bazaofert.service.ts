@@ -48,6 +48,16 @@ export class BazaOfertService {
     });
   }
 
+  getOfertyByUser(user_id: string) {
+    //pobierz oferty zlozone przez danego oferenta,
+    return this.oferty = this.af.database.list('/oferty', {
+      query: {
+        orderByChild: 'oferent',
+        equalTo: user_id,
+      }
+    });
+  }
+
   addOferta(oferta) {
     return this.oferty.push(oferta);
   }

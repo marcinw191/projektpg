@@ -18,16 +18,16 @@ export class AdministratorUzytkownikComponent implements OnInit {
   disable :boolean;
 
   constructor(private auth: AuthService,
-              private bazaUzytkownikowService: BazaUzytkownikowService) { }
+              private bazaUzytkownikowService: BazaUzytkownikowService) {
+    this.user_auth=this.auth.getProfileAuth();
+  }
 
   ngOnInit() {
-    console.log('doint it !!!!');
-    this.user_auth=this.auth.getProfileAuth();
     this.bazaUzytkownikowService.getUserDetails(this.key).subscribe(user => {
       this.user = user;
       this.blokada = (this.user.blokada == "tak");
+      this.disable = (this.user.user_id == this.user_auth.user_id);
     });
-    this.disable=(this.user.e_mail==this.user_auth.email);
   }
 
   updateUser(key){

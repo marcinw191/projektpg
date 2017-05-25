@@ -57,6 +57,24 @@ export class BazaOgloszenService {
     });
   }
 
+  getOgloszenieByNumer(numer: number) {
+    return this.ogloszenia = this.af.database.list('/ogloszenia', {
+      query: {
+        orderByChild: 'numerOgloszenia',
+        equalTo: numer
+      }
+    });
+  }
+
+  getOgloszeniaByUser(user_id: string) {
+    return this.ogloszenia = this.af.database.list('/ogloszenia', {
+      query: {
+        orderByChild: 'zlecajacy',
+        equalTo: user_id
+      }
+    });
+  }
+
   addogloszenie(ogloszenie) {
     return this.ogloszenia.push(ogloszenie);
   }

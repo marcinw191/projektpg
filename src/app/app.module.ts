@@ -14,25 +14,21 @@ import { AlertModule }                      from 'ngx-bootstrap';
 import { AppComponent }                      from './app.component';
 import { NavbarComponent }                   from './navbar/navbar.component';
 import { FooterComponent }                   from './footer/footer.component';
-import { HomeComponent }                     from './home/home.component';
 import { GaleriaOgloszenComponent }          from './ogloszenia/ogloszenia-galeria/ogloszenia-galeria.component';
 import { OgloszenieComponent }               from './ogloszenia/ogloszenie/ogloszenie.component';
-import { OfertaDodajComponent }              from './oferty/oferta-dodaj/oferta-dodaj.component';
-import { OgloszeniaWykazComponent }          from './profil/ogloszenia-wykaz/ogloszenia-wykaz.component';
-import { OgloszenieWykazComponent }          from './profil/ogloszenie-wykaz/ogloszenie-wykaz.component';
-import { OfertaWykonaniaComponent }          from './oferty/oferta-wykonania/oferta-wykonania.component';
 import { DodajOgloszenieComponent }          from './ogloszenia/ogloszenie-dodaj/ogloszenie-dodaj.component';
 import { OgloszenieMiniaturaComponent }      from './ogloszenia/ogloszenie-miniatura/ogloszenie-miniatura.component';
-import { CookielawComponent }                from './cookielaw/cookielaw.component';
-import { PolicyComponent }                   from './cookielaw/policy/policy.component';
-import { AlertComponent }                    from './alert/alert.component';
-import { GoogleMapsComponent }               from './googlemaps/googlemaps.component';
-import { OpisDzialaniaComponent }            from './opis-dzialania/opis-dzialania.component';
+import { OfertaDodajComponent }              from './oferty/oferta-dodaj/oferta-dodaj.component';
+import { OfertaWykonaniaComponent }          from './oferty/oferta-wykonania/oferta-wykonania.component';
 import { ProfilComponent }                   from './profil/profil.component';
 import { ProfilWidokComponent }              from './profil/profil-widok/profil-widok.component';
 import { ProfilWidokPrzyciskiComponent }     from './profil/profil-widok-przyciski/profil-widok-przyciski.component';
 import { ProfilEdycjaComponent }             from './profil/profil-edycja/profil-edycja.component';
 import { ProfilUzytkownikComponent }         from './profil/profil-uzytkownik/profil-uzytkownik.component';
+import { OgloszeniaWykazComponent }          from './profil/ogloszenia-wykaz/ogloszenia-wykaz.component';
+import { OgloszenieWykazComponent }          from './profil/ogloszenie-wykaz/ogloszenie-wykaz.component';
+import { OfertyWykazComponent }              from './profil/oferty-wykaz/oferty-wykaz.component';
+import { OfertaWykazComponent }              from './profil/oferta-wykaz/oferta-wykaz.component';
 import { LoginTimeComponent }                from './profil/login-time/login-time.component';
 import { AdministratorComponent }            from './administrator/administrator.component';
 import { AdministratorUzytkownicyComponent } from './administrator/administrator-uzytkownicy/administrator-uzytkownicy.component';
@@ -41,6 +37,12 @@ import { AdministratorOgloszeniaComponent }  from './administrator/administrator
 import { AdministratorOgloszenieComponent }  from './administrator/administrator-ogloszenie/administrator-ogloszenie.component';
 import { AdministratorOfertyComponent }      from './administrator/administrator-oferty/administrator-oferty.component';
 import { AdministratorOfertaComponent }      from './administrator/administrator-oferta/administrator-oferta.component';
+import { HomeComponent }                     from './home/home.component';
+import { CookielawComponent }                from './cookielaw/cookielaw.component';
+import { PolicyComponent }                   from './cookielaw/policy/policy.component';
+import { AlertComponent }                    from './alert/alert.component';
+import { GoogleMapsComponent }               from './googlemaps/googlemaps.component';
+import { OpisDzialaniaComponent }            from './opis-dzialania/opis-dzialania.component';
 import { Strona404Component }                from './strona404/strona404.component';
 
 import { routing, appRoutingProviders } from './app.routing';
@@ -95,6 +97,8 @@ export const firebaseConfig = {
     AdministratorOgloszenieComponent,
     LoginTimeComponent,
     Strona404Component,
+    OfertyWykazComponent,
+    OfertaWykazComponent,
   ],
   imports: [
     BrowserModule,
