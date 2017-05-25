@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { AlertModule } from 'ngx-bootstrap';
 
 import { AlertComponent } from './alert.component';
 
@@ -8,7 +10,8 @@ describe('AlertComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertComponent ]
+      declarations: [ AlertComponent ],
+      imports: [ RouterModule, AlertModule ]
     })
     .compileComponents();
   }));

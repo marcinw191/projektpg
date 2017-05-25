@@ -62,7 +62,7 @@ export class OgloszenieComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log("Wywolije ON-INIT");
     //pobierz obecnego uzytkownika(oferenta) z bazy
     if(this.auth.authenticated())
     {
@@ -167,7 +167,7 @@ export class OgloszenieComponent implements OnInit {
 
   }
 
-  private wyczyscOferte()
+  public wyczyscOferte()
   {
     this.oferta = {};
   }
