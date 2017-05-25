@@ -1,0 +1,35 @@
+<h5><br></h5>
+<h3>Wykaz ogłoszeń :</h3>
+<h5><br></h5>
+<div class="row col-12">
+  <div class="row col-12">
+    <div class="col-12">
+      <div class="row naglowek">
+        <div class="col-9 col-lg-4" id="tytul">Tytuł ogłoszenia</div>
+        <div class="col-3 col-lg-2">Ogłoszenie</div>
+        <div class="col-4 col-lg-2">Koniec licytacji</div>
+        <div class="col-4 col-lg-2">Ilość ofert</div>
+        <div class="col-2 col-lg-1">Blokuj<br></div>
+        <div class="col-2 col-lg-1">Usuń</div>
+      </div>
+    </div>
+    <!--<div *ngIf="ogloszenia.length==0" class="col-12">-->
+    <!--<p>Nie umieściłeś żadnego ogłoszenia.</p>-->
+    <!--</div>-->
+    <div *ngFor="let ogloszenie of ogloszenia" class="col-12">
+      <app-ogloszenie-wykaz
+        *ngIf="profil.$key==ogloszenie.zlecajacy"
+        [key]="ogloszenie.$key"
+        [profil]="profil"
+        class="row">
+      </app-ogloszenie-wykaz>
+    </div>
+  </div>
+  <div class="row col-12">
+    <div class="modal-footer col-12">
+      <div class="row">
+        <button class="btn btn-secondary" (click)="powrot()">Powrót</button>
+      </div>
+    </div>
+  </div>
+</div>

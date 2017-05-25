@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { options } from './auth.options';
 import { Router} from '@angular/router';
+import Auth0Lock from 'auth0-lock';
 
 import { BazaUzytkownikowService } from '../firebase-uzytkownicy/bazauzytkownikow.service';
 
-declare let Auth0Lock: any;
+//declare let Auth0Lock: any;
 
 @Injectable()
 export class AuthService {

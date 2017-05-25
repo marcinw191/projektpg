@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { Injectable, Inject  } from '@angular/core';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable, FirebaseApp  } from 'angularfire2';
 
 interface User {
-  nazwa     : string;
-  e_mail    : string;
-  typ       : string;
+  nazwa : string;
+  e_mail: string;
+  typ   : string;
 }
 
 @Injectable()
@@ -12,16 +12,17 @@ export class BazaUzytkownikowService {
   users: FirebaseListObservable<any[]>;
   user:  FirebaseObjectObservable<any>;
 
-  constructor(private af:AngularFire) {
-    this.users  = this.af.database.list('/users') as FirebaseListObservable<User[]>
+  constructor(private af:AngularFire, @Inject(FirebaseApp) private fbApp: firebase.app.App) {
+    this.users  = this.af.database.list('/users') as FirebaseListObservable<User[]>;
   }
 
   getUsers(){
+    this.users  = this.af.database.list('/users') as FirebaseListObservable<User[]>;
     return this.users;
   }
 
   getUserDetails(key){
-    this.user = this.af.database.object('/users/'+key) as FirebaseObjectObservable<User>
+    this.user = this.af.database.object('/users/'+key) as FirebaseObjectObservable<User>;
     return this.user;
   }
 

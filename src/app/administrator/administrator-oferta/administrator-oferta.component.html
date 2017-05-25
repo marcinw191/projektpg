@@ -1,0 +1,7 @@
+<div class="col-12 col-lg-6" id="tytul">
+  <app-profil-uzytkownik [user_id]="oferta.oferent"></app-profil-uzytkownik>
+</div>
+<div class="col-4 col-lg-2">nr {{oferta.numerOgloszenia}}</div>
+<div class="col-4 col-lg-2">{{oferta.cena}}</div>
+<div class="col-2 col-lg-1 checkbox"><input type="checkbox" (change)="blockOferta(key)" [(ngModel)]="blokada"></div>
+<div class="col-2 col-lg-1 button "><button type="button"   (click)="deleteOferta(key)">Usuń</button></div>

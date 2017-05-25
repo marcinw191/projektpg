@@ -2,6 +2,10 @@
   font-size: 1rem;
 }
 
+#nazwa {
+  font-weight: bold;
+}
+
 h5 {
   font-size: 1.25rem;
 }

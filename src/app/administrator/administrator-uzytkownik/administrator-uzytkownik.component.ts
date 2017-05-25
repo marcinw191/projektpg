@@ -7,7 +7,6 @@ import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/baza
   selector: 'app-administrator-uzytkownik',
   templateUrl: './administrator-uzytkownik.component.html',
   styleUrls: ['./administrator-uzytkownik.component.css'],
-  inputs: ['key'],
 })
 export class AdministratorUzytkownikComponent implements OnInit {
   @Input() key;
@@ -22,8 +21,8 @@ export class AdministratorUzytkownikComponent implements OnInit {
 
   ngOnInit() {
     this.user_auth=this.auth.getProfileAuth();
-    this.bazaUzytkownikowService.getUserDetails(this.key).subscribe(user =>
-    { this.user = user;
+    this.bazaUzytkownikowService.getUserDetails(this.key).subscribe(user => {
+      this.user = user;
       this.blokada = (this.user.blokada == "tak");
     });
     this.disable=(this.user.e_mail==this.user_auth.email);

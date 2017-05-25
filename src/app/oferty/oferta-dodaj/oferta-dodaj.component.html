@@ -1,0 +1,44 @@
+<app-alert *ngIf="oferta_dodana" [text]="oferta_text" [type]="oferta_status"></app-alert>
+<div *ngIf="auth.authenticated()" class="dodaj-oferte rounded container">
+  <div class="row">
+    <h3 class="tytul-oferta">Dodaj swoją ofertę wykonania</h3>
+  </div>
+  <div class="row">
+    <div class="col-xl-2 col-lg-12 col-md-12">
+      <img *ngIf="oferent.zdjecie != ''" class="thumbnail rounded-circle profil" src="{{oferent.zdjecie}}" alt="profile">
+      <img *ngIf="oferent.zdjecie == ''" class="thumbnail rounded-circle profil" src="http://placehold.it/80x80" alt="profile">
+    </div>
+    <div class="col-xl-8 col-lg-12 col-md-12">
+      <div class="row">
+        <h6 class="zlecajacy">{{oferent.nazwa}}</h6>
+      </div>
+      <form #ofertaForm="ngForm">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="cena">Twoja cena wykonania</label>
+              <input type="number" required [(ngModel)]="oferta.cena" name="cena" class="form-control" id="cena" placeholder="cena w PLN" [disabled] = "oferta_dodana">
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="telefon">Telefon kontaktowy</label>
+              <input required type="tel" maxlength="9" [(ngModel)]="oferta.telefon" name="telefon" class="form-control" id="telefon" placeholder="numer telefonu" [disabled] = "oferta_dodana">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="wiadomosc">Wiadomość dla zlecającego</label>
+              <textarea required type="text" maxlength="100" class="form-control" [(ngModel)]="oferta.wiadomosc" name="wiadomosc" id="wiadomosc" placeholder="Krótka wiadomość dla zlecającego" rows="3" [disabled] = "oferta_dodana"></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-xl-2 col-lg-12 col-md-12">
+      <button class="btn btn-primary dodaj" (click)="dodajOferte()" [disabled]="!ofertaForm.form.valid || oferta_dodana ">Dodaj<br>ofertę</button>
+    </div>
+  </div>
+</div>

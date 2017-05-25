@@ -1,0 +1,10 @@
+<div class="col-9 col-lg-4" id="tytul">
+  <a [routerLink]="['/ogloszenie', ogloszenie.numerOgloszenia]">
+    {{ogloszenie.tytul}}
+  </a>
+</div>
+<div class="col-3 col-lg-2">nr {{ogloszenie.numerOgloszenia}}</div>
+<div class="col-4 col-lg-2">{{dzien}}</div>
+<div class="col-4 col-lg-2">{{ilosc_ofert}}</div>
+<div class="checkbox col-2 col-lg-1"><input type="checkbox" (change)="blockOgloszenie(key)" [(ngModel)]="blokada" [disabled]="true"></div>
+<div class="button col-2 col-lg-1"><button type="button"    (click)="deleteOgloszenie(key)">Usuń</button></div>
