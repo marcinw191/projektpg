@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
 
 interface Oferta {
@@ -16,8 +16,8 @@ export class BazaOfertService {
   oferty: FirebaseListObservable<any[]>;
   oferta:  FirebaseObjectObservable<any>;
 
-  constructor(private af:AngularFire) {
-    this.oferty = this.af.database.list('/oferty') as FirebaseListObservable<Oferta[]>
+  constructor(private db: AngularFireDatabase) {
+    this.oferty = this.db.list('/oferty') as FirebaseListObservable<Oferta[]>
   }
 
   getOferty(){
@@ -25,12 +25,12 @@ export class BazaOfertService {
   }
 
   getOfertaDetails(key){
-    this.oferta = this.af.database.object('/oferty/'+key) as FirebaseObjectObservable<Oferta>
+    this.oferta = this.db.object('/oferty/'+key) as FirebaseObjectObservable<Oferta>
     return this.oferta;
   }
 
   getOfertaByOferent(oferent: string) {
-    return this.oferty = this.af.database.list('/oferty', {
+    return this.oferty = this.db.list('/oferty', {
       query: {
         orderByChild: 'oferent',
         equalTo: oferent
@@ -40,7 +40,7 @@ export class BazaOfertService {
 
   getOfertaByOgloszenie(nr_ogloszenia: string) {
     //pobierz oferty zlozone pod danym ogloszenie,
-    return this.oferty = this.af.database.list('/oferty', {
+    return this.oferty = this.db.list('/oferty', {
       query: {
         orderByChild: 'numerOgloszenia',
         equalTo: nr_ogloszenia,
@@ -50,7 +50,7 @@ export class BazaOfertService {
 
   getOfertyByUser(user_id: string) {
     //pobierz oferty zlozone przez danego oferenta,
-    return this.oferty = this.af.database.list('/oferty', {
+    return this.oferty = this.db.list('/oferty', {
       query: {
         orderByChild: 'oferent',
         equalTo: user_id,

@@ -1,6 +1,6 @@
-import { Component, OnInit, OnChanges }   from '@angular/core';
+import { Component, OnInit }   from '@angular/core';
 import { AuthService }         from '../../serwisy/auth0/auth.service';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-galeria-ogloszen',
@@ -16,8 +16,8 @@ export class GaleriaOgloszenComponent implements OnInit {
   pofiltrowane: boolean;
 
 
-  constructor(private auth: AuthService, private af: AngularFire) {
-    this.af.database.list('/ogloszenia').subscribe(queriedItems => {
+  constructor(private auth: AuthService, private db: AngularFireDatabase) {
+    this.db.list('/ogloszenia').subscribe(queriedItems => {
       this.miniatury = queriedItems;
       this.miniaturyBezFiltrowania = queriedItems;
     });

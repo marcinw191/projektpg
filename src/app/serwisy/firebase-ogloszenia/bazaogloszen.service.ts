@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
-import * as firebase from 'firebase';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+
 
 interface Ogloszenie {
   tytul: string;
@@ -23,9 +23,9 @@ export class BazaOgloszenService {
   ogloszenie:  FirebaseObjectObservable<any>;
   folder: any;
 
-  constructor(private af:AngularFire) {
+  constructor(private db: AngularFireDatabase) {
     this.folder = 'ogloszenieimages';
-    this.ogloszenia  = this.af.database.list('/ogloszenia') as FirebaseListObservable<Ogloszenie[]>
+    this.ogloszenia  = this.db.list('/ogloszenia') as FirebaseListObservable<Ogloszenie[]>
   }
 
   getOgloszenia(){
@@ -44,12 +44,12 @@ export class BazaOgloszenService {
   // }
 
   getOgloszenieDetails(key){
-    this.ogloszenie = this.af.database.object('/ogloszenia/'+key) as FirebaseObjectObservable<Ogloszenie>
+    this.ogloszenie = this.db.object('/ogloszenia/'+key) as FirebaseObjectObservable<Ogloszenie>
     return this.ogloszenie;
   }
 
   getOgloszenieByTytul(tytul: string) {
-    return this.ogloszenia = this.af.database.list('/ogloszenia', {
+    return this.ogloszenia = this.db.list('/ogloszenia', {
       query: {
         orderByChild: 'tytul',
         equalTo: tytul
@@ -58,7 +58,7 @@ export class BazaOgloszenService {
   }
 
   getOgloszenieByNumer(numer: number) {
-    return this.ogloszenia = this.af.database.list('/ogloszenia', {
+    return this.ogloszenia = this.db.list('/ogloszenia', {
       query: {
         orderByChild: 'numerOgloszenia',
         equalTo: numer
@@ -67,7 +67,7 @@ export class BazaOgloszenService {
   }
 
   getOgloszeniaByUser(user_id: string) {
-    return this.ogloszenia = this.af.database.list('/ogloszenia', {
+    return this.ogloszenia = this.db.list('/ogloszenia', {
       query: {
         orderByChild: 'zlecajacy',
         equalTo: user_id

@@ -1,5 +1,6 @@
 import { Injectable, Inject  } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable, FirebaseApp  } from 'angularfire2';
+import { FirebaseApp } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database'
 
 interface User {
   nazwa : string;
@@ -12,22 +13,22 @@ export class BazaUzytkownikowService {
   users: FirebaseListObservable<any[]>;
   user:  FirebaseObjectObservable<any>;
 
-  constructor(private af:AngularFire, @Inject(FirebaseApp) private fbApp: firebase.app.App) {
-    this.users  = this.af.database.list('/users') as FirebaseListObservable<User[]>;
+  constructor(private db:AngularFireDatabase, @Inject(FirebaseApp) private fbApp: firebase.app.App) {
+    this.users  = this.db.list('/users') as FirebaseListObservable<User[]>;
   }
 
   getUsers(){
-    this.users  = this.af.database.list('/users') as FirebaseListObservable<User[]>;
+    this.users  = this.db.list('/users') as FirebaseListObservable<User[]>;
     return this.users;
   }
 
   getUserDetails(key){
-    this.user = this.af.database.object('/users/'+key) as FirebaseObjectObservable<User>;
+    this.user = this.db.object('/users/'+key) as FirebaseObjectObservable<User>;
     return this.user;
   }
 
   getUserByEmail(e_mail: string) {
-    return this.users = this.af.database.list('/users', {
+    return this.users = this.db.list('/users', {
       query: {
         orderByChild: 'e_mail',
         equalTo: e_mail
@@ -36,7 +37,7 @@ export class BazaUzytkownikowService {
   }
 
   getUserById(id: string) {
-    return this.users = this.af.database.list('/users', {
+    return this.users = this.db.list('/users', {
       query: {
         orderByChild: 'user_id',
         equalTo: id

@@ -8,6 +8,7 @@ import { AuthHttp, AuthConfig }             from 'angular2-jwt';
 import { CookieLawModule }                  from 'angular2-cookie-law';
 import { AgmCoreModule }                    from 'angular2-google-maps/core';
 import { AngularFireModule }                from 'angularfire2';
+import { AngularFireDatabaseModule }        from 'angularfire2/database';
 import { ModalModule }                      from 'ngx-bootstrap/modal';
 import { AlertModule }                      from 'ngx-bootstrap';
 
@@ -113,7 +114,8 @@ export const firebaseConfig = {
     AlertModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU",
-    })
+    }),
+    AngularFireDatabaseModule,
   ],
   providers: [
     appRoutingProviders,
