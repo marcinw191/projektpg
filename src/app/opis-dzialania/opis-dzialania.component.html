@@ -1,63 +1,66 @@
-<section id="services">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Jak to działa?</h2>
-        <h3 class="section-subheading text-muted">Wystaw zlecenie oszczędzaj czas i pieniadze!</h3>
+<div class="opis-dzialania">
+  <section id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Jak to działa?</h2>
+          <h3 class="section-subheading text-muted">Wystaw zlecenie oszczędzaj czas i pieniadze!</h3>
+        </div>
       </div>
-    </div>
-    <div class="row text-center">
-      <div class="col-md-4">
+      <div class="row text-center">
+        <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <img class="img-fluid" src="../../assets/img/opis-dzialania/jak1.jpg" alt="">
 
                     </span>
-        <h4 class="service-heading">1. Wystaw ogłoszenie</h4>
-        <p class="text-muted">
-          Masz do naprawy zlew kuchenny? A może chciałbyś wyremontować całą łazienkę? </p>
-      </div>
-      <div class="col-md-4">
+          <h4 class="service-heading">1. Wystaw ogłoszenie</h4>
+          <p class="text-muted">
+            Masz do naprawy zlew kuchenny? A może chciałbyś wyremontować całą łazienkę? </p>
+        </div>
+        <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <img class="img-fluid" src="../../assets/img/opis-dzialania/jak2.jpg" alt="">
 
                     </span>
-        <h4 class="service-heading">2. Sprawdź oferty.</h4>
-        <p class="text-muted">Sprawdź oferty od wynonawców. Tysiące firm konkuruje o Twoje zlecenie .</p>
-      </div>
-      <div class="col-md-4">
+          <h4 class="service-heading">2. Sprawdź oferty.</h4>
+          <p class="text-muted">Sprawdź oferty od wynonawców. Tysiące firm konkuruje o Twoje zlecenie .</p>
+        </div>
+        <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <img class="img-fluid" src="../../assets/img/opis-dzialania/jak3.jpg" alt="">
 
                     </span>
-        <h4 class="service-heading">3. Wybierz najlepszą ofertę</h4>
-        <p class="text-muted">Sprawdź opinie o fachowcu, zaakceptuj najlepszą ofertę, zleć wykonanie i gotowe!</p>
+          <h4 class="service-heading">3. Wybierz najlepszą ofertę</h4>
+          <p class="text-muted">Sprawdź opinie o fachowcu, zaakceptuj najlepszą ofertę, zleć wykonanie i gotowe!</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="banner">
+  <div class="banner">
 
-  <div class="container">
+    <div class="container">
 
-    <!-- Call to Action Section -->
-    <div class="row mb-4">
-      <div class="col-md-8">
-        <p>Wystaw ogłoszenie już teraz! w mniej niż 5min</p>
+      <!-- Call to Action Section -->
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <p>Wystaw ogłoszenie już teraz! w mniej niż 5min</p>
+        </div>
+        <div class="col-md-4">
+          <a *ngIf="auth.authenticated()" class="btn btn-lg btn-secondary btn-block" routerLink="/dodaj_ogloszenie">Dodaj ogłoszenie</a>
+        </div>
       </div>
-      <div class="col-md-4">
-        <a *ngIf="auth.authenticated()" class="btn btn-lg btn-secondary btn-block" routerLink="/dodaj_ogloszenie">Dodaj ogłoszenie</a>
-      </div>
-    </div>
-    <!-- /.container -->
-    <div class="row">
-      <div class="col-lg-6">
-        <h4>Przykład:</h4><br>
-        <p>Koszt remontu łazienki ok 5000 zł. Z Kaskadą.pl remont łazienki został wykonany za 3000zł przez firmę która miała akurat wolny termin, a więc aż o 40% taniej!
-      </div>
-      <div class="col-lg-6">
-        <img class="img-fluid rounded" src="../../assets/img/opis-dzialania/builder2.jpg" alt="">
+      <!-- /.container -->
+      <div class="row">
+        <div class="col-lg-6">
+          <h4>Przykład:</h4><br>
+          <p>Koszt remontu łazienki ok 5000 zł. Z Kaskadą.pl remont łazienki został wykonany za 3000zł przez firmę która miała akurat wolny termin, a więc aż o 40% taniej!
+        </div>
+        <div class="col-lg-6">
+          <img class="img-fluid rounded" src="../../assets/img/opis-dzialania/builder2.jpg" alt="">
+        </div>
       </div>
     </div>
   </div>
 </div>
+

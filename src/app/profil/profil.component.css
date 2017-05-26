@@ -2,6 +2,10 @@
   width: 100px
 }
 
+.profil {
+  padding-top: 50px;
+}
+
 label {
   font-weight: bold;
 }

@@ -6,7 +6,7 @@
   font-weight: bold;
 }
 .img_galeria{
-  height: 230px;
+  height: 200px;
   display: block;
   margin-right: auto;
   margin-left: auto;
@@ -18,8 +18,8 @@
   margin-left: auto;
 }
 .ogloszenie{
-  font-size: 80%;
-  max-width: 350px;
+   font-size: 70%;
+   max-width: 350px;
 }
 .ogloszenie_lista{
   font-size: 80%;
