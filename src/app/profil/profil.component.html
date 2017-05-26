@@ -1,35 +1,37 @@
-<div *ngIf="edycja==false && typ_zestawienia==0">
-  <app-profil-widok
-    [profil_view]="profil"
-    (edycja_stan)="updateStanEdycja($event)">
-  </app-profil-widok>
-  <app-profil-widok-przyciski
-    [profil_view]="profil"
-    (zestawienie)="updateTypZestawienia($event)">
-  </app-profil-widok-przyciski>
+<div class="profil">
+  <div *ngIf="edycja==false && typ_zestawienia==0">
+    <app-profil-widok
+      [profil_view]="profil"
+      (edycja_stan)="updateStanEdycja($event)">
+    </app-profil-widok>
+    <app-profil-widok-przyciski
+      [profil_view]="profil"
+      (zestawienie)="updateTypZestawienia($event)">
+    </app-profil-widok-przyciski>
+  </div>
+  <div *ngIf="edycja==true && typ_zestawienia==0">
+    <app-profil-edycja
+      [profil_edit]="profil"
+      (profil_zm)="updateProfil($event)"
+      (edycja_stan)="updateStanEdycja($event)">
+    </app-profil-edycja>
+  </div>
+  <div *ngIf="typ_zestawienia==1">
+    <app-ogloszenia-wykaz
+      [profil]="profil"
+      (zestawienie)="updateTypZestawienia($event)">
+    </app-ogloszenia-wykaz>
+  </div>
+  <div *ngIf="typ_zestawienia==2">
+    <app-oferty-wykaz
+      [profil]="profil"
+      (zestawienie)="updateTypZestawienia($event)">
+    </app-oferty-wykaz>
+  </div>
+  <div *ngIf="typ_zestawienia==3">
+    <app-administrator
+      (zestawienie)="updateTypZestawienia($event)">
+    </app-administrator>
+  </div>
+  <app-login-time *ngIf="typ_zestawienia==0"></app-login-time>
 </div>
-<div *ngIf="edycja==true && typ_zestawienia==0">
-  <app-profil-edycja
-    [profil_edit]="profil"
-    (profil_zm)="updateProfil($event)"
-    (edycja_stan)="updateStanEdycja($event)">
-  </app-profil-edycja>
-</div>
-<div *ngIf="typ_zestawienia==1">
-  <app-ogloszenia-wykaz
-    [profil]="profil"
-    (zestawienie)="updateTypZestawienia($event)">
-  </app-ogloszenia-wykaz>
-</div>
-<div *ngIf="typ_zestawienia==2">
-   <app-oferty-wykaz
-     [profil]="profil"
-     (zestawienie)="updateTypZestawienia($event)">
-   </app-oferty-wykaz>
-</div>
-<div *ngIf="typ_zestawienia==3">
-  <app-administrator
-    (zestawienie)="updateTypZestawienia($event)">
-  </app-administrator>
-</div>
-<app-login-time *ngIf="typ_zestawienia==0"></app-login-time>
