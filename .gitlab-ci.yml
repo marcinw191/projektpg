@@ -6,10 +6,3 @@ build:
   stage: build
   script:
     - npm install
-
-test:
-  stage: test
-  script:
-    - npm test
-  dependencies:
-    - build

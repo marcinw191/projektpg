@@ -20,14 +20,14 @@ describe('GaleriaOgloszen', () => {
     browser.waitForAngularEnabled(false);
     galeriaOgloszenPage.navigateTo();
     var cards = galeriaOgloszenPage.wyswietlOgloszenia();
-    expect(cards.count()).toEqual(8);
+    expect(cards.count()).toEqual(9);
   });
 
   it('powinno wyszukać 5 ogłoszeń po frazie', () => {
     browser.waitForAngularEnabled(false);
     galeriaOgloszenPage.navigateTo();
     var cards = galeriaOgloszenPage.szukaj("remont");
-    expect(cards.count()).toEqual(5);
+    expect(cards.count()).toEqual(6);
   });
 
 //  it('powinno wyszukać 0 ogłoszeń po frazie', () => {
