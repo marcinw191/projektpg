@@ -2,6 +2,10 @@
   font-size: 1rem;
 }
 
+#nazwa {
+  font-weight: bold;
+}
+
 .naglowek {
   border-bottom: 1px solid #eceeef;
 }
@@ -36,4 +40,3 @@ h5 {
     margin-bottom: .2rem;
   }
 }
-

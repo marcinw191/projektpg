@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { options } from './auth.options';
 import { Router} from '@angular/router';
+import Auth0Lock from 'auth0-lock';
 
-declare let Auth0Lock: any;
+import { BazaUzytkownikowService } from '../firebase-uzytkownicy/bazauzytkownikow.service';
+
+//declare let Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
@@ -10,14 +13,42 @@ export class AuthService {
   // Configure Auth0
   lock = new Auth0Lock('1OdxsiT2ns9Gg66V8bVRC450DoAfV4G2','kaskada.eu.auth0.com',options);
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private bazaUzytkownikowService: BazaUzytkownikowService) {
+    let _this = this;
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-      this.lock.getProfile(authResult.idToken, function (error:any, profile:any) {
+      _this.lock.getProfile(authResult.idToken, function (error:any, profile:any) {
         if(error) {
           console.log("error-auth0");
           throw new Error(error);
         }
+        console.log(profile);
+        let _profile = profile;
+        _this.bazaUzytkownikowService.getUsers().subscribe(users => {
+          let wybor = null;
+          for (let x = 0; x < users.length; x++) {
+            if (users[x].user_id ==  _profile.user_id) {
+              wybor = x;
+            }
+          }
+          if (wybor == null)
+          {
+            let email = _profile.user_id.indexOf("twitter") != -1 ? "" : _profile.email;
+            _this.bazaUzytkownikowService.addUser({
+              numerUzytkownika: users.length + 1,
+              user_id: _profile.user_id,
+              zdjecie: _profile.picture,
+              nazwa: _profile.name,
+              e_mail: email,
+              typ: 'zleceniodawca',
+              telefon: '',
+              ulica: '',
+              nr_bud: '',
+              kod: '',
+              miejscowosc: '',
+            })
+          }
+        });
         localStorage.setItem('profile', JSON.stringify(profile)); // Set Profile
         localStorage.setItem('id_token', authResult.idToken);     // Set Token
       })

@@ -1,4 +1,21 @@
+* {
+  font-size: 1rem;
+}
+
+#tytul {
+  font-weight: bold;
+}
+
+.naglowek {
+  border-bottom: 1px solid #eceeef;
+}
+
+app-administrator-oferta {
+  border-bottom: 1px solid #eceeef;
+}
+
 h5 {
+  font-size: 1.25rem;
   margin-bottom: 20px;
 }
 
@@ -9,10 +26,17 @@ h5 {
 }
 
 @media (max-width: 540px) {
+  * {
+    font-size: .7rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
   .btn {
     padding: .3rem .5rem;
     font-size: .6rem;
     margin-bottom: .2rem;
   }
 }
-
