@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FirebaseApp } from 'angularfire2';
+import 'firebase/storage';
+import * as firebase from 'firebase/app'; // for typings
+
 
 @Component({
   selector: 'ogloszenie-miniatura',
@@ -12,7 +15,7 @@ export class OgloszenieMiniaturaComponent implements OnInit {
   @Input() orientacja: string;
   zdjecie: string;
 
-  constructor(@Inject(FirebaseApp) private fbApp: firebase.app.App) {
+  constructor(private fbApp: FirebaseApp) {
   }
 
   ngOnInit() {

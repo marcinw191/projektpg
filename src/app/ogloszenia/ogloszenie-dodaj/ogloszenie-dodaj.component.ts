@@ -1,5 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
+import { FirebaseApp } from 'angularfire2';
+import 'firebase/storage';
+import * as firebase from 'firebase/app'; // for typings
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database'
+import { AuthService } from '../../serwisy/auth0/auth.service'
 
 @Component({
   selector: 'app-dodaj-ogloszenie',
@@ -25,12 +29,12 @@ export class DodajOgloszenieComponent implements OnInit {
   statusDodawania: any;
   items: FirebaseListObservable<any>;
 
-  constructor(private af: AngularFire, @Inject(FirebaseApp) private fbApp: firebase.app.App) {
+  constructor(private db: AngularFireDatabase, private fbApp: FirebaseApp, private authService: AuthService) {
     this.dataPublikacji = new Date();
     this.zlecajacy = 1;
     this.poprawneOgloszenie = true;
     this.pliki = new Array<File>();
-    this.items = af.database.list('/ogloszenia', {
+    this.items = db.list('/ogloszenia', {
       query: {
         limitToLast: 1
       }});
@@ -112,7 +116,7 @@ export class DodajOgloszenieComponent implements OnInit {
         miasto: _this.miasto,
         koniecLicytacji: new Date(_this.koniecLicytacji).toISOString(),
         dataPublikacji: _this.dataPublikacji.toISOString(),
-        zlecajacy: 'undefined user',
+        zlecajacy: _this.authService.getProfileAuth().user_id,
       }).then(function(data){
           var key = data.key;
 
@@ -156,7 +160,7 @@ export class DodajOgloszenieComponent implements OnInit {
   }
 
   updateFileList(ogloszenie_id: string) {
-    var ogloszenie =  this.af.database.object('/ogloszenia/' + ogloszenie_id);
+    var ogloszenie =  this.db.object('/ogloszenia/' + ogloszenie_id);
     var sciezkiDoPlikow = [];
     if(this.pliki.length > 0)
     {

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AngularFire }      from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { AuthService } from '../../serwisy/auth0/auth.service';
 
@@ -21,7 +21,7 @@ export class OfertaDodajComponent {
   oferta_text: string;
 
   constructor(private auth: AuthService,
-              private af: AngularFire) {
+              private db: AngularFireDatabase) {
     this.oferta = {};
     this.oferta_dodana = false;
   }
@@ -38,7 +38,7 @@ export class OfertaDodajComponent {
       new Date().toISOString()
     );
 
-    let oferty = this.af.database.list('/oferty');
+    let oferty = this.db.list('/oferty');
     oferty.push(oferta).then(function(data){
       _this.wyczyscOferte();
       _this.oferta_dodana = true;

@@ -1,7 +1,10 @@
 import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
+import { FirebaseApp } from 'angularfire2'
+import 'firebase/storage';
+import * as firebase from 'firebase/app'; // for typings
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 import { AuthService }             from '../../serwisy/auth0/auth.service';
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
@@ -42,8 +45,8 @@ export class OgloszenieComponent implements OnInit {
   adres: string;
 
   constructor(private route: ActivatedRoute,
-              private af: AngularFire,
-              @Inject(FirebaseApp) private fbApp: firebase.app.App,
+              private db: AngularFireDatabase,
+              private fbApp: FirebaseApp,
               private bazaDanychUzytkownikow: BazaUzytkownikowService,
               private auth: AuthService
   ) {
@@ -68,7 +71,7 @@ export class OgloszenieComponent implements OnInit {
 
     //pobierz dane ogloszenia z bazy
     this.numerOgloszenia = this.route.snapshot.params.id;
-    this.ogloszenie = this.af.database.list('/ogloszenia', {
+    this.ogloszenie = this.db.list('/ogloszenia', {
       query: {
         orderByChild: 'numerOgloszenia',
         equalTo: +this.numerOgloszenia,
@@ -122,7 +125,7 @@ export class OgloszenieComponent implements OnInit {
         }
 
         //pobierz oferty zlozone pod danym ogloszenie,
-        this.oferty = this.af.database.list('/oferty', {
+        this.oferty = this.db.list('/oferty', {
           query: {
             orderByChild: 'numerOgloszenia',
             equalTo: this.numerOgloszenia,
