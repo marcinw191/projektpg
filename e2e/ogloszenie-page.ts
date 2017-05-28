@@ -15,7 +15,7 @@ export class OgloszeniePage {
 
   wyswietlOgloszenie() {
     let tytul = element(by.css('.tytul-oferta'));
-    browser.wait(this.EC.visibilityOf(tytul), 25000);
+    browser.wait(this.EC.visibilityOf(tytul), 50000);
     return element(by.css('.tytul-oferta')).getText();
     /*
     let lokalizacja = element.all(by.css('.lokalizcja'))[0].getText();

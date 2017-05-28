@@ -21,21 +21,26 @@
   <div class="row justify-content-lg-end">
     <div class="col">
 
+      <button *ngIf="pofiltrowane" (click)="wyczyscSzukanie()" class="btn btn-sm btn-primary wyczysc-szukanie">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        Wyszczyść szukanie
+      </button>
+
       <span class="ustawienia">
 
- <span>Widok zleceń :</span>
+        <span>Widok zleceń :</span>
 
-<button  title="Galeria" (click)="zmienOrientacje('galeria')">
+        <button  title="Galeria" (click)="zmienOrientacje('galeria')">
 
- <img *ngIf="orientacja == 'galeria'" src="../assets/img/kafelki_czerwone.png" alt="HTML5">
- <img *ngIf="orientacja == 'lista'" src="../assets/img/kafelki_szare.png" alt="HTML5">
-  </button>
+         <img *ngIf="orientacja == 'galeria'" src="../assets/img/kafelki_czerwone.png" alt="HTML5">
+         <img *ngIf="orientacja == 'lista'" src="../assets/img/kafelki_szare.png" alt="HTML5">
+          </button>
 
-<button  title="Lista" (click)="zmienOrientacje('lista')">
-<img *ngIf="orientacja == 'galeria'" src="../assets/img/lista_szara.png" alt="HTML5">
-<img *ngIf="orientacja == 'lista'" src="../assets/img/lista_czerwona.png" alt="HTML5">
+        <button  title="Lista" (click)="zmienOrientacje('lista')">
+        <img *ngIf="orientacja == 'galeria'" src="../assets/img/lista_szara.png" alt="HTML5">
+        <img *ngIf="orientacja == 'lista'" src="../assets/img/lista_czerwona.png" alt="HTML5">
 
- </button>
+         </button>
 
 </span>
 
