@@ -3,7 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, OpaqueToken } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router'
-import { AngularFireModule, AngularFire, FirebaseApp }  from 'angularfire2';
+import { AngularFireModule }  from 'angularfire2';
+import { AngularFireDatabase }  from 'angularfire2/database';
 import { MapsAPILoader } from 'angular2-google-maps/core';
 import {Observable} from 'rxjs/Rx';
 
