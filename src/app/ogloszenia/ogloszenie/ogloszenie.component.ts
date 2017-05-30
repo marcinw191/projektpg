@@ -127,7 +127,6 @@ export class OgloszenieComponent implements OnInit {
               this.oferty.splice(i, 1);
             }
           }
-          console.log(this.oferty);
         });
       }
       else {
