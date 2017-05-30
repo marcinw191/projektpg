@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../serwisy/auth0/auth.service';
 import { Router } from '@angular/router';
-import { AngularFireModule, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
 import {Observable} from 'rxjs/Rx';
 
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
