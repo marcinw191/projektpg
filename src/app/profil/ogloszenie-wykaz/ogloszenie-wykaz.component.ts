@@ -30,7 +30,7 @@ export class OgloszenieWykazComponent implements OnInit {
     { this.ogloszenie = ogloszenie;
       this.blokada = (this.ogloszenie.blokada == "tak");
       this.dzien = moment(this.ogloszenie.koniecLicytacji).tz("Europe/Warsaw").format('YYYY-MM-DD');
-      this.bazaOfertService.getOfertaByOgloszenie(this.ogloszenie.numerOgloszenia.toString()).subscribe(oferty =>
+      this.bazaOfertService.getOfertyByOgloszenie(this.ogloszenie.numerOgloszenia.toString()).subscribe(oferty =>
       { this.oferty = oferty;
         this.ilosc_ofert=this.oferty.length;
       });
