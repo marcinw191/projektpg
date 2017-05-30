@@ -79,7 +79,7 @@
   <div class="row">
     <div class="col-md-8 col-sm-12">
       <div class="zlozone-oferty">Złożone oferty wykonania</div>
-      <div *ngFor="let oferta of oferty | async">
+      <div *ngFor="let oferta of oferty">
         <app-oferta-wykonania [oferta]="oferta" [user_id]="oferta.oferent"></app-oferta-wykonania>
       </div>
       <app-oferta-dodaj *ngIf="oferent.typ!=='zleceniodawca'" [oferent]="oferent" [nr_ogl]="numerOgloszenia"></app-oferta-dodaj>
