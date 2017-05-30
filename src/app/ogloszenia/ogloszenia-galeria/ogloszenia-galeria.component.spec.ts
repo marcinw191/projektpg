@@ -4,7 +4,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing';
-import { AngularFireModule, AngularFire }  from 'angularfire2';
+import { AngularFireModule }  from 'angularfire2';
+import { AngularFireDatabase }  from 'angularfire2/database';
 import { AlertModule } from 'ngx-bootstrap';
 import {Observable} from 'rxjs/Rx';
 
@@ -113,7 +114,7 @@ describe('GaleriaOgloszenComponent', () => {
       providers: [
         AuthService,
         //AngularFireModule,
-        { provide: AngularFire, useClass: MockAngularFire },
+        { provide: AngularFireDatabase, useClass: MockAngularFire },
         BazaUzytkownikowService,
         ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
