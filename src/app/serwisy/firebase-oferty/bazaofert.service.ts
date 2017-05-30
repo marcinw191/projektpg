@@ -29,16 +29,7 @@ export class BazaOfertService {
     return this.oferta;
   }
 
-  getOfertaByOferent(oferent: string) {
-    return this.oferty = this.db.list('/oferty', {
-      query: {
-        orderByChild: 'oferent',
-        equalTo: oferent
-      }
-    });
-  }
-
-  getOfertaByOgloszenie(nr_ogloszenia: string) {
+  getOfertyByOgloszenie(nr_ogloszenia: string) {
     //pobierz oferty zlozone pod danym ogloszenie,
     return this.oferty = this.db.list('/oferty', {
       query: {
