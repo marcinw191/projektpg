@@ -1,6 +1,6 @@
 import { Component, OnInit }   from '@angular/core';
 import { AuthService }         from '../../serwisy/auth0/auth.service';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { BazaOgloszenService } from  '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
 
 @Component({
   selector: 'app-galeria-ogloszen',
@@ -16,10 +16,16 @@ export class GaleriaOgloszenComponent implements OnInit {
   pofiltrowane: boolean;
 
 
-  constructor(private auth: AuthService, private db: AngularFireDatabase) {
-    this.db.list('/ogloszenia').subscribe(queriedItems => {
-      this.miniatury = queriedItems;
+  constructor(private auth: AuthService,
+              private bazaOgloszenService: BazaOgloszenService) {
+    this.bazaOgloszenService.getOgloszenia().subscribe(queriedItems => {
       this.miniaturyBezFiltrowania = queriedItems;
+      for (let i = this.miniaturyBezFiltrowania.length-1; i >= 0; i--) {
+        if (this.miniaturyBezFiltrowania[i].blokada == 'tak') {
+          this.miniaturyBezFiltrowania.splice(i, 1);
+        }
+      }
+      this.miniatury = this.miniaturyBezFiltrowania;
     });
     this.pofiltrowane = false;
   }
