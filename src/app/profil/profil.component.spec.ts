@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router'
-import { AngularFireModule }  from 'angularfire2';
+import {Router, RouterModule} from '@angular/router'
+import { AngularFireDatabase }  from 'angularfire2/database';
 
 import { AuthService } from '../serwisy/auth0/auth.service';
 import { ProfilComponent } from './profil.component';
@@ -23,23 +23,19 @@ import {AdministratorOgloszenieComponent} from "../administrator/administrator-o
 import {AdministratorOfertaComponent} from "../administrator/administrator-oferta/administrator-oferta.component";
 import {ProfilUzytkownikComponent} from "./profil-uzytkownik/profil-uzytkownik.component";
 
+import { MockAuth } from '../mocks/mock-auth';
+import { MockAngularFireDatabase } from '../mocks/mock-angularfire';
+
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
   navigateByUrl: jasmine.createSpy('navigateByUrl')
 };
 
-let firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
-};
-
 describe('ProfilComponent', () => {
   let component: ProfilComponent;
   let fixture: ComponentFixture<ProfilComponent>;
+  let mockFirebase = new MockAngularFireDatabase();
+  let mockAuth = new MockAuth();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -62,12 +58,12 @@ describe('ProfilComponent', () => {
         AdministratorOfertaComponent,
         ProfilUzytkownikComponent
       ],
-      imports: [ FormsModule, AngularFireModule.initializeApp(firebaseConfig), RouterModule  ],
+      imports: [ FormsModule, RouterModule ],
       providers: [
-        AuthService,
+        { provide: AuthService, useValue: mockAuth.getMock()},
         {provide: Router, useValue: mockRouter },
         BazaUzytkownikowService,
-        AngularFireModule,
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
       ]
     })
     .compileComponents();

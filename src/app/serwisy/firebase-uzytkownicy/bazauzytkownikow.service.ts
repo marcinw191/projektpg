@@ -1,6 +1,6 @@
 import { Injectable, Inject  } from '@angular/core';
-import { FirebaseApp } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database'
+
 
 interface User {
   nazwa : string;
@@ -13,7 +13,7 @@ export class BazaUzytkownikowService {
   users: FirebaseListObservable<any[]>;
   user:  FirebaseObjectObservable<any>;
 
-  constructor(private db:AngularFireDatabase, @Inject(FirebaseApp) private fbApp: firebase.app.App) {
+  constructor(private db:AngularFireDatabase) {
     this.users  = this.db.list('/users') as FirebaseListObservable<User[]>;
   }
 

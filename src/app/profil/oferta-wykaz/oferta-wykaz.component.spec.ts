@@ -6,7 +6,7 @@ import {RouterModule, Router, ActivatedRoute} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {BazaUzytkownikowService} from "../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service";
 import {BazaOfertService} from "../../serwisy/firebase-oferty/bazaofert.service";
-import {AngularFireModule} from "angularfire2";
+import {AngularFireDatabase} from "angularfire2/database";
 import {BazaOgloszenService} from "../../serwisy/firebase-ogloszenia/bazaogloszen.service";
 import { HomeComponent }            from '../../home/home.component';
 import { AdministratorComponent }   from '../../administrator/administrator.component';
@@ -33,21 +33,13 @@ import {OfertyWykazComponent} from "../oferty-wykaz/oferty-wykaz.component";
 import {OfertaDodajComponent} from "../../oferty/oferta-dodaj/oferta-dodaj.component";
 import {AlertModule} from "ngx-bootstrap";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
-
-
-let firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
-};
+import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
 
 describe('OfertaWykazComponent', () => {
   let component: OfertaWykazComponent;
   let fixture: ComponentFixture<OfertaWykazComponent>;
   let location, router;
+  let mockFirebase = new MockAngularFireDatabase();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -83,7 +75,6 @@ describe('OfertaWykazComponent', () => {
         AlertModule,
         RouterModule,
         FormsModule,
-        AngularFireModule.initializeApp(firebaseConfig),
         RouterTestingModule.withRoutes([
           { path:'',                     component: GaleriaOgloszenComponent},
           { path:'zlecenie',             component: GaleriaOgloszenComponent },
@@ -101,7 +92,7 @@ describe('OfertaWykazComponent', () => {
         BazaUzytkownikowService,
         BazaOfertService,
         BazaOgloszenService,
-        AngularFireModule,
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

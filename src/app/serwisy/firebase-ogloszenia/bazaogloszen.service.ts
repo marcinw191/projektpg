@@ -44,7 +44,7 @@ export class BazaOgloszenService {
   // }
 
   getOgloszenieDetails(key){
-    this.ogloszenie = this.db.object('/ogloszenia/'+key) as FirebaseObjectObservable<Ogloszenie>
+    this.ogloszenie = this.db.object('/ogloszenia/'+key) as FirebaseObjectObservable<Ogloszenie>;
     return this.ogloszenie;
   }
 
