@@ -15,7 +15,9 @@
       </div>
       <div class="form-group row">
         <label class="col-sm-5 col-md-4">e-mail :</label>
-        <div class="col-sm-7 col-md-8 tekst">{{profil_edit.e_mail}}</div>
+        <div class="col-sm-7 col-md-8 tekst">
+          <input class="form-control" [(ngModel)]="edit_email" required id="email" maxlength="50" name="email" placeholder="adres e-mail">
+        </div>
       </div>
       <div class="form-group row">
         <label for="telefon" class="col-6 col-sm-5 col-md-4 col-form-label">Numer telefonu :</label>
