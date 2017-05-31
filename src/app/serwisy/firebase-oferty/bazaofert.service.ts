@@ -25,7 +25,7 @@ export class BazaOfertService {
   }
 
   getOfertaDetails(key){
-    this.oferta = this.db.object('/oferty/'+key) as FirebaseObjectObservable<Oferta>
+    this.oferta = this.db.object('/oferty/'+key) as FirebaseObjectObservable<Oferta>;
     return this.oferta;
   }
 

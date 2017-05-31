@@ -1,10 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { AuthService } from '../serwisy/auth0/auth.service'
 import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service'
 import { NavbarComponent } from './navbar.component';
+
+import { MockAngularFireDatabase } from '../mocks/mock-angularfire';
+import { MockAuth } from '../mocks/mock-auth';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
@@ -24,15 +27,17 @@ let firebaseConfig = {
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
+  let mockFirebase = new MockAngularFireDatabase();
+  let mockAuth = new MockAuth();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ NavbarComponent ],
-      imports: [ AngularFireModule.initializeApp(firebaseConfig) ],
+      imports: [ ],
       providers: [
-        AuthService,
+        { provide: AuthService, useValue: mockAuth.getMock()},
         { provide: Router, useValue: mockRouter },
-        AngularFireModule,
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock() },
         BazaUzytkownikowService
       ]
     })

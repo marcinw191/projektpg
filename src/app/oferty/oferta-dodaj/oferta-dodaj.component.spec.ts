@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase} from 'angularfire2/database';
 import { OfertaDodajComponent } from './oferta-dodaj.component';
 import {AlertComponent} from "../../alert/alert.component";
 import {FormsModule} from "@angular/forms";
@@ -7,30 +7,33 @@ import {Router, RouterModule} from "@angular/router";
 import {AlertModule} from "ngx-bootstrap"
 import {AuthService} from "../../serwisy/auth0/auth.service";
 import {BazaUzytkownikowService} from "../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service";
+import { Uzytkownik } from "../../klasy/uzytkownik";
+
+import { MockAuth } from '../../mocks/mock-auth';
+import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
   navigateByUrl: jasmine.createSpy('navigateByUrl')
 };
 
-let firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
-};
 
 describe('OfertaDodajComponent', () => {
   let component: OfertaDodajComponent;
   let fixture: ComponentFixture<OfertaDodajComponent>;
+  let mockFirebase = new MockAngularFireDatabase();
+  let mockAuth = new MockAuth();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ OfertaDodajComponent, AlertComponent ],
-      imports: [ FormsModule, RouterModule, AlertModule, AngularFireModule.initializeApp(firebaseConfig) ],
-      providers: [ AuthService, { provide: Router, useValue: mockRouter}, BazaUzytkownikowService, AngularFireModule ]
+      imports: [ FormsModule, RouterModule, AlertModule ],
+      providers: [
+        { provide: AuthService, useValue: mockAuth.getMock()},
+        { provide: Router, useValue: mockRouter},
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
+        BazaUzytkownikowService
+      ]
     })
       .compileComponents();
   }));
@@ -38,6 +41,7 @@ describe('OfertaDodajComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OfertaDodajComponent);
     component = fixture.componentInstance;
+    component.oferent = new Uzytkownik();
     fixture.detectChanges();
   });
 
