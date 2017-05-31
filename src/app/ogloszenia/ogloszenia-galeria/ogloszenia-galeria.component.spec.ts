@@ -12,6 +12,7 @@ import { GaleriaOgloszenComponent } from './ogloszenia-galeria.component';
 import { OgloszenieMiniaturaComponent } from '../ogloszenie-miniatura/ogloszenie-miniatura.component';
 import { AuthService } from '../../serwisy/auth0/auth.service';
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service'
+import { BazaOgloszenService } from "../../serwisy/firebase-ogloszenia/bazaogloszen.service";
 
 import { HomeComponent }            from '../../home/home.component';
 import { AdministratorComponent }   from '../../administrator/administrator.component';
@@ -73,6 +74,7 @@ describe('GaleriaOgloszenComponent', () => {
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
         { provide: AuthService, useValue: mockAuth.getMock()},
         BazaUzytkownikowService,
+        BazaOgloszenService,
         { provide: FirebaseApp, useValue: mockStorage.getMock()}
         ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
