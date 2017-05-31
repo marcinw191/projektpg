@@ -21,6 +21,7 @@ export class BazaOfertService {
   }
 
   getOferty(){
+    this.oferty = this.db.list('/oferty') as FirebaseListObservable<Oferta[]>
     return this.oferty;
   }
 
