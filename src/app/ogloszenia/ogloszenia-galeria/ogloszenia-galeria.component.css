@@ -1,16 +1,18 @@
 .galeria-ogloszen {
-  padding-top: 80px;
+  padding-top: 20px;
 }
 
 .oferty-przegladaj {
+  background: linear-gradient(40deg, #31b0d5 35%, #292a35 90%);
   background-color: #a6d8f5;
   padding: 30px;
   padding-left: 50px;
   padding-right: 50px;
+  padding-top: 60px;
 }
 
 .znajdz-ogloszenie {
-  padding: 10px;
+  padding: 15px;
   font-size: large;
 }
 
