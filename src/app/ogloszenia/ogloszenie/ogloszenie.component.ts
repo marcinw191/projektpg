@@ -8,9 +8,8 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 
 import { AuthService }             from '../../serwisy/auth0/auth.service';
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
-
-import { Uzytkownik } from '../../klasy/uzytkownik';
-
+import { BazaOfertService }        from '../../serwisy/firebase-oferty/bazaofert.service';
+import { Uzytkownik }              from '../../klasy/uzytkownik';
 
 @Component({
   selector: 'app-ogloszenie',
@@ -20,7 +19,7 @@ import { Uzytkownik } from '../../klasy/uzytkownik';
 export class OgloszenieComponent implements OnInit {
 
   ogloszenie: FirebaseListObservable<any>;
-  oferty: FirebaseListObservable<any>;
+  oferty: any;
   numerOgloszenia: number;
   tytul: string;
   telefon: string;
@@ -47,6 +46,7 @@ export class OgloszenieComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private db: AngularFireDatabase,
               private fbApp: FirebaseApp,
+              private bazaOfertService: BazaOfertService,
               private bazaDanychUzytkownikow: BazaUzytkownikowService,
               private auth: AuthService
   ) {
@@ -62,8 +62,7 @@ export class OgloszenieComponent implements OnInit {
   ngOnInit() {
 
     //pobierz obecnego uzytkownika(oferenta) z bazy
-    if(this.auth.authenticated())
-    {
+    if(this.auth.authenticated()) {
       this.bazaDanychUzytkownikow.getUserById(this.auth.getProfileAuth().user_id).subscribe(user => {
         this.oferent.zaladujZBazy(user[0]);
       });
@@ -78,8 +77,7 @@ export class OgloszenieComponent implements OnInit {
       }
     });
     this.ogloszenie.subscribe(queriedItems => {
-      if(queriedItems.length == 1)
-      {
+      if(queriedItems.length == 1) {
         var __this = this;
         this.istnieje = true;
         this.tytul = queriedItems[0].tytul;
@@ -102,20 +100,17 @@ export class OgloszenieComponent implements OnInit {
         });
 
         //pobierz zdjęcia z firebase storage
-        if(queriedItems[0].pliki.length > 0)
-        {
-          for(let i = 0; i < queriedItems[0].pliki.length; i++)
-          {
-            this.fbApp.storage().ref().child(queriedItems[0].pliki[i]).getDownloadURL().then(function(url)
-              {
+        if(queriedItems[0].pliki.length > 0) {
+          for(let i = 0; i < queriedItems[0].pliki.length; i++) {
+            this.fbApp.storage().ref().child(queriedItems[0].pliki[i]).getDownloadURL()
+              .then(function(url) {
                 for(let prop of Object.keys(__this))
                   if(prop.indexOf("zdjecie" + i) !== -1)
                     __this[prop] = url;
-              }
-            ).catch(function(error)
-            {
-              console.log(error);
-            });
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
           }
           if(queriedItems[0].pliki.length < 5)
             for(let i = queriedItems[0].pliki.length - 1; i < 5; i++)
@@ -125,15 +120,16 @@ export class OgloszenieComponent implements OnInit {
         }
 
         //pobierz oferty zlozone pod danym ogloszenie,
-        this.oferty = this.db.list('/oferty', {
-          query: {
-            orderByChild: 'numerOgloszenia',
-            equalTo: this.numerOgloszenia,
+        this.bazaOfertService.getOfertyByOgloszenie(this.numerOgloszenia.toString()).subscribe(oferty =>
+        { this.oferty = oferty;
+          for (let i = this.oferty.length - 1; i >= 0; i--) {
+            if (this.oferty[i].blokada == 'tak') {
+              this.oferty.splice(i, 1);
+            }
           }
         });
       }
-      else
-      {
+      else {
         this.istnieje = false;
       }
     });

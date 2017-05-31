@@ -11,6 +11,7 @@ import { OgloszenieComponent } from './ogloszenie.component';
 import { GoogleMapsComponent } from '../../googlemaps/googlemaps.component'
 import { OfertaWykonaniaComponent } from '../../oferty/oferta-wykonania/oferta-wykonania.component'
 import { AlertComponent } from '../../alert/alert.component'
+import { BazaOfertService }        from '../../serwisy/firebase-oferty/bazaofert.service';
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service'
 
 import { MockAuth } from '../../mocks/mock-auth';
@@ -48,6 +49,7 @@ describe('OgloszenieComponent', () => {
         { provide: Router, useValue: mockRouter },
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
         BazaUzytkownikowService,
+        BazaOfertService,
         { provide: AuthService, useValue: mockAuth.getMock()},
         { provide: MapsAPILoader, useClass: mapsAPILoader },
         { provide: FirebaseApp, useValue: mockStorage.getMock()}

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
-
 interface Ogloszenie {
   tytul: string;
   opis: string;
