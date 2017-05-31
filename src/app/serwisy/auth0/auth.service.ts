@@ -22,7 +22,6 @@ export class AuthService {
           console.log("error-auth0");
           throw new Error(error);
         }
-        console.log(profile);
         let _profile = profile;
         _this.bazaUzytkownikowService.getUsers().subscribe(users => {
           let wybor = null;
