@@ -1,37 +1,33 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AuthService } from '../serwisy/auth0/auth.service'
 import { Router } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service'
 
+import { MockAngularFireDatabase } from '../mocks/mock-angularfire';
+import { MockAuth } from '../mocks/mock-auth';
+
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
   navigateByUrl: jasmine.createSpy('navigateByUrl')
 };
 
-let firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
-};
-
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let mockFirebase = new MockAngularFireDatabase();
+  let mockAuth = new MockAuth();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      imports: [AngularFireModule.initializeApp(firebaseConfig)],
+      imports: [ ],
       providers: [
-        AuthService,
+        { provide: AuthService, useValue: mockAuth.getMock()},
         { provide: Router, useValue: mockRouter },
-        AngularFireModule,
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock() },
         BazaUzytkownikowService
       ]
     })

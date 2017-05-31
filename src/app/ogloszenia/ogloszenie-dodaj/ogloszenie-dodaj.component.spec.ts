@@ -2,21 +2,17 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router'
 import { AlertModule } from 'ngx-bootstrap';
-import { AngularFireModule }  from 'angularfire2';
+import { AngularFireDatabase }  from 'angularfire2/database';
 import { AuthService } from '../../serwisy/auth0/auth.service';
+import { FirebaseApp } from 'angularfire2';
 
 import { DodajOgloszenieComponent } from './ogloszenie-dodaj.component';
 import { AlertComponent } from '../../alert/alert.component'
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service'
 
-let firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
-};
+import { MockAuth } from '../../mocks/mock-auth';
+import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
+import { MockStorge } from '../../mocks/mock-storage';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
@@ -26,16 +22,20 @@ let mockRouter = {
 describe('DodajOgloszenieComponent', () => {
   let component: DodajOgloszenieComponent;
   let fixture: ComponentFixture<DodajOgloszenieComponent>;
+  let mockFirebase = new MockAngularFireDatabase();
+  let mockAuth = new MockAuth();
+  let mockStorage = new MockStorge();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DodajOgloszenieComponent, AlertComponent ],
-      imports: [ AlertModule, FormsModule, RouterModule, AngularFireModule.initializeApp(firebaseConfig) ],
+      imports: [ AlertModule, FormsModule, RouterModule ],
       providers: [
-        AngularFireModule,
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
         BazaUzytkownikowService,
-        AuthService,
-        { provide: Router, useValue: mockRouter }
+        { provide: AuthService, useValue: mockAuth.getMock()},
+        { provide: Router, useValue: mockRouter },
+        { provide: FirebaseApp, useValue: mockStorage.getMock()}
       ]
     })
     .compileComponents();

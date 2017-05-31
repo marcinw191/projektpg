@@ -4,10 +4,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing';
-import { AngularFireModule }  from 'angularfire2';
+import { FirebaseApp } from 'angularfire2';
 import { AngularFireDatabase }  from 'angularfire2/database';
 import { AlertModule } from 'ngx-bootstrap';
-import {Observable} from 'rxjs/Rx';
 
 import { GaleriaOgloszenComponent } from './ogloszenia-galeria.component';
 import { OgloszenieMiniaturaComponent } from '../ogloszenie-miniatura/ogloszenie-miniatura.component';
@@ -26,57 +25,17 @@ import { AlertComponent} from '../../alert/alert.component';
 import { LoginTimeComponent } from '../../profil/login-time/login-time.component';
 import { GoogleMapsComponent } from '../../googlemaps/googlemaps.component';
 
-let firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
-};
-
-class MockAngularFire {
-  public database: any;
-
-  constructor(){
-    this.database = {
-      list: function(data){
-        return Observable.of(
-          [
-            {
-              numerOgloszenia: 1,
-              tytul: 'Kuchnia do remontu',
-              czasWykonania: 2,
-              miasto: 'Gdansk',
-              ulica: 'Szczecinska',
-              ulica_numer: '12',
-              dataPublikacji: '01-01-2014T0',
-              koniecLicytacji: '01-01-2016T0',
-              pliki: []
-            },
-            {
-              numerOgloszenia: 2,
-              tytul: 'Salon do malowania',
-              czasWykonania: 2,
-              miasto: 'Gdansk',
-              ulica: 'Szczecinska',
-              ulica_numer: '12',
-              dataPublikacji: '01-01-2014T0',
-              koniecLicytacji: '01-01-2016T0',
-              pliki: []
-            },
-          ]
-        )
-      }
-    }
-  }
-
-}
+import { MockAuth } from '../../mocks/mock-auth';
+import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
+import { MockStorge } from '../../mocks/mock-storage';
 
 describe('GaleriaOgloszenComponent', () => {
   let component: GaleriaOgloszenComponent;
   let fixture: ComponentFixture<GaleriaOgloszenComponent>;
   let location, router;
+  let mockFirebase = new MockAngularFireDatabase();
+  let mockAuth = new MockAuth();
+  let mockStorage = new MockStorge();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -98,7 +57,6 @@ describe('GaleriaOgloszenComponent', () => {
       imports: [
         FormsModule,
         AlertModule,
-        AngularFireModule.initializeApp(firebaseConfig),
         RouterTestingModule.withRoutes([
           { path:'',                     component: GaleriaOgloszenComponent},
           { path:'zlecenie',             component: GaleriaOgloszenComponent },
@@ -112,10 +70,10 @@ describe('GaleriaOgloszenComponent', () => {
           { path:'**',                   component: Strona404Component }
       ]) ],
       providers: [
-        AuthService,
-        //AngularFireModule,
-        { provide: AngularFireDatabase, useClass: MockAngularFire },
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
+        { provide: AuthService, useValue: mockAuth.getMock()},
         BazaUzytkownikowService,
+        { provide: FirebaseApp, useValue: mockStorage.getMock()}
         ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

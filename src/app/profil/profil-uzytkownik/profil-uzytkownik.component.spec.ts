@@ -1,26 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { ProfilUzytkownikComponent } from './profil-uzytkownik.component';
 import {BazaUzytkownikowService} from "../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service";
-
-let firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
-};
+import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
 
 describe('ProfilUzytkownikComponent', () => {
   let component: ProfilUzytkownikComponent;
   let fixture: ComponentFixture<ProfilUzytkownikComponent>;
+  let mockFirebase = new MockAngularFireDatabase();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ProfilUzytkownikComponent ],
-      imports: [ AngularFireModule.initializeApp(firebaseConfig) ],
-      providers: [ BazaUzytkownikowService, AngularFireModule ]
+      imports: [ ],
+      providers: [
+        BazaUzytkownikowService,
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
+      ]
     })
     .compileComponents();
   }));

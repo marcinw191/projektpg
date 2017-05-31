@@ -1,30 +1,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AdministratorOfertyComponent } from './administrator-oferty.component';
 import {AdministratorOfertaComponent} from "../administrator-oferta/administrator-oferta.component";
 import {ProfilUzytkownikComponent} from "../../profil/profil-uzytkownik/profil-uzytkownik.component";
 import {FormsModule} from "@angular/forms";
 import {BazaOfertService} from "../../serwisy/firebase-oferty/bazaofert.service";
 
-let firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
-};
-
+import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
+import {BazaUzytkownikowService} from "../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service";
 
 describe('AdministratorOfertyComponent', () => {
   let component: AdministratorOfertyComponent;
   let fixture: ComponentFixture<AdministratorOfertyComponent>;
+  let mockFirebase = new MockAngularFireDatabase();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AdministratorOfertyComponent, AdministratorOfertaComponent, ProfilUzytkownikComponent ],
-      imports: [ FormsModule,  AngularFireModule.initializeApp(firebaseConfig) ],
-      providers: [ BazaOfertService, AngularFireModule ]
+      imports: [ FormsModule ],
+      providers: [
+        BazaOfertService,
+        BazaUzytkownikowService,
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock()}
+        ]
     })
     .compileComponents();
   }));

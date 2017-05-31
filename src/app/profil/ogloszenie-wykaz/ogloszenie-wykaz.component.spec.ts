@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase} from 'angularfire2/database';
 import { Location } from '@angular/common';
 import { OgloszenieWykazComponent } from './ogloszenie-wykaz.component';
 import {RouterModule, Router} from "@angular/router";
@@ -33,29 +33,14 @@ import {OfertaDodajComponent} from "../../oferty/oferta-dodaj/oferta-dodaj.compo
 import {OfertaWykazComponent} from "../oferta-wykaz/oferta-wykaz.component";
 import {AlertModule} from "ngx-bootstrap";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
-import {Observable} from "rxjs";
+import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
 
-let firebaseConfig = {
-  apiKey: "AIzaSyDIUpjNc8RE0NDMFmuW3LRYhuZwiH7R-Vo",
-  authDomain: "kaskada-5ebd3.firebaseapp.com",
-  databaseURL: "https://kaskada-5ebd3.firebaseio.com",
-  projectId: "kaskada-5ebd3",
-  storageBucket: "kaskada-5ebd3.appspot.com",
-  messagingSenderId: "846477355550"
-};
-
-let mockBazaOgloszenService = {
-  getOgloszenieDetails: function(key){
-    return Observable.of({
-      numerOgloszenia: 1
-    })
-  }
-};
 
 describe('OgloszenieWykazComponent', () => {
   let component: OgloszenieWykazComponent;
   let fixture: ComponentFixture<OgloszenieWykazComponent>;
   let location, router;
+  let mockFirebase = new MockAngularFireDatabase();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -91,7 +76,6 @@ describe('OgloszenieWykazComponent', () => {
       imports: [
         RouterModule,
         FormsModule,
-        AngularFireModule.initializeApp(firebaseConfig),
         RouterTestingModule.withRoutes([
           { path:'',                     component: GaleriaOgloszenComponent},
           { path:'zlecenie',             component: GaleriaOgloszenComponent },
@@ -107,8 +91,8 @@ describe('OgloszenieWykazComponent', () => {
         AlertModule
       ],
       providers: [
-        { provide: BazaOgloszenService, useValue: mockBazaOgloszenService },
-        AngularFireModule,
+        BazaOgloszenService,
+        { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
         BazaOfertService,
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
@@ -126,11 +110,11 @@ describe('OgloszenieWykazComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-/*
+
   it('should create', () => {
     setTimeout(()=>{
       expect(component).toBeTruthy();
     }, 5000);
   });
-  */
+
 });
