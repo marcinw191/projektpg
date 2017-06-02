@@ -13,7 +13,7 @@ describe('WalidacjaService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('powinien sprawdzić poprawność formatu : kod pocztowego', inject([WalidacjaService], (service: WalidacjaService) => {
+  it('powinien sprawdzić poprawność formatu : kod pocztowy', inject([WalidacjaService], (service: WalidacjaService) => {
     expect(service.walidacja('kod', '80-354')).toBe(true);
     expect(service.walidacja('kod', '123456')).toBe(false);
     expect(service.walidacja('kod', 'bc-def')).toBe(false);
