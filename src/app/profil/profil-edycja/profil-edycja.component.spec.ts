@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from "@angular/forms";
 
 import { ProfilEdycjaComponent } from './profil-edycja.component';
-import {FormsModule} from "@angular/forms";
+import { WalidacjaService } from '../../serwisy/walidacja/walidacja.service';
 
 describe('ProfilEdycjaComponent', () => {
   let component: ProfilEdycjaComponent;
@@ -10,7 +11,8 @@ describe('ProfilEdycjaComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ProfilEdycjaComponent ],
-      imports: [ FormsModule ]
+      imports: [ FormsModule ],
+      providers: [ WalidacjaService ],
     })
     .compileComponents();
   }));

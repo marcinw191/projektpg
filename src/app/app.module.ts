@@ -51,6 +51,7 @@ import { AuthService }                  from './serwisy/auth0/auth.service';
 import { BazaUzytkownikowService }      from './serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 import { BazaOgloszenService }          from './serwisy/firebase-ogloszenia/bazaogloszen.service';
 import { BazaOfertService }             from './serwisy/firebase-oferty/bazaofert.service';
+import { WalidacjaService }             from './serwisy/walidacja/walidacja.service';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
@@ -128,6 +129,7 @@ export const firebaseConfig = {
     BazaUzytkownikowService,
     BazaOgloszenService,
     BazaOfertService,
+    WalidacjaService,
   ],
   bootstrap: [AppComponent]
 })

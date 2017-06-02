@@ -28,6 +28,7 @@ export class BazaOgloszenService {
   }
 
   getOgloszenia(){
+    this.ogloszenia  = this.db.list('/ogloszenia') as FirebaseListObservable<Ogloszenie[]>
     return this.ogloszenia;
   }
 
