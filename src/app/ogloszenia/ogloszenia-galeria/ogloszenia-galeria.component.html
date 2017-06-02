@@ -1,22 +1,22 @@
-<div class="container galeria-ogloszen">
-  <!-- Page Heading -->
-  <span id="niezalogowany">
-      <h6 *ngIf="!auth.authenticated()">Nie jesteś zalogowany, wciśnij przycisk <strong>Login</strong> powyżej</h6>
-  </span>
 
-  <div class="oferty-przegladaj rounded container">
-    <div class="row">
-      <h1 class="my-0">Oferty <small>przeglądaj</small></h1>
-    </div>
-    <div class="row">
-      <div class="input-group my-4">
-        <input type="text" class="form-control znajdz-ogloszenie" [(ngModel)]="fraza" placeholder="znajdź ogłoszenie..." aria-describedby="basic-addon2">
-        <span class="input-group-btn">
+<div class="oferty-przegladaj">
+  <div class="container">
+    <h1 class="my-0">Oferty <small>przeglądaj</small></h1>
+  </div>
+  <div class="container">
+    <div class="input-group my-4">
+      <input type="text" class="form-control znajdz-ogloszenie " [(ngModel)]="fraza" placeholder="znajdź ogłoszenie..."  aria-describedby="basic-addon2" >
+      <span class="input-group-btn">
           <button class="btn btn-primary" type="button" (click)="szukaj()">SZUKAJ</button>
         </span>
-      </div>
     </div>
   </div>
+</div>
+
+<div class="container galeria-ogloszen">
+  <!-- Page Heading -->
+
+
 
   <div class="row justify-content-lg-end">
     <div class="col">
