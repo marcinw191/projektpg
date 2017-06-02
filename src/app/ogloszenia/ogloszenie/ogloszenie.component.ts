@@ -63,7 +63,7 @@ export class OgloszenieComponent implements OnInit {
 
     //pobierz obecnego uzytkownika(oferenta) z bazy
     if(this.auth.authenticated()) {
-      this.bazaDanychUzytkownikow.getUserById(this.auth.getProfileAuth().user_id).subscribe(user => {
+      this.bazaDanychUzytkownikow.getUserById(this.auth.getProfileAuth().sub).subscribe(user => {
         this.oferent.zaladujZBazy(user[0]);
       });
     }

@@ -116,7 +116,7 @@ export class DodajOgloszenieComponent implements OnInit {
         miasto: _this.miasto,
         koniecLicytacji: new Date(_this.koniecLicytacji).toISOString(),
         dataPublikacji: _this.dataPublikacji.toISOString(),
-        zlecajacy: _this.authService.getProfileAuth().user_id,
+        zlecajacy: _this.authService.getProfileAuth().sub,
       }).then(function(data){
           var key = data.key;
 
