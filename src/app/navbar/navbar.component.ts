@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
     let timer = Observable.timer(2000,2000);
     timer.subscribe(t => {
       if(this.auth.authenticated()) {
-        this.bazaUzytkownikowService.getUserById(this.auth.getProfileAuth().user_id).subscribe(user => {
+        this.bazaUzytkownikowService.getUserById(this.auth.getProfileAuth().sub).subscribe(user => {
           this.user = user[0];
         });
       }

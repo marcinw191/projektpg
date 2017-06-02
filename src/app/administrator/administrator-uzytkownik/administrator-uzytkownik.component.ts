@@ -26,7 +26,7 @@ export class AdministratorUzytkownikComponent implements OnInit {
     this.bazaUzytkownikowService.getUserDetails(this.key).subscribe(user => {
       this.user = user;
       this.blokada = (this.user.blokada == "tak");
-      this.disable = (this.user.user_id == this.user_auth.user_id);
+      this.disable = (this.user.user_id == this.user_auth.sub);
     });
   }
 

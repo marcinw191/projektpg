@@ -44,6 +44,7 @@ import { PolicyComponent }                   from './cookielaw/policy/policy.com
 import { AlertComponent }                    from './alert/alert.component';
 import { GoogleMapsComponent }               from './googlemaps/googlemaps.component';
 import { OpisDzialaniaComponent }            from './opis-dzialania/opis-dzialania.component';
+import { CallbackComponent }                 from './callback/callback.component';
 import { Strona404Component }                from './strona404/strona404.component';
 
 import { routing, appRoutingProviders } from './app.routing';
@@ -89,6 +90,8 @@ export const firebaseConfig = {
     ProfilEdycjaComponent,
     OgloszeniaWykazComponent,
     OgloszenieWykazComponent,
+    OfertyWykazComponent,
+    OfertaWykazComponent,
     ProfilUzytkownikComponent,
     AdministratorComponent,
     AdministratorUzytkownicyComponent,
@@ -98,9 +101,8 @@ export const firebaseConfig = {
     AdministratorOfertaComponent,
     AdministratorOgloszenieComponent,
     LoginTimeComponent,
+    CallbackComponent,
     Strona404Component,
-    OfertyWykazComponent,
-    OfertaWykazComponent,
   ],
   imports: [
     BrowserModule,

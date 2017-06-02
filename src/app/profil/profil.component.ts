@@ -45,7 +45,7 @@ export class ProfilComponent implements OnInit {
         this.users = users;
         // porównanie id z autoryzacji z id z "bazy"
         for (let x=0; x<this.users.length; x++) {
-          if (this.users[x].user_id ==  this.profil_auth.user_id) {
+          if (this.users[x].user_id ==  this.profil_auth.sub) {
             this.wybor=x;
             this.profil = this.users[this.wybor];
           }

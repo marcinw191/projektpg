@@ -8,6 +8,7 @@ import { OgloszenieComponent }      from './ogloszenia/ogloszenie/ogloszenie.com
 import { PolicyComponent }          from './cookielaw/policy/policy.component';
 import { DodajOgloszenieComponent } from './ogloszenia/ogloszenie-dodaj/ogloszenie-dodaj.component';
 import { OpisDzialaniaComponent }   from './opis-dzialania/opis-dzialania.component';
+import { CallbackComponent }        from './callback/callback.component';
 import { Strona404Component }       from './strona404/strona404.component';
 
 const appRoutes: Routes = [
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
   { path:'profil',               component: ProfilComponent },
   { path:'ogloszenie/:id',       component: OgloszenieComponent },
   { path:'polityka_prywatnosci', component: PolicyComponent },
+  { path:'callback',             component: CallbackComponent },
   { path:'**',                   component: Strona404Component } // musi być na końcu tablicy routingu];
   ];
 
