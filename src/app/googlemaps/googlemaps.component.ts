@@ -1,5 +1,8 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { MapsAPILoader } from 'angular2-google-maps/core';
+import { DialogService }     from 'ngx-bootstrap-modal';
+
+import { PopupAlertComponent }   from '../popup/popup-alert/popup-alert.component';
 
 declare var google: any;
 
@@ -16,13 +19,13 @@ export class GoogleMapsComponent implements OnChanges{
   geocoder;
   zoom: number = 14;
 
-  constructor (private mapsAPILoader : MapsAPILoader) {
+  constructor (private mapsAPILoader : MapsAPILoader,
+               public dialogService: DialogService) {
     this.adres = "";
   }
 
   ngOnChanges () {
-
-    var _this = this;
+    let _this = this;
     this.mapsAPILoader.load().then(function() {
 
       _this.geocoder = new google.maps.Geocoder();
@@ -34,10 +37,12 @@ export class GoogleMapsComponent implements OnChanges{
           }
           else {
             if (status == "ZERO_RESULTS") {
-              alert('Jest problem ze znalezieniem adresu w Google maps');
+              // alert('Jest problem ze znalezieniem adresu w Google maps');
+              _this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Jest problem ze znalezieniem adresu w Google maps' });
             }
             else {
-              alert('Wystąpił nieoczekiwany błąd ze strony Google maps (problem :' + status + ')');
+              // alert('Wystąpił nieoczekiwany błąd ze strony Google maps (problem :' + status + ')');
+              _this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Wystąpił nieoczekiwany błąd ze strony Google maps (problem :' + status + ')' });
             }
           }
         });

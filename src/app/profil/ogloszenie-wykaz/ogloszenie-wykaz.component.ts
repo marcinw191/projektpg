@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DialogService }     from 'ngx-bootstrap-modal';
+
+import { PopupConfirmComponent } from '../../popup/popup-confirm/popup-confirm.component';
 
 import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
 import { BazaOfertService }    from '../../serwisy/firebase-oferty/bazaofert.service';
@@ -22,7 +25,8 @@ export class OgloszenieWykazComponent implements OnInit {
   blokada    :boolean = false;
 
   constructor(private bazaOgloszenService: BazaOgloszenService,
-              private bazaOfertService: BazaOfertService) {
+              private bazaOfertService: BazaOfertService,
+              public dialogService: DialogService) {
   }
 
   ngOnInit() {
@@ -38,7 +42,15 @@ export class OgloszenieWykazComponent implements OnInit {
   }
 
   deleteOgloszenie(key) {
-    this.result = confirm('Czy usunąć ogłoszenie z bazy ?');
+    // this.result = confirm('Czy usunąć ogłoszenie z bazy ?');
+    this.dialogService.addDialog(PopupConfirmComponent, {
+      title: '',
+      message: 'Czy usunąć ogłoszenie z bazy ?'
+    })
+      .subscribe((isConfirmed) => {
+        //Get dialog result
+        this.result = isConfirmed;
+      });
     if (this.result) {
       this.bazaOgloszenService.deleteOgloszenie(key);
     }

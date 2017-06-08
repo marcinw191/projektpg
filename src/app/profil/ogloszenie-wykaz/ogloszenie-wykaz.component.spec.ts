@@ -34,6 +34,7 @@ import {OfertaWykazComponent} from "../oferta-wykaz/oferta-wykaz.component";
 import {AlertModule} from "ngx-bootstrap";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 
 describe('OgloszenieWykazComponent', () => {
@@ -94,6 +95,7 @@ describe('OgloszenieWykazComponent', () => {
         BazaOgloszenService,
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
         BazaOfertService,
+        DialogService,
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

@@ -1,5 +1,8 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {WalidacjaService} from '../../serwisy/walidacja/walidacja.service';
+import { DialogService }     from 'ngx-bootstrap-modal';
+
+import { PopupAlertComponent } from '../../popup/popup-alert/popup-alert.component';
 
 @Component({
   selector: 'app-profil-edycja',
@@ -16,7 +19,8 @@ export class ProfilEdycjaComponent implements OnInit {
   private edit_kod: string;
   private profil_temp: any;
 
-  constructor(private walidacjaService: WalidacjaService) { }
+  constructor(private walidacjaService: WalidacjaService,
+              public dialogService: DialogService) { }
 
   ngOnInit() {
     this.profil_temp=this.profil_edit;
@@ -40,15 +44,18 @@ export class ProfilEdycjaComponent implements OnInit {
     }
     else {
       if (!this.walidacjaService.walidacja("telefon",this.edit_telefon)) {
-        alert('Numer telefonu niepoprawny');
+        // alert('Numer telefonu niepoprawny');
+        this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Numer telefonu niepoprawny' });
         this.edit_telefon=this.profil_edit.telefon;
       }
       if (!this.walidacjaService.walidacja("kod",this.edit_kod)) {
-        alert('Kod pocztowy niepoprawny');
+        // alert('Kod pocztowy niepoprawny');
+        this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Kod pocztowy niepoprawny' });
         this.edit_kod=this.profil_edit.kod;
       }
       if (!this.walidacjaService.walidacja("email",this.edit_email)) {
-        alert('Adres e-mail niepoprawny');
+        // alert('Adres e-mail niepoprawny');
+        this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Adres e-mail niepoprawny' });
         this.edit_email=this.profil_edit.e_mail;
       }
     }

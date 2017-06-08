@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 
 import { MockAuth } from '../../mocks/mock-auth';
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
@@ -28,6 +29,7 @@ describe('AdministratorUzytkownicyComponent', () => {
       imports: [ FormsModule ],
       providers: [
         BazaUzytkownikowService,
+        DialogService,
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
         { provide: AuthService, useValue: mockAuth.getMock()},
         { provide: Router, useValue: mockRouter}

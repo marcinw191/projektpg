@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {BazaOgloszenService} from "../../serwisy/firebase-ogloszenia/bazaogloszen.service";
 import {BazaUzytkownikowService} from "../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service";
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 describe('AdministratorOgloszenieComponent', () => {
   let component: AdministratorOgloszenieComponent;
@@ -19,6 +20,7 @@ describe('AdministratorOgloszenieComponent', () => {
       providers: [
         BazaOgloszenService,
         BazaUzytkownikowService,
+        DialogService,
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()}
       ]
     })

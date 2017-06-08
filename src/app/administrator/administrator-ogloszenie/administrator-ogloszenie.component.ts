@@ -1,4 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DialogService }     from 'ngx-bootstrap-modal';
+
+import { PopupAlertComponent }   from '../../popup/popup-alert/popup-alert.component';
+import { PopupConfirmComponent } from '../../popup/popup-confirm/popup-confirm.component';
 
 import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
 
@@ -14,7 +18,8 @@ export class AdministratorOgloszenieComponent implements OnInit {
   result     :boolean;
   blokada    :boolean = false;
 
-  constructor(private bazaOgloszenService: BazaOgloszenService ) { }
+  constructor(private bazaOgloszenService: BazaOgloszenService,
+              public dialogService: DialogService) { }
 
   ngOnInit() {
     this.bazaOgloszenService.getOgloszenieDetails(this.key).subscribe(ogloszenie =>
@@ -27,17 +32,27 @@ export class AdministratorOgloszenieComponent implements OnInit {
     let ogloszenie: any;
     if (this.blokada) {
       ogloszenie = { blokada: 'tak' };
-      alert('Ogłoszenie zablokowane !!!');
+      // alert('Ogłoszenie zablokowane !!!');
+      this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Ogłoszenie zablokowane !!!' });
     }
     else {
       ogloszenie = { blokada: 'nie' };
-      alert('Ogłoszenie odblokowane !!!');
+      // alert('Ogłoszenie odblokowane !!!');
+      this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Ogłoszenie odblokowane !!!' });
     }
     this.bazaOgloszenService.updateOgloszenie(key, ogloszenie);
   }
 
   deleteOgloszenie(key) {
-    this.result = confirm('Czy usunąć ogłoszenie z bazy ?');
+    // this.result = confirm('Czy usunąć ogłoszenie z bazy ?');
+    this.dialogService.addDialog(PopupConfirmComponent, {
+      title: '',
+      message: 'Czy usunąć ogłoszenie z bazy ?'
+    })
+      .subscribe((isConfirmed) => {
+        //Get dialog result
+        this.result = isConfirmed;
+      });
     if (this.result) {
       this.bazaOgloszenService.deleteOgloszenie(key);
     }

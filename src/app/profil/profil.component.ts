@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router}             from '@angular/router';
+import { DialogService }     from 'ngx-bootstrap-modal';
+
+import { PopupAlertComponent } from '../popup/popup-alert/popup-alert.component';
 
 import { AuthService }             from '../serwisy/auth0/auth.service';
 import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
@@ -31,7 +34,8 @@ export class ProfilComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private bazaUzytkownikowService:BazaUzytkownikowService,
-              private router: Router){
+              private router: Router,
+              public dialogService: DialogService) {
   }
 
   ngOnInit() {
@@ -53,7 +57,8 @@ export class ProfilComponent implements OnInit {
       });
     }
     else {
-      alert('Nie jesteś zalogowany !!!');
+      // alert('Nie jesteś zalogowany !!!');
+      this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Nie jesteś zalogowany !!!' });
       this.router.navigateByUrl('/');
     }
   }
@@ -69,7 +74,8 @@ export class ProfilComponent implements OnInit {
   updateProfil(event:any) {
     this.profil = event.profil;
     this.bazaUzytkownikowService.updateUser(this.profil.$key,this.profil);
-    alert('Profil zapisany');
+    // alert('Profil zapisany');
+    this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Profil zapisany' });
   }
 
 }
