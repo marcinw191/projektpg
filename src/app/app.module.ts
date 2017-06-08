@@ -1,16 +1,17 @@
-import { BrowserModule }                    from '@angular/platform-browser';
-import { NgModule }                         from '@angular/core';
-import { CommonModule }                     from '@angular/common';
-import { FormsModule }                      from '@angular/forms';
-import { HttpModule, Http, RequestOptions } from '@angular/http';
-import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
-import { AuthHttp, AuthConfig }             from 'angular2-jwt';
-import { CookieLawModule }                  from 'angular2-cookie-law';
-import { AgmCoreModule }                    from 'angular2-google-maps/core';
-import { AngularFireModule }                from 'angularfire2';
-import { AngularFireDatabaseModule }        from 'angularfire2/database';
-import { ModalModule }                      from 'ngx-bootstrap/modal';
-import { AlertModule }                      from 'ngx-bootstrap';
+import { BrowserModule }                        from '@angular/platform-browser';
+import { NgModule }                             from '@angular/core';
+import { CommonModule }                         from '@angular/common';
+import { FormsModule }                          from '@angular/forms';
+import { HttpModule, Http, RequestOptions }     from '@angular/http';
+import { BrowserAnimationsModule }              from '@angular/platform-browser/animations';
+import { AuthHttp, AuthConfig }                 from 'angular2-jwt';
+import { CookieLawModule }                      from 'angular2-cookie-law';
+import { AgmCoreModule }                        from 'angular2-google-maps/core';
+import { AngularFireModule }                    from 'angularfire2';
+import { AngularFireDatabaseModule }            from 'angularfire2/database';
+import { ModalModule }                          from 'ngx-bootstrap/modal';
+import { AlertModule }                          from 'ngx-bootstrap';
+import { BootstrapModalModule, BuiltInOptions } from 'ngx-bootstrap-modal';
 
 import { AppComponent }                      from './app.component';
 import { NavbarComponent }                   from './navbar/navbar.component';
@@ -46,6 +47,8 @@ import { GoogleMapsComponent }               from './googlemaps/googlemaps.compo
 import { OpisDzialaniaComponent }            from './opis-dzialania/opis-dzialania.component';
 import { CallbackComponent }                 from './callback/callback.component';
 import { Strona404Component }                from './strona404/strona404.component';
+import { PopupAlertComponent }               from './popup/popup-alert/popup-alert.component';
+import { PopupConfirmComponent }             from './popup/popup-confirm/popup-confirm.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './serwisy/auth0/auth.service';
@@ -103,6 +106,8 @@ export const firebaseConfig = {
     LoginTimeComponent,
     CallbackComponent,
     Strona404Component,
+    PopupAlertComponent,
+    PopupConfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,6 +124,15 @@ export const firebaseConfig = {
       apiKey: "AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU",
     }),
     AngularFireDatabaseModule,
+    BootstrapModalModule.forRoot({
+      container: document.body,
+      builtInOptions: <BuiltInOptions>{
+      }
+    }),
+  ],
+  entryComponents: [
+    PopupAlertComponent,
+    PopupConfirmComponent,
   ],
   providers: [
     appRoutingProviders,
