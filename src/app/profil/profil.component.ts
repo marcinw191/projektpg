@@ -39,7 +39,6 @@ export class ProfilComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Opcje ',this.opcje);
     if (this.auth.authenticated()) {
       this.edycja = false;
       // profil pobrany z pliku cookie procesu auth0
