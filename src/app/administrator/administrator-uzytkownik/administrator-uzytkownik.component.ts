@@ -1,10 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DialogService }     from 'ngx-bootstrap-modal';
+import { DialogService }            from 'ngx-bootstrap-modal';
 
-import { PopupAlertComponent }   from '../../popup/popup-alert/popup-alert.component';
-import { PopupConfirmComponent } from '../../popup/popup-confirm/popup-confirm.component';
-
-import { AuthService }       from '../../serwisy/auth0/auth.service';
+import { options }                 from '../../app-variables';
+import { AuthService }             from '../../serwisy/auth0/auth.service';
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 
 @Component({
@@ -14,16 +12,17 @@ import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/baza
 })
 export class AdministratorUzytkownikComponent implements OnInit {
   @Input() key;
-  user   :any;
-  user_auth :any;
-  result :boolean;
-  blokada :boolean = false;
-  disable :boolean;
+  private user: any;
+  private user_auth: any;
+  private result: boolean;
+  private blokada: boolean = false;
+  private disable: boolean;
+  private opcje: any = options;
 
   constructor(private auth: AuthService,
               private bazaUzytkownikowService: BazaUzytkownikowService,
               public dialogService: DialogService) {
-    this.user_auth=this.auth.getProfileAuth();
+    this.user_auth = this.auth.getProfileAuth();
   }
 
   ngOnInit() {
@@ -37,38 +36,35 @@ export class AdministratorUzytkownikComponent implements OnInit {
   updateUser(key){
     let user = { typ: this.user.typ };
     this.bazaUzytkownikowService.updateUser(key, user);
-    // alert('Typ użytkownika zmieniony !!!');
-    this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Typ użytkownika zmieniony !!!' });
+    this.opcje.icon = 'success';
+    this.dialogService.alert('','Typ użytkownika zmieniony !!!',this.opcje);
   }
 
   blockUser(key){
     let user: any;
     if (this.blokada) {
       user = { blokada: 'tak' };
-      // alert('Użytkownik zablokowany !!!');
-      this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Użytkownik zablokowany !!!' });
+      this.opcje.icon = 'success';
+      this.dialogService.alert('','Użytkownik zablokowany !!!',this.opcje);
     }
     else {
       user = { blokada: 'nie' };
-      // alert('Użytkownik odblokowany !!!');
-      this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Użytkownik odblokowany !!!' });
+      this.opcje.icon = 'success';
+      this.dialogService.alert('', 'Użytkownik odblokowany !!!', this.opcje);
     }
     this.bazaUzytkownikowService.updateUser(key, user);
   }
 
   deleteUser(key) {
-    // this.result = confirm('Czy usunąć użytkownika z bazy ?');
-    this.dialogService.addDialog(PopupConfirmComponent, {
-      title: '',
-      message: 'Czy usunąć użytkownika z bazy ?'
-    })
-      .subscribe((isConfirmed) => {
-        //Get dialog result
-        this.result = isConfirmed;
-      });
-    if (this.result) {
-      this.bazaUzytkownikowService.deleteUser(key);
-    }
+    this.opcje.icon = 'question';
+    this.opcje.confirmButtonText = 'Usuń';
+    this.opcje.cancelButtonText = 'Powrót';
+    this.dialogService.confirm('', 'Czy usunąć użytkownika z bazy ?', this.opcje).then((res: any) => {
+      this.result = res;
+      if (this.result) {
+          this.bazaUzytkownikowService.deleteUser(key);
+        }
+    });
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DialogService }     from 'ngx-bootstrap-modal';
 
-import { PopupConfirmComponent } from '../../popup/popup-confirm/popup-confirm.component';
+import { options } from '../../app-variables';
 
 import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
 import { BazaOfertService }    from '../../serwisy/firebase-oferty/bazaofert.service';
@@ -17,12 +17,13 @@ import * as moment from 'moment-timezone';
 export class OgloszenieWykazComponent implements OnInit {
   @Input() key;
   @Input() profil;
-  ogloszenie :any;
-  oferty     :any;
-  dzien      :any;
-  ilosc_ofert:number;
-  result     :boolean;
-  blokada    :boolean = false;
+  private ogloszenie: any;
+  private oferty: any;
+  private dzien: any;
+  private ilosc_ofert: number;
+  private result: boolean;
+  private blokada: boolean = false;
+  private opcje: any = options;
 
   constructor(private bazaOgloszenService: BazaOgloszenService,
               private bazaOfertService: BazaOfertService,
@@ -42,18 +43,15 @@ export class OgloszenieWykazComponent implements OnInit {
   }
 
   deleteOgloszenie(key) {
-    // this.result = confirm('Czy usunąć ogłoszenie z bazy ?');
-    this.dialogService.addDialog(PopupConfirmComponent, {
-      title: '',
-      message: 'Czy usunąć ogłoszenie z bazy ?'
-    })
-      .subscribe((isConfirmed) => {
-        //Get dialog result
-        this.result = isConfirmed;
-      });
-    if (this.result) {
-      this.bazaOgloszenService.deleteOgloszenie(key);
-    }
+    this.opcje.icon = 'question';
+    this.opcje.confirmButtonText = 'Usuń';
+    this.opcje.cancelButtonText = 'Powrót';
+    this.dialogService.confirm('', 'Czy usunąć ogłoszenie z bazy ?', this.opcje).then((res: any) => {
+      this.result = res;
+      if (this.result) {
+        this.bazaOgloszenService.deleteOgloszenie(key);
+      }
+    });
   }
 
 }

@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DialogService }     from 'ngx-bootstrap-modal';
+import { DialogService } from 'ngx-bootstrap-modal';
 
-import { PopupConfirmComponent } from '../../popup/popup-confirm/popup-confirm.component';
+import { options } from '../../app-variables';
 
-import { BazaOfertService }        from '../../serwisy/firebase-oferty/bazaofert.service';
+import { BazaOfertService }    from '../../serwisy/firebase-oferty/bazaofert.service';
 import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
 
 import * as moment from 'moment-timezone';
@@ -16,12 +16,13 @@ import * as moment from 'moment-timezone';
 export class OfertaWykazComponent implements OnInit {
   @Input() key;
   @Input() profil;
-  ogloszenie :any;
-  oferta     :any;
-  dzien      :any;
-  result     :boolean;
-  blokada    :boolean = false;
-  tytul      :string;
+  private ogloszenie: any;
+  private oferta: any;
+  private dzien: any;
+  private result: boolean;
+  private blokada: boolean = false;
+  private tytul: string;
+  private opcje: any = options;
 
   constructor(private bazaOfertService: BazaOfertService,
               private bazaOgloszenService: BazaOgloszenService,
@@ -41,18 +42,15 @@ export class OfertaWykazComponent implements OnInit {
   }
 
   deleteOferta(key) {
-    // this.result = confirm('Czy usunąć ofertę z bazy ?');
-    this.dialogService.addDialog(PopupConfirmComponent, {
-      title: '',
-      message: 'Czy usunąć ofertę z bazy ?'
-    })
-      .subscribe((isConfirmed) => {
-        //Get dialog result
-        this.result = isConfirmed;
-      });
-    if (this.result) {
-      this.bazaOfertService.deleteOferta(key);
-    }
+    this.opcje.icon = 'question';
+    this.opcje.confirmButtonText = 'Usuń';
+    this.opcje.cancelButtonText = 'Powrót';
+    this.dialogService.confirm('', 'Czy usunąć ofertę z bazy ?', this.opcje).then((res: any) => {
+      this.result = res;
+      if (this.result) {
+        this.bazaOfertService.deleteOferta(key);
+      }
+    });
   }
 
 }

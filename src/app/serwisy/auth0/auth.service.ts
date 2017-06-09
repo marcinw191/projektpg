@@ -3,8 +3,8 @@ import { AUTH_CONFIG } from './auth0-variables';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import auth0 from 'auth0-js';
-import { DialogService }     from 'ngx-bootstrap-modal';
-import { PopupAlertComponent } from '../../popup/popup-alert/popup-alert.component';
+import { DialogService } from 'ngx-bootstrap-modal';
+import { options } from '../../app-variables';
 import { BazaUzytkownikowService } from '../firebase-uzytkownicy/bazauzytkownikow.service';
 
 @Injectable()
@@ -20,8 +20,9 @@ export class AuthService {
     scope: 'openid profile'
   });
 
-  userProfile: any;
-  profile: any;
+  private userProfile: any;
+  private profile: any;
+  private opcje: any = options;
 
   constructor(
     private router: Router,
@@ -51,8 +52,8 @@ export class AuthService {
       }
       else if (err) {
         this.router.navigate(['/kontakt']);
-        // alert(`Error: ${err.error} - Wystąpił błąd w trakcie logowania, zgłoś problem do administratora.`);
-        this.dialogService.addDialog(PopupAlertComponent, { title: '', message: `Error: ${err.error} - Wystąpił błąd w trakcie logowania, zgłoś problem do administratora.` });
+        this.opcje.icon = 'error';
+        this.dialogService.alert('', `Error: ${err.error} - Wystąpił błąd w trakcie logowania, zgłoś problem do administratora.`, this.opcje);
       }
     });
   }

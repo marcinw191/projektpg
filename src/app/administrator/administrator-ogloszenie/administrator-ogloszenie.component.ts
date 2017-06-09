@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DialogService }     from 'ngx-bootstrap-modal';
+import { DialogService } from 'ngx-bootstrap-modal';
 
-import { PopupAlertComponent }   from '../../popup/popup-alert/popup-alert.component';
-import { PopupConfirmComponent } from '../../popup/popup-confirm/popup-confirm.component';
-
+import { options } from '../../app-variables';
 import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
 
 @Component({
@@ -14,9 +12,10 @@ import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaoglos
 
 export class AdministratorOgloszenieComponent implements OnInit {
   @Input() key;
-  ogloszenie :any;
-  result     :boolean;
-  blokada    :boolean = false;
+  public ogloszenie: any;
+  private result: boolean;
+  private blokada: boolean = false;
+  private opcje: any = options;
 
   constructor(private bazaOgloszenService: BazaOgloszenService,
               public dialogService: DialogService) { }
@@ -32,30 +31,27 @@ export class AdministratorOgloszenieComponent implements OnInit {
     let ogloszenie: any;
     if (this.blokada) {
       ogloszenie = { blokada: 'tak' };
-      // alert('Ogłoszenie zablokowane !!!');
-      this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Ogłoszenie zablokowane !!!' });
+      this.opcje.icon = 'success';
+      this.dialogService.alert('', 'Ogłoszenie zablokowane !!!', this.opcje);
     }
     else {
       ogloszenie = { blokada: 'nie' };
-      // alert('Ogłoszenie odblokowane !!!');
-      this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Ogłoszenie odblokowane !!!' });
+      this.opcje.icon = 'success';
+      this.dialogService.alert('', 'Ogłoszenie odblokowane !!!', this.opcje);
     }
     this.bazaOgloszenService.updateOgloszenie(key, ogloszenie);
   }
 
   deleteOgloszenie(key) {
-    // this.result = confirm('Czy usunąć ogłoszenie z bazy ?');
-    this.dialogService.addDialog(PopupConfirmComponent, {
-      title: '',
-      message: 'Czy usunąć ogłoszenie z bazy ?'
-    })
-      .subscribe((isConfirmed) => {
-        //Get dialog result
-        this.result = isConfirmed;
-      });
-    if (this.result) {
-      this.bazaOgloszenService.deleteOgloszenie(key);
-    }
+    this.opcje.icon = 'question';
+    this.opcje.confirmButtonText = 'Usuń';
+    this.opcje.cancelButtonText = 'Powrót';
+    this.dialogService.confirm('', 'Czy usunąć ogłoszenie z bazy ?', this.opcje).then((res: any) => {
+      this.result = res;
+      if (this.result) {
+        this.bazaOgloszenService.deleteOgloszenie(key);
+      }
+    });
   }
 
 }

@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DialogService }     from 'ngx-bootstrap-modal';
+import { DialogService } from 'ngx-bootstrap-modal';
 
-import { PopupAlertComponent }   from '../../popup/popup-alert/popup-alert.component';
-import { PopupConfirmComponent } from '../../popup/popup-confirm/popup-confirm.component';
-
+import { options } from '../../app-variables';
 import { BazaOfertService } from '../../serwisy/firebase-oferty/bazaofert.service';
 
 @Component({
@@ -14,9 +12,10 @@ import { BazaOfertService } from '../../serwisy/firebase-oferty/bazaofert.servic
 
 export class AdministratorOfertaComponent implements OnInit {
   @Input() key;
-  oferta  :any;
-  result  :boolean;
-  blokada :boolean = false;
+  public oferta: any;
+  private result: boolean;
+  private blokada: boolean = false;
+  private opcje: any = options;
 
   constructor(private bazaOfertService: BazaOfertService,
               public dialogService: DialogService) { }
@@ -32,30 +31,27 @@ export class AdministratorOfertaComponent implements OnInit {
     let oferta: any;
     if (this.blokada) {
       oferta = { blokada: 'tak' };
-      // alert('Oferta zablokowana !!!');
-      this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Oferta zablokowana !!!' });
+      this.opcje.icon = 'success';
+      this.dialogService.alert('', 'Oferta zablokowana !!!', this.opcje);
     }
     else {
       oferta = { blokada: 'nie' };
-      // alert('Oferta odblokowana !!!');
-      this.dialogService.addDialog(PopupAlertComponent, { title: '', message: 'Oferta odblokowana !!!' });
+      this.opcje.icon = 'success';
+      this.dialogService.alert('', 'Oferta odblokowana !!!', this.opcje);
     }
     this.bazaOfertService.updateOferta(key, oferta);
   }
 
   deleteOferta(key) {
-    // this.result = confirm('Czy usunąć ofertę z bazy ?');
-    this.dialogService.addDialog(PopupConfirmComponent, {
-      title: '',
-      message: 'Czy usunąć ofertę z bazy ?'
-    })
-      .subscribe((isConfirmed) => {
-        //Get dialog result
-        this.result = isConfirmed;
-      });
-    if (this.result) {
-      this.bazaOfertService.deleteOferta(key);
-    }
+    this.opcje.icon = 'question';
+    this.opcje.confirmButtonText = 'Usuń';
+    this.opcje.cancelButtonText = 'Powrót';
+    this.dialogService.confirm('', 'Czy usunąć ofertę z bazy ?', this.opcje).then((res: any) => {
+      this.result = res;
+      if (this.result) {
+        this.bazaOfertService.deleteOferta(key);
+      }
+    });
   }
 
 }
