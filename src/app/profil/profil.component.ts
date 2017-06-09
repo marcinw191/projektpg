@@ -44,8 +44,7 @@ export class ProfilComponent implements OnInit {
       // profil pobrany z pliku cookie procesu auth0
       this.profil_auth = this.auth.getProfileAuth();
       // pobranie profilu z bazy użytkowników na podstawie adresu e-mail
-      this.bazaUzytkownikowService.getUsers().subscribe(users =>
-      {
+      this.bazaUzytkownikowService.getUsers().subscribe(users => {
         this.users = users;
         // porównanie id z autoryzacji z id z "bazy"
         for (let x = 0; x < this.users.length; x++) {
