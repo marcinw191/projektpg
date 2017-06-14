@@ -32,11 +32,13 @@ export class AdministratorOgloszenieComponent implements OnInit {
     if (this.blokada) {
       ogloszenie = { blokada: 'tak' };
       this.opcje.icon = 'success';
+      this.opcje.confirmButtonText = 'OK';
       this.dialogService.alert('', 'Ogłoszenie zablokowane !!!', this.opcje);
     }
     else {
       ogloszenie = { blokada: 'nie' };
       this.opcje.icon = 'success';
+      this.opcje.confirmButtonText = 'OK';
       this.dialogService.alert('', 'Ogłoszenie odblokowane !!!', this.opcje);
     }
     this.bazaOgloszenService.updateOgloszenie(key, ogloszenie);
@@ -45,7 +47,7 @@ export class AdministratorOgloszenieComponent implements OnInit {
   deleteOgloszenie(key) {
     this.opcje.icon = 'question';
     this.opcje.confirmButtonText = 'Usuń';
-    this.opcje.cancelButtonText = 'Powrót';
+    this.opcje.cancelButtonText = 'Nie';
     this.dialogService.confirm('', 'Czy usunąć ogłoszenie z bazy ?', this.opcje).then((res: any) => {
       this.result = res;
       if (this.result) {
