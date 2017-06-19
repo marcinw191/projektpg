@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from "@angular/forms";
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 import { ProfilEdycjaComponent } from './profil-edycja.component';
 import { WalidacjaService } from '../../serwisy/walidacja/walidacja.service';
@@ -12,7 +13,10 @@ describe('ProfilEdycjaComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ProfilEdycjaComponent ],
       imports: [ FormsModule ],
-      providers: [ WalidacjaService ],
+      providers: [
+        WalidacjaService,
+        DialogService,
+      ],
     })
     .compileComponents();
   }));

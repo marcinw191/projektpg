@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {BazaOfertService} from "../../serwisy/firebase-oferty/bazaofert.service";
 import {BazaUzytkownikowService} from "../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service";
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 
 describe('AdministratorOfertaComponent', () => {
@@ -19,7 +20,13 @@ describe('AdministratorOfertaComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AdministratorOfertaComponent, ProfilUzytkownikComponent ],
       imports: [ FormsModule ],
-      providers: [ BazaOfertService, {provide: AngularFireDatabase, useValue: mockFirebase.getMock()}, BazaUzytkownikowService, FirebaseApp ]
+      providers: [
+        BazaOfertService,
+        {provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
+        BazaUzytkownikowService,
+        FirebaseApp,
+        DialogService,
+      ]
     })
     .compileComponents();
   }));

@@ -17,6 +17,7 @@ import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/baza
 import { MockAuth } from '../../mocks/mock-auth';
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
 import { MockStorge } from '../../mocks/mock-storage';
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 class mapsAPILoader{
   public load() {
@@ -50,6 +51,7 @@ describe('OgloszenieComponent', () => {
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
         BazaUzytkownikowService,
         BazaOfertService,
+        DialogService,
         { provide: AuthService, useValue: mockAuth.getMock()},
         { provide: MapsAPILoader, useClass: mapsAPILoader },
         { provide: FirebaseApp, useValue: mockStorage.getMock()}

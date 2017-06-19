@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import {Router, RouterModule} from '@angular/router'
 import { AngularFireDatabase }  from 'angularfire2/database';
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 import { AuthService } from '../serwisy/auth0/auth.service';
 import { ProfilComponent } from './profil.component';
@@ -63,6 +64,7 @@ describe('ProfilComponent', () => {
         { provide: AuthService, useValue: mockAuth.getMock()},
         {provide: Router, useValue: mockRouter },
         BazaUzytkownikowService,
+        DialogService,
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
       ]
     })

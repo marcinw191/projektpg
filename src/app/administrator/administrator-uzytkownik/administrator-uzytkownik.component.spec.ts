@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 import { AdministratorUzytkownikComponent } from './administrator-uzytkownik.component';
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
 import { MockAuth } from '../../mocks/mock-auth';
@@ -28,7 +29,8 @@ describe('AdministratorUzytkownikComponent', () => {
         { provide: AuthService, useValue: mockAuth.getMock()},
         { provide: Router, useValue: mockRouter },
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock() },
-        BazaUzytkownikowService
+        BazaUzytkownikowService,
+        DialogService
       ]
     })
     .compileComponents();

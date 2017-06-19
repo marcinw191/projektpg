@@ -10,7 +10,9 @@ describe('GooglemapsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GoogleMapsComponent ],
-      providers: [ MapsAPILoader ],
+      providers: [
+        MapsAPILoader,
+      ],
       schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
