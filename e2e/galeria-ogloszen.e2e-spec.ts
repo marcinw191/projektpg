@@ -20,22 +20,15 @@ describe('GaleriaOgloszen', () => {
     browser.waitForAngularEnabled(false);
     galeriaOgloszenPage.navigateTo();
     var cards = galeriaOgloszenPage.wyswietlOgloszenia();
-    expect(cards.count()).toEqual(9);
+    expect(cards.count()).toEqual(10);
   });
 
   it('powinno wyszukać 5 ogłoszeń po frazie', () => {
     browser.waitForAngularEnabled(false);
     galeriaOgloszenPage.navigateTo();
     var cards = galeriaOgloszenPage.szukaj("remont");
-    expect(cards.count()).toEqual(6);
+    expect(cards.count()).toEqual(5);
   });
-
-//  it('powinno wyszukać 0 ogłoszeń po frazie', () => {
-//    browser.waitForAngularEnabled(false);
-//    page.navigateTo();
-//    var cards = page.szukaj("oksymoron");
-//    expect(cards.count()).toEqual(0);
-//  });
 
 });
 
