@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Router}             from '@angular/router';
-import { DialogService }     from 'ngx-bootstrap-modal';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DialogService }          from 'ngx-bootstrap-modal';
 
-import { options }                 from '../app-variables';
-import { AuthService }             from '../serwisy/auth0/auth.service';
-import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
+import { options }                 from '../../app-variables';
+import { AuthService }             from '../../serwisy/auth0/auth.service';
+import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css']
+  selector: 'app-administrator-profil',
+  templateUrl: './administrator-profil.component.html',
+  styleUrls: ['./administrator-profil.component.css']
 })
+export class AdministratorProfilComponent implements OnInit {
 
-export class ProfilComponent implements OnInit {
-  private users : any[];
+  private numerUzytkownika: number;
   private profil: any = {
     zdjecie     : '',
     nazwa       : '',
@@ -29,34 +29,31 @@ export class ProfilComponent implements OnInit {
   private profil_auth: any;
   private edycja: boolean;
   private edycja_button: boolean;
-  private typ_zestawienia: number = 0;
-  private wybor: number = null;
   private opcje: any = options;
+
 
   constructor(private auth: AuthService,
               private bazaUzytkownikowService:BazaUzytkownikowService,
               private router: Router,
+              private route: ActivatedRoute,
               public dialogService: DialogService) {
   }
 
   ngOnInit() {
-    console.log('Router profil : ',this.router);
     if (this.auth.authenticated()) {
       this.edycja = false;
-      // profil pobrany z pliku cookie procesu auth0
       this.profil_auth = this.auth.getProfileAuth();
       // pobranie profilu z bazy użytkowników na podstawie ID
-      // this.bazaUzytkownikowService.getUsers().subscribe(users => {
-      //   this.users = users;
-      //   // porównanie id z autoryzacji z id z "bazy"
-      //   for (let x = 0; x < this.users.length; x++) {
-      //     if (this.users[x].user_id == this.profil_auth.sub) {
-      //       this.wybor = x;
-      //       this.profil = this.users[this.wybor];
-      //     }
-      //   }
-      // });
       this.bazaUzytkownikowService.getUserById(this.profil_auth.sub).subscribe(users => {
+        if (users[0].typ !== 'administrator') {
+          this.opcje.icon = 'error';
+          this.dialogService.alert('', 'Nie jesteś administratorem !!!', this.opcje);
+          this.router.navigateByUrl('profil');
+        }
+      });
+      //pobierz dane uzytkownika z bazy
+      this.numerUzytkownika = parseInt(this.route.snapshot.params.id);
+      this.bazaUzytkownikowService.getUserByNr(this.numerUzytkownika).subscribe(users => {
         if (users.length > 0) {
           this.profil = users[0];
           this.edycja_button = true;
@@ -77,10 +74,6 @@ export class ProfilComponent implements OnInit {
 
   updateStanEdycja(event:any) {
     this.edycja = event.stan;
-  }
-
-  updateTypZestawienia(event:any) {
-    this.typ_zestawienia = event.typ;
   }
 
   updateProfil(event:any) {

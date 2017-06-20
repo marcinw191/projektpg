@@ -27,20 +27,21 @@ export class BazaUzytkownikowService {
     return this.user;
   }
 
-  getUserByEmail(e_mail: string) {
-    return this.users = this.db.list('/users', {
-      query: {
-        orderByChild: 'e_mail',
-        equalTo: e_mail
-      }
-    });
-  }
-
   getUserById(id: string) {
     return this.users = this.db.list('/users', {
       query: {
         orderByChild: 'user_id',
         equalTo: id
+      }
+    });
+  }
+
+  getUserByNr(nr: number) {
+    this.users  = this.db.list('/users') as FirebaseListObservable<User[]>;
+    return this.users = this.db.list('/users', {
+      query: {
+        orderByChild: 'numerUzytkownika',
+        equalTo: nr
       }
     });
   }

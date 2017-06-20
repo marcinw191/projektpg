@@ -36,7 +36,6 @@ export class AdministratorUzytkownikComponent implements OnInit {
   updateUser(key){
     let user = { typ: this.user.typ };
     this.bazaUzytkownikowService.updateUser(key, user);
-    this.opcje.confirmButtonText = 'OK';
     this.opcje.icon = 'success';
     this.dialogService.alert('','Typ użytkownika zmieniony !!!',this.opcje);
   }
@@ -46,13 +45,11 @@ export class AdministratorUzytkownikComponent implements OnInit {
     if (this.blokada) {
       user = { blokada: 'tak' };
       this.opcje.icon = 'success';
-      this.opcje.confirmButtonText = 'OK';
       this.dialogService.alert('','Użytkownik zablokowany !!!',this.opcje);
     }
     else {
       user = { blokada: 'nie' };
       this.opcje.icon = 'success';
-      this.opcje.confirmButtonText = 'OK';
       this.dialogService.alert('', 'Użytkownik odblokowany !!!', this.opcje);
     }
     this.bazaUzytkownikowService.updateUser(key, user);
@@ -65,8 +62,8 @@ export class AdministratorUzytkownikComponent implements OnInit {
     this.dialogService.confirm('', 'Czy usunąć użytkownika z bazy ?', this.opcje).then((res: any) => {
       this.result = res;
       if (this.result) {
-          this.bazaUzytkownikowService.deleteUser(key);
-        }
+        this.bazaUzytkownikowService.deleteUser(key);
+      }
     });
   }
 

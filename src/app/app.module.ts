@@ -56,6 +56,7 @@ import { BazaUzytkownikowService }      from './serwisy/firebase-uzytkownicy/baz
 import { BazaOgloszenService }          from './serwisy/firebase-ogloszenia/bazaogloszen.service';
 import { BazaOfertService }             from './serwisy/firebase-oferty/bazaofert.service';
 import { WalidacjaService }             from './serwisy/walidacja/walidacja.service';
+import { AdministratorProfilComponent } from './administrator/administrator-profil/administrator-profil.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
@@ -108,6 +109,7 @@ export const firebaseConfig = {
     Strona404Component,
     PopupAlertComponent,
     PopupConfirmComponent,
+    AdministratorProfilComponent,
   ],
   imports: [
     BrowserModule,
