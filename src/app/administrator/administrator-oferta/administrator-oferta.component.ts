@@ -32,11 +32,13 @@ export class AdministratorOfertaComponent implements OnInit {
     if (this.blokada) {
       oferta = { blokada: 'tak' };
       this.opcje.icon = 'success';
+      this.opcje.confirmButtonText = 'OK';
       this.dialogService.alert('', 'Oferta zablokowana !!!', this.opcje);
     }
     else {
       oferta = { blokada: 'nie' };
       this.opcje.icon = 'success';
+      this.opcje.confirmButtonText = 'OK';
       this.dialogService.alert('', 'Oferta odblokowana !!!', this.opcje);
     }
     this.bazaOfertService.updateOferta(key, oferta);
@@ -45,7 +47,7 @@ export class AdministratorOfertaComponent implements OnInit {
   deleteOferta(key) {
     this.opcje.icon = 'question';
     this.opcje.confirmButtonText = 'Usuń';
-    this.opcje.cancelButtonText = 'Powrót';
+    this.opcje.cancelButtonText = 'Nie';
     this.dialogService.confirm('', 'Czy usunąć ofertę z bazy ?', this.opcje).then((res: any) => {
       this.result = res;
       if (this.result) {

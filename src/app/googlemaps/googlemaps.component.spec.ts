@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { GoogleMapsComponent } from '../googlemaps/googlemaps.component';
 import { MapsAPILoader } from 'angular2-google-maps/core';
-import { DialogService }     from 'ngx-bootstrap-modal';
 
 describe('GooglemapsComponent', () => {
   let component: GoogleMapsComponent;
@@ -13,7 +12,6 @@ describe('GooglemapsComponent', () => {
       declarations: [ GoogleMapsComponent ],
       providers: [
         MapsAPILoader,
-        DialogService,
       ],
       schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
     })

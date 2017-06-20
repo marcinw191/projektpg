@@ -1,8 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { MapsAPILoader } from 'angular2-google-maps/core';
-import { DialogService } from 'ngx-bootstrap-modal';
-
-import { options } from '../app-variables';
 
 declare var google: any;
 
@@ -17,10 +14,8 @@ export class GoogleMapsComponent implements OnChanges{
   private lat;
   private lng;
   private geocoder;
-  private opcje: any = options;
 
-  constructor (private mapsAPILoader : MapsAPILoader,
-               public dialogService: DialogService) {
+  constructor (private mapsAPILoader : MapsAPILoader) {
     this.adres = "";
   }
 
@@ -34,16 +29,6 @@ export class GoogleMapsComponent implements OnChanges{
           if (status == google.maps.GeocoderStatus.OK) {
             _this.lat = results[0].geometry.location.lat();
             _this.lng = results[0].geometry.location.lng();
-          }
-          else {
-            if (status == "ZERO_RESULTS") {
-              _this.opcje.icon = 'error';
-              _this.dialogService.alert('', 'Jest problem ze znalezieniem adresu w Google maps', _this.opcje);
-            }
-            else {
-              _this.opcje.icon = 'error';
-              _this.dialogService.alert('', 'Wystąpił nieoczekiwany błąd ze strony Google maps (problem :' + status + ')', _this.opcje);
-            }
           }
         });
       }
