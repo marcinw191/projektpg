@@ -45,7 +45,7 @@ export class OgloszenieWykazComponent implements OnInit {
   deleteOgloszenie(key) {
     this.opcje.icon = 'question';
     this.opcje.confirmButtonText = 'Usuń';
-    this.opcje.cancelButtonText = 'Powrót';
+    this.opcje.cancelButtonText = 'Nie';
     this.dialogService.confirm('', 'Czy usunąć ogłoszenie z bazy ?', this.opcje).then((res: any) => {
       this.result = res;
       if (this.result) {
