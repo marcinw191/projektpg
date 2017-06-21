@@ -10,13 +10,14 @@ import { DodajOgloszenieComponent } from './ogloszenia/ogloszenie-dodaj/ogloszen
 import { OpisDzialaniaComponent }   from './opis-dzialania/opis-dzialania.component';
 import { CallbackComponent }        from './callback/callback.component';
 import { Strona404Component }       from './strona404/strona404.component';
+import { KontaktComponent }         from './kontakt/kontakt.component';
 
 const appRoutes: Routes = [
   { path:'',                     component: GaleriaOgloszenComponent},
   { path:'zlecenie',             component: GaleriaOgloszenComponent },
   { path:'dodaj_ogloszenie',     component: DodajOgloszenieComponent },
   { path:'pomoc',                component: OpisDzialaniaComponent},
-  { path:'kontakt',              component: HomeComponent },
+  { path:'kontakt',              component: KontaktComponent },
   { path:'profil',               component: ProfilComponent },
   { path:'ogloszenie/:id',       component: OgloszenieComponent },
   { path:'polityka_prywatnosci', component: PolicyComponent },
