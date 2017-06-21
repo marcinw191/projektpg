@@ -82,7 +82,7 @@
       <div *ngFor="let oferta of oferty">
         <app-oferta-wykonania [oferta]="oferta" [user_id]="oferta.oferent"></app-oferta-wykonania>
       </div>
-      <app-oferta-dodaj *ngIf="oferent.typ!=='zleceniodawca'" [oferent]="oferent" [nr_ogl]="numerOgloszenia"></app-oferta-dodaj>
+      <app-oferta-dodaj *ngIf="oferta_on" [oferent]="oferent" [nr_ogl]="numerOgloszenia"></app-oferta-dodaj>
     </div>
     <div class="col-md-4 cols-sm-0">
       <p><br></p>
