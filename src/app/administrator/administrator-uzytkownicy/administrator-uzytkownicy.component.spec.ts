@@ -5,6 +5,7 @@ import { Router, RouterModule, ActivatedRoute } from '@angular/router'
 import { Location } from '@angular/common';
 import { LocationStrategy } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
+import { DialogService } from 'ngx-bootstrap-modal';
 
 import { AdministratorUzytkownicyComponent } from './administrator-uzytkownicy.component';
 import { AdministratorUzytkownikComponent } from '../administrator-uzytkownik/administrator-uzytkownik.component';
@@ -12,11 +13,9 @@ import { AdministratorProfilComponent } from '../administrator-profil/administra
 import { ProfilComponent } from '../../profil/profil.component';
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { AuthService } from "../../serwisy/auth0/auth.service";
-
+import { AuthService } from '../../serwisy/auth0/auth.service';
 import { MockAuth } from '../../mocks/mock-auth';
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
-import { DialogService }     from 'ngx-bootstrap-modal';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),

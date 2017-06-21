@@ -6,14 +6,13 @@ import { Location } from '@angular/common';
 import { LocationStrategy } from '@angular/common';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { RouterTestingModule } from '@angular/router/testing';
-import { DialogService }     from 'ngx-bootstrap-modal';
+import { DialogService } from 'ngx-bootstrap-modal';
 
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 import { AdministratorUzytkownikComponent } from './administrator-uzytkownik.component';
 import { AdministratorProfilComponent } from '../administrator-profil/administrator-profil.component';
 import { ProfilComponent } from '../../profil/profil.component';
 import { AuthService } from '../../serwisy/auth0/auth.service';
-
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
 import { MockAuth } from '../../mocks/mock-auth';
 
