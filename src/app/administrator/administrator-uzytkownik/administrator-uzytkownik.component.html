@@ -4,17 +4,17 @@
   </a>
 </div>
 <div class="col-6 col-lg-4">{{user.e_mail}}</div>
-<div class="col-6 col-lg-3">
+<div class="col-8 col-lg-3">
   <select class="form-control form-control-sm" type="text" [(ngModel)]="user.typ" (change)="updateUser(key)" [disabled]="disable">
     <option value="zleceniodawca">zleceniodawca</option>
     <option value="wykonawca">wykonawca</option>
     <option value="administrator">administrator</option>
   </select>
 </div>
-<div class="checkbox col-1">
+<div class="checkbox col-2 col-lg-1">
   <label class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input" (change)="blockUser(key)"  [disabled]="disable" [(ngModel)]="blokada">
     <span class="custom-control-indicator"></span>
   </label>
 </div>
-<div class="col-1"><button class="btn btn-secondary btn-sm" (click)="deleteUser(key)"  [disabled]="disable">Usuń</button></div>
+<div class="col-2 col-lg-1"><button class="btn btn-outline-primary btn-sm" (click)="deleteUser(key)" [disabled]="disable">Usuń</button></div>

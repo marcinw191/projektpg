@@ -1,11 +1,16 @@
-<div class="col-10 col-lg-5" id="tytul">
-  <!--<a [routerLink]="['/ogloszenie', ogloszenie.numerOgloszenia]">-->
-  {{ogloszenie.tytul}}
-  <!--</a>-->
+<div class="col-8 col-lg-4" id="tytul">
+  <a [routerLink]="['/ogloszenie', ogloszenie.numerOgloszenia]">
+    {{ogloszenie.tytul}}
+  </a>
 </div>
-<div class="col-2 col-lg-1">{{ogloszenie.numerOgloszenia}}</div>
+<div class="col-4 col-lg-2">nr {{ogloszenie.numerOgloszenia}}</div>
 <div class="col-8 col-lg-4">
   <app-profil-uzytkownik [user_id]="ogloszenie.zlecajacy"></app-profil-uzytkownik>
 </div>
-<div class="checkbox col-2 col-lg-1"><input type="checkbox" (change)="blockOgloszenie(key)" [(ngModel)]="blokada"></div>
-<div class="button col-2 col-lg-1"><button type="button"    (click)="deleteOgloszenie(key)">Usuń</button></div>
+<div class="checkbox col-2 col-lg-1">
+  <label class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" (change)="blockOgloszenie(key)" [disabled]="disable" [(ngModel)]="blokada">
+    <span class="custom-control-indicator"></span>
+  </label>
+</div>
+<div class="button col-2 col-lg-1"><button class="btn btn-outline-primary btn-sm" (click)="deleteOgloszenie(key)" [disabled]="disable">Usuń</button></div>
