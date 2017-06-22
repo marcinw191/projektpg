@@ -11,6 +11,18 @@ export class Navbar {
 
   zalogujWykonawce()
   {
+    this._sekwencjaLogowania();
+    //let logout = element(by.id('logout'));
+    //browser.wait(this.EC.presenceOf(logout), 10000);
+    let confirmOk = element(by.xpath('/html/body/dialog-holder/dialog-wrapper/div/dialog-built-in/div/div/div[2]/button[2]'));
+    browser.wait(this.EC.presenceOf(confirmOk), 10000);
+    confirmOk.click();
+    browser.sleep(1000);  
+    this._sekwencjaLogowania();
+  }
+
+  private _sekwencjaLogowania()
+  {
     let login = element(by.id('login'));
     browser.wait(this.EC.elementToBeClickable(login), 50000);
     login.click();
@@ -23,8 +35,7 @@ export class Navbar {
     inputUser.sendKeys("testWykonawca");
     inputPass.sendKeys("testPass");
     submitButton.click();
-    let logout = element(by.id('logout'));
-    browser.wait(this.EC.presenceOf(logout), 50000);
+    browser.sleep(5000);
   }
 
   zamknijCookie()
