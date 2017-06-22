@@ -7,6 +7,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class ProfilWidokComponent implements OnInit {
   @Input() profil_view: any;
+  @Input() profil_edycja: any;
   @Output() edycja_stan  = new EventEmitter<any>();
 
   constructor() { }

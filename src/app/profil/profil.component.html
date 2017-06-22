@@ -2,6 +2,7 @@
   <div *ngIf="edycja==false && typ_zestawienia==0">
     <app-profil-widok
       [profil_view]="profil"
+      [profil_edycja]="edycja_button"
       (edycja_stan)="updateStanEdycja($event)">
     </app-profil-widok>
     <app-profil-widok-przyciski
