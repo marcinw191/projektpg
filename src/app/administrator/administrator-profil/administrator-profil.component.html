@@ -1,0 +1,16 @@
+<div class="profil container">
+  <div *ngIf="edycja==false">
+    <app-profil-widok
+      [profil_view]="profil"
+      [profil_edycja]="edycja_button"
+      (edycja_stan)="updateStanEdycja($event)">
+    </app-profil-widok>
+  </div>
+  <div *ngIf="edycja==true">
+    <app-profil-edycja
+      [profil_edit]="profil"
+      (profil_zm)="updateProfil($event)"
+      (edycja_stan)="updateStanEdycja($event)">
+    </app-profil-edycja>
+  </div>
+</div>
