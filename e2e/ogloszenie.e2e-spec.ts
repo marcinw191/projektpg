@@ -31,14 +31,17 @@ describe('Ogloszenie', () => {
 
   });
 
-  it('powinno zalogować i wyświetlić wszystkie oferty złożone dla ogłoszenia nr 1', () => {
+  it('powinno dodać ofertę do ogłoszenia nr 1', () => {
     browser.waitForAngularEnabled(false);
     ogloszeniePage.navbar.zamknijCookie();
     ogloszeniePage.navbar.zalogujWykonawce();
     ogloszeniePage.navigateTo(1);
 
+    let result = ogloszeniePage.dodajOferte("100", "505412123", "Proszę o kontakt");
+    expect(result).toEqual("Oferta dodana poprawnie.");
+
     let oferty = ogloszeniePage.wyswietlOferty();
-    expect(oferty.count()).toEqual(5);
+    expect(oferty.count()).toEqual(6);
 
   });
 

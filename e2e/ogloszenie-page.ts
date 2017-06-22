@@ -46,4 +46,27 @@ export class OgloszeniePage {
     browser.wait(this.EC.presenceOf(oferty), 50000);
     return element.all(by.css('.oferta'));
   }
+
+  dodajOferte(cena: string, telefon: string, wiadomosc: string) {
+    let inputCena = element(by.id('cena'));
+    let inputTelefon = element(by.id('telefon'));
+    let inputWiadomosc = element(by.id('wiadomosc'));
+    let dodajButton = element(by.css('.dodaj'));
+
+    browser.wait(this.EC.presenceOf(inputCena), 50000);
+    browser.wait(this.EC.presenceOf(inputTelefon), 50000);
+    browser.wait(this.EC.presenceOf(inputWiadomosc), 50000);
+    browser.wait(this.EC.presenceOf(dodajButton), 50000);
+
+    inputCena.sendKeys(cena);
+    inputTelefon.sendKeys(telefon);
+    inputWiadomosc.sendKeys(wiadomosc);
+    browser.sleep(1000);
+    dodajButton.click();
+
+    let potwierdzenie = element(by.xpath('/html/body/app-root/div/div/app-ogloszenie/div/div[2]/div[1]/app-oferta-dodaj/app-alert/alert/div/p'));
+    browser.wait(this.EC.presenceOf(potwierdzenie), 50000);
+    return potwierdzenie.getText();
+
+  }
 }
