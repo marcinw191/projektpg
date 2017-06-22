@@ -49,13 +49,9 @@ export class GaleriaOgloszenComponent implements OnInit {
     this.pofiltrowane = true;
     this.miniatury = this.miniaturyBezFiltrowania.filter(ogloszenie => {
       let tytul = ogloszenie.tytul.toLowerCase();
-      if (tytul.indexOf(this.fraza.toLowerCase())!= -1) {
-        this.stronicuj();
-        return true;
-      }
-      else
-        return false;
+      return (tytul.indexOf(this.fraza.toLowerCase())!= -1);
     });
+    this.stronicuj();
   }
 
   public wyczyscSzukanie(){
