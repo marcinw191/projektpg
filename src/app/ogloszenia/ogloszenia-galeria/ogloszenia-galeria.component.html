@@ -1,4 +1,3 @@
-
 <div class="oferty-przegladaj">
   <div class="container">
     <h1 class="my-0">Oferty <small>przeglądaj</small></h1>
@@ -15,9 +14,6 @@
 
 <div class="container galeria-ogloszen">
   <!-- Page Heading -->
-
-
-
   <div class="row justify-content-lg-end">
     <div class="col">
 
@@ -27,38 +23,61 @@
       </button>
 
       <span class="ustawienia">
-
         <span>Widok zleceń :</span>
-
         <button  title="Galeria" (click)="zmienOrientacje('galeria')">
-
          <img *ngIf="orientacja == 'galeria'" src="../assets/img/kafelki_czerwone.png" alt="HTML5">
          <img *ngIf="orientacja == 'lista'" src="../assets/img/kafelki_szare.png" alt="HTML5">
-          </button>
-
+        </button>
         <button  title="Lista" (click)="zmienOrientacje('lista')">
-        <img *ngIf="orientacja == 'galeria'" src="../assets/img/lista_szara.png" alt="HTML5">
-        <img *ngIf="orientacja == 'lista'" src="../assets/img/lista_czerwona.png" alt="HTML5">
-
+          <img *ngIf="orientacja == 'galeria'" src="../assets/img/lista_szara.png" alt="HTML5">
+          <img *ngIf="orientacja == 'lista'" src="../assets/img/lista_czerwona.png" alt="HTML5">
          </button>
-
-</span>
-
-
+      </span>
+      <span class="ustawienia">
+        <span>Ilość ogłoszeń na stronę</span>
+        <select id="na_stronie" type="number" [(ngModel)]="ilosc_ogloszen" (change)="setPage(1)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4">4</option>
+          <option value="8">8</option>
+          <option value="12">12</option>
+          <option value="20">20</option>
+        </select>
+      </span>
 
     </div>
   </div>
   <div *ngIf="orientacja == 'galeria'" class="row">
-    <div *ngFor="let miniatura of miniatury" class="col-lg-3 col-sm-6 portfolio-item">
+    <div *ngFor="let miniatura of pagedItems" class="col-lg-3 col-sm-6 portfolio-item">
       <ogloszenie-miniatura [miniatura]="miniatura" [orientacja]="orientacja"></ogloszenie-miniatura>
     </div>
   </div>
   <div *ngIf="orientacja == 'lista'" class="row">
-    <div *ngFor="let miniatura of miniatury" class="col-lg-12 portfolio-item">
+    <div *ngFor="let miniatura of pagedItems" class="col-lg-12 portfolio-item">
       <ogloszenie-miniatura [miniatura]="miniatura" [orientacja]="orientacja"></ogloszenie-miniatura>
     </div>
   </div>
 
-
+  <!-- Pagination -->
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" (click)="setPage(pager.currentPage - 1)" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+      <a class="page-link" (click)="setPage(page)">
+        <span aria-hidden="true">{{page}}</span>
+        <span class="sr-only">{{page}}</span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click)="setPage(pager.currentPage + 1)" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
 
 </div>

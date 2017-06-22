@@ -1,6 +1,7 @@
 import { Component, OnInit }   from '@angular/core';
 import { AuthService }         from '../../serwisy/auth0/auth.service';
-import { BazaOgloszenService } from  '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
+import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
+import { PagerService }        from '../../serwisy/pager/pager.service';
 
 @Component({
   selector: 'app-galeria-ogloszen',
@@ -14,10 +15,19 @@ export class GaleriaOgloszenComponent implements OnInit {
   miniatury: Array<any>;
   miniaturyBezFiltrowania: Array<any>;
   pofiltrowane: boolean;
+  ilosc_ogloszen: number = 4;
+
+  // array of all items to be paged
+  private allItems: any[];
+  // pager object
+  pager: any = {};
+  // paged items
+  pagedItems: any[];
 
 
   constructor(private auth: AuthService,
-              private bazaOgloszenService: BazaOgloszenService) {
+              private bazaOgloszenService: BazaOgloszenService,
+              private pagerService: PagerService) {
     this.bazaOgloszenService.getOgloszenia().subscribe(queriedItems => {
       this.miniaturyBezFiltrowania = queriedItems;
       for (let i = this.miniaturyBezFiltrowania.length-1; i >= 0; i--) {
@@ -26,6 +36,9 @@ export class GaleriaOgloszenComponent implements OnInit {
         }
       }
       this.miniatury = this.miniaturyBezFiltrowania;
+      this.stronicuj();
+      // initialize to page 1
+      this.setPage(1);
     });
     this.pofiltrowane = false;
   }
@@ -43,15 +56,31 @@ export class GaleriaOgloszenComponent implements OnInit {
       else
         return false;
     });
+    this.stronicuj();
   }
 
   public wyczyscSzukanie(){
     this.miniatury = this.miniaturyBezFiltrowania;
     this.pofiltrowane = false;
     this.fraza = "";
+    this.stronicuj();
   }
 
   ngOnInit() {
+  }
+
+  private stronicuj(){
+    this.allItems = this.miniatury;
+  }
+
+  private setPage(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.miniatury.length, page, Number(this.ilosc_ogloszen));
+    // get current page of items
+    this.pagedItems = this.miniatury.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
 }
