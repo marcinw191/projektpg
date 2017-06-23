@@ -1,7 +1,6 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent }            from './home/home.component';
 import { GaleriaOgloszenComponent } from './ogloszenia/ogloszenia-galeria/ogloszenia-galeria.component';
 import { ProfilComponent }          from './profil/profil.component';
 import { OgloszenieComponent }      from './ogloszenia/ogloszenie/ogloszenie.component';

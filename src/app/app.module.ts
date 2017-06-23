@@ -39,7 +39,6 @@ import { AdministratorOgloszeniaComponent }  from './administrator/administrator
 import { AdministratorOgloszenieComponent }  from './administrator/administrator-ogloszenie/administrator-ogloszenie.component';
 import { AdministratorOfertyComponent }      from './administrator/administrator-oferty/administrator-oferty.component';
 import { AdministratorOfertaComponent }      from './administrator/administrator-oferta/administrator-oferta.component';
-import { HomeComponent }                     from './home/home.component';
 import { CookielawComponent }                from './cookielaw/cookielaw.component';
 import { PolicyComponent }                   from './cookielaw/policy/policy.component';
 import { AlertComponent }                    from './alert/alert.component';
@@ -76,7 +75,6 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
     GaleriaOgloszenComponent,
     OgloszenieMiniaturaComponent,
     OgloszenieComponent,
