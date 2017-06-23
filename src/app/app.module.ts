@@ -49,6 +49,7 @@ import { CallbackComponent }                 from './callback/callback.component
 import { Strona404Component }                from './strona404/strona404.component';
 import { PopupAlertComponent }               from './popup/popup-alert/popup-alert.component';
 import { PopupConfirmComponent }             from './popup/popup-confirm/popup-confirm.component';
+import { AdministratorProfilComponent }      from './administrator/administrator-profil/administrator-profil.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './serwisy/auth0/auth.service';
@@ -56,7 +57,7 @@ import { BazaUzytkownikowService }      from './serwisy/firebase-uzytkownicy/baz
 import { BazaOgloszenService }          from './serwisy/firebase-ogloszenia/bazaogloszen.service';
 import { BazaOfertService }             from './serwisy/firebase-oferty/bazaofert.service';
 import { WalidacjaService }             from './serwisy/walidacja/walidacja.service';
-import { AdministratorProfilComponent } from './administrator/administrator-profil/administrator-profil.component';
+import { PagerService }                 from './serwisy/pager/pager.service';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
@@ -148,6 +149,7 @@ export const firebaseConfig = {
     BazaOgloszenService,
     BazaOfertService,
     WalidacjaService,
+    PagerService,
   ],
   bootstrap: [AppComponent]
 })
