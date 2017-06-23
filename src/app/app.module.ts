@@ -39,7 +39,6 @@ import { AdministratorOgloszeniaComponent }  from './administrator/administrator
 import { AdministratorOgloszenieComponent }  from './administrator/administrator-ogloszenie/administrator-ogloszenie.component';
 import { AdministratorOfertyComponent }      from './administrator/administrator-oferty/administrator-oferty.component';
 import { AdministratorOfertaComponent }      from './administrator/administrator-oferta/administrator-oferta.component';
-import { HomeComponent }                     from './home/home.component';
 import { CookielawComponent }                from './cookielaw/cookielaw.component';
 import { PolicyComponent }                   from './cookielaw/policy/policy.component';
 import { AlertComponent }                    from './alert/alert.component';
@@ -50,6 +49,7 @@ import { Strona404Component }                from './strona404/strona404.compone
 import { PopupAlertComponent }               from './popup/popup-alert/popup-alert.component';
 import { PopupConfirmComponent }             from './popup/popup-confirm/popup-confirm.component';
 import { AdministratorProfilComponent }      from './administrator/administrator-profil/administrator-profil.component';
+import { KontaktComponent }                  from './kontakt/kontakt.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './serwisy/auth0/auth.service';
@@ -57,6 +57,7 @@ import { BazaUzytkownikowService }      from './serwisy/firebase-uzytkownicy/baz
 import { BazaOgloszenService }          from './serwisy/firebase-ogloszenia/bazaogloszen.service';
 import { BazaOfertService }             from './serwisy/firebase-oferty/bazaofert.service';
 import { WalidacjaService }             from './serwisy/walidacja/walidacja.service';
+import { MailsendService }              from './serwisy/mail/mailsend.service';
 import { PagerService }                 from './serwisy/pager/pager.service';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
@@ -76,7 +77,6 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
     GaleriaOgloszenComponent,
     OgloszenieMiniaturaComponent,
     OgloszenieComponent,
@@ -110,6 +110,7 @@ export const firebaseConfig = {
     Strona404Component,
     PopupAlertComponent,
     PopupConfirmComponent,
+    KontaktComponent,
     AdministratorProfilComponent,
   ],
   imports: [
@@ -149,6 +150,7 @@ export const firebaseConfig = {
     BazaOgloszenService,
     BazaOfertService,
     WalidacjaService,
+    MailsendService,
     PagerService,
   ],
   bootstrap: [AppComponent]

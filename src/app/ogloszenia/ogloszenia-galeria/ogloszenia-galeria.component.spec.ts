@@ -15,7 +15,6 @@ import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/baza
 import { BazaOgloszenService } from "../../serwisy/firebase-ogloszenia/bazaogloszen.service";
 import { PagerService } from '../../serwisy/pager/pager.service';
 
-import { HomeComponent }            from '../../home/home.component';
 import { AdministratorComponent }   from '../../administrator/administrator.component';
 import { ProfilComponent }          from '../../profil/profil.component';
 import { OgloszenieComponent }      from '../ogloszenie/ogloszenie.component';
@@ -26,6 +25,7 @@ import { Strona404Component }       from '../../strona404/strona404.component';
 import { AlertComponent} from '../../alert/alert.component';
 import { LoginTimeComponent } from '../../profil/login-time/login-time.component';
 import { GoogleMapsComponent } from '../../googlemaps/googlemaps.component';
+import { KontaktComponent } from '../../kontakt/kontakt.component';
 
 import { MockAuth } from '../../mocks/mock-auth';
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
@@ -46,9 +46,9 @@ describe('GaleriaOgloszenComponent', () => {
         OgloszenieMiniaturaComponent,
         DodajOgloszenieComponent,
         OpisDzialaniaComponent,
-        HomeComponent,
         ProfilComponent,
         OgloszenieComponent,
+        KontaktComponent,
         PolicyComponent,
         AdministratorComponent,
         Strona404Component,
@@ -64,7 +64,7 @@ describe('GaleriaOgloszenComponent', () => {
           { path:'zlecenie',             component: GaleriaOgloszenComponent },
           { path:'dodaj_ogloszenie',     component: DodajOgloszenieComponent },
           { path:'pomoc',                component: OpisDzialaniaComponent},
-          { path:'kontakt',              component: HomeComponent },
+          { path:'kontakt',              component: KontaktComponent },
           { path:'profil',               component: ProfilComponent },
           { path:'ogloszenie/:id',       component: OgloszenieComponent },
           { path:'polityka_prywatnosci', component: PolicyComponent },

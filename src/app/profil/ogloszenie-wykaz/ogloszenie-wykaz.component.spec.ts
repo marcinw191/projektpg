@@ -11,7 +11,6 @@ import { DialogService } from 'ngx-bootstrap-modal';
 import { OgloszenieWykazComponent } from './ogloszenie-wykaz.component';
 import { BazaOgloszenService} from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
 import { BazaOfertService} from '../../serwisy/firebase-oferty/bazaofert.service';
-import { HomeComponent } from '../../home/home.component';
 import { AdministratorComponent } from '../../administrator/administrator.component';
 import { AdministratorUzytkownicyComponent } from '../../administrator/administrator-uzytkownicy/administrator-uzytkownicy.component';
 import { AdministratorOgloszeniaComponent } from '../../administrator/administrator-ogloszenia/administrator-ogloszenia.component';
@@ -36,6 +35,7 @@ import { OfertyWykazComponent } from '../oferty-wykaz/oferty-wykaz.component';
 import { OfertaDodajComponent } from '../../oferty/oferta-dodaj/oferta-dodaj.component';
 import { OfertaWykazComponent } from '../oferta-wykaz/oferta-wykaz.component';
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
+import { KontaktComponent } from '../../kontakt/kontakt.component';
 
 
 describe('OgloszenieWykazComponent', () => {
@@ -53,10 +53,10 @@ describe('OgloszenieWykazComponent', () => {
         OgloszenieMiniaturaComponent,
         DodajOgloszenieComponent,
         OpisDzialaniaComponent,
-        HomeComponent,
         ProfilComponent,
         OgloszenieComponent,
         PolicyComponent,
+        KontaktComponent,
         AdministratorComponent,
         Strona404Component,
         AlertComponent,
@@ -83,7 +83,7 @@ describe('OgloszenieWykazComponent', () => {
           { path:'zlecenie',             component: GaleriaOgloszenComponent },
           { path:'dodaj_ogloszenie',     component: DodajOgloszenieComponent },
           { path:'pomoc',                component: OpisDzialaniaComponent},
-          { path:'kontakt',              component: HomeComponent },
+          { path:'kontakt',              component: KontaktComponent },
           { path:'profil',               component: ProfilComponent },
           { path:'ogloszenie/:id',       component: OgloszenieComponent },
           { path:'polityka_prywatnosci', component: PolicyComponent },
