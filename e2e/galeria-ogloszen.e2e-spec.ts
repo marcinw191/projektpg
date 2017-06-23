@@ -25,7 +25,6 @@ describe('GaleriaOgloszen', () => {
 
   it('powinno wyszukać 5 ogłoszeń po frazie', () => {
     browser.waitForAngularEnabled(false);
-    galeriaOgloszenPage.navigateTo();
     var cards = galeriaOgloszenPage.szukaj("remont");
     expect(cards.count()).toEqual(4);
   });

@@ -24,12 +24,10 @@ export class GaleriaOgloszenPage {
   }
 
   szukaj(fraza: string){
-    this.wyswietlOgloszenia();
     let szukajInput = element(by.css('.znajdz-ogloszenie'));
     browser.wait(this.EC.presenceOf(szukajInput), 50000);
     let szukajButton = element(by.buttonText('SZUKAJ'));
     browser.wait(this.EC.presenceOf(szukajButton), 50000);
-    szukajInput.sendKeys("");
     szukajInput.sendKeys(fraza);
     szukajButton.click();
     return this.wyswietlOgloszenia();
