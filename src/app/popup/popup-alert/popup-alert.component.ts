@@ -16,8 +16,8 @@ export class PopupAlertComponent extends DialogComponent<AlertModel, null> imple
   message: string;
 
   constructor(dialogService: DialogService) {
-    super(dialogService);
-  }
+  super(dialogService);
+}
 
 
 }
