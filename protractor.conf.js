@@ -11,6 +11,7 @@ exports.config = {
     './e2e/logowanie.e2e-spec.ts',
     './e2e/ogloszenie.e2e-spec.ts',
     './e2e/dodaj-ogloszenie.e2e-spec.ts',
+    './e2e/profil.e2e-spec.ts'
   ],
   capabilities: {
     'browserName': 'chrome',
