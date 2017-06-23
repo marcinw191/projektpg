@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MailsendService, IMessage } from '../serwisy/mail/mailsend.service';
-import 'rxjs/add/operator/switchMap';
 import { WalidacjaService } from '../serwisy/walidacja/walidacja.service';
-import { DialogService } from 'ngx-bootstrap-modal';
-import { options } from '../app-variables';
 
 @Component({
   selector: 'app-kontakt',
@@ -13,13 +10,10 @@ import { options } from '../app-variables';
 
 export class KontaktComponent implements OnInit {
   message: IMessage = {};
-  adres: string = "Al. Grunwaldzka 472A, 80-309 Gdańsk";
-  private email: string;
-  private opcje: any = options;
+  adres: string = 'Al. Grunwaldzka 472A, 80-309 Gdańsk';
 
   constructor(private mailsendService: MailsendService,
-              private walidacjaService: WalidacjaService,
-              public dialogService: DialogService) { }
+              private walidacjaService: WalidacjaService) { }
 
   sendEmail(message: IMessage) {
     // if ((this.walidacjaService.walidacja("email",this.email)) || (this.email.length==0)) {
@@ -29,9 +23,6 @@ export class KontaktComponent implements OnInit {
       }, error => {
         console.log('AppComponent Error', error);
       });
-    // } else {
-    //    this.dialogService.alert('','Adres e-mail niepoprawny',this.opcje);
-    //  }
   }
 
   ngOnInit() {
