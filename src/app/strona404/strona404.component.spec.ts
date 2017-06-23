@@ -7,8 +7,6 @@ import { AlertModule } from 'ngx-bootstrap';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MapsAPILoader } from 'angular2-google-maps/core';
 
-
-import { HomeComponent }            from '../home/home.component';
 import { AdministratorComponent }   from '../administrator/administrator.component';
 import { AdministratorUzytkownicyComponent } from '../administrator/administrator-uzytkownicy/administrator-uzytkownicy.component';
 import { AdministratorOgloszeniaComponent } from '../administrator/administrator-ogloszenia/administrator-ogloszenia.component';
@@ -25,6 +23,7 @@ import { GoogleMapsComponent } from '../googlemaps/googlemaps.component';
 import { GaleriaOgloszenComponent } from '../ogloszenia/ogloszenia-galeria/ogloszenia-galeria.component';
 import { OgloszenieMiniaturaComponent } from '../ogloszenia/ogloszenie-miniatura/ogloszenie-miniatura.component';
 import { OfertaWykonaniaComponent } from '../oferty/oferta-wykonania/oferta-wykonania.component';
+import { KontaktComponent } from '../kontakt/kontakt.component';
 
 let mockRouter = {
   navigate: jasmine.createSpy('navigate'),
@@ -44,10 +43,10 @@ describe('Strona404Component', () => {
         OgloszenieMiniaturaComponent,
         DodajOgloszenieComponent,
         OpisDzialaniaComponent,
-        HomeComponent,
         ProfilComponent,
         OgloszenieComponent,
         PolicyComponent,
+        KontaktComponent,
         AdministratorComponent,
         Strona404Component,
         AlertComponent,
@@ -65,7 +64,7 @@ describe('Strona404Component', () => {
           { path:'zlecenie',             component: GaleriaOgloszenComponent },
           { path:'dodaj_ogloszenie',     component: DodajOgloszenieComponent },
           { path:'pomoc',                component: OpisDzialaniaComponent},
-          { path:'kontakt',              component: HomeComponent },
+          { path:'kontakt',              component: KontaktComponent },
           { path:'profil',               component: ProfilComponent },
           { path:'ogloszenie/:id',       component: OgloszenieComponent },
           { path:'polityka_prywatnosci', component: PolicyComponent },
