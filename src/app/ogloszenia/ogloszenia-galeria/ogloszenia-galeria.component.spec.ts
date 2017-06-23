@@ -13,6 +13,7 @@ import { OgloszenieMiniaturaComponent } from '../ogloszenie-miniatura/ogloszenie
 import { AuthService } from '../../serwisy/auth0/auth.service';
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service'
 import { BazaOgloszenService } from "../../serwisy/firebase-ogloszenia/bazaogloszen.service";
+import { PagerService } from '../../serwisy/pager/pager.service';
 
 import { HomeComponent }            from '../../home/home.component';
 import { AdministratorComponent }   from '../../administrator/administrator.component';
@@ -75,7 +76,8 @@ describe('GaleriaOgloszenComponent', () => {
         { provide: AuthService, useValue: mockAuth.getMock()},
         BazaUzytkownikowService,
         BazaOgloszenService,
-        { provide: FirebaseApp, useValue: mockStorage.getMock()}
+        { provide: FirebaseApp, useValue: mockStorage.getMock()},
+        PagerService,
         ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

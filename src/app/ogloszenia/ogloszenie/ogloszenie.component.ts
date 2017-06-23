@@ -43,6 +43,10 @@ export class OgloszenieComponent implements OnInit {
   zdjecie4: string;
   adres: string;
 
+  teraz: Date;
+  koniec: Date;
+  oferta_on:boolean;
+
   constructor(private route: ActivatedRoute,
               private db: AngularFireDatabase,
               private fbApp: FirebaseApp,
@@ -93,7 +97,9 @@ export class OgloszenieComponent implements OnInit {
         this.user_id = queriedItems[0].zlecajacy;
         this.czasWykonania = queriedItems[0].czasWykonania;
         this.adres = this.ulica + " " + this.ulica_numer + ", " + this.miasto;
-
+        this.teraz = new Date();
+        this.koniec = new Date(this.koniecLicytacji);
+        this.oferta_on = ((this.teraz < this.koniec) && (this.oferent.typ!=='zleceniodawca'));
         //pobierz uzytkownika zlecajacego z bazy
         this.bazaDanychUzytkownikow.getUserById(this.user_id).subscribe(user => {
           __this.zlecajacy.zaladujZBazy(user[0]);

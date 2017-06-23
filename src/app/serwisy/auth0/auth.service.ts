@@ -46,6 +46,19 @@ export class AuthService {
             if (wybor == null) {
               this.copyProfileToUser(_profile, nr);
             }
+            else {
+              this.bazaUzytkownikowService.getUserById(users[wybor].user_id).subscribe(user => {
+                this.userProfile = user[0];
+                if (this.userProfile.blokada == 'tak') {
+                  this.logout();
+                  this.opcje.icon = 'error';
+                  this.opcje.size = 'lg';
+                  this.dialogService.alert('',`Konto zablokowane !!! W celu wyjaśnienia sytuacji <br> skontaktuj się z administratorem systemu.`,this.opcje);
+                  this.router.navigateByUrl('/kontakt');
+                  return;
+                }
+              });
+            }
           });
         });
         this.router.navigate(['/']);

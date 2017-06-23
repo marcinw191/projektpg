@@ -48,6 +48,7 @@ import { CallbackComponent }                 from './callback/callback.component
 import { Strona404Component }                from './strona404/strona404.component';
 import { PopupAlertComponent }               from './popup/popup-alert/popup-alert.component';
 import { PopupConfirmComponent }             from './popup/popup-confirm/popup-confirm.component';
+import { AdministratorProfilComponent }      from './administrator/administrator-profil/administrator-profil.component';
 import { KontaktComponent }                  from './kontakt/kontakt.component';
 
 import { routing, appRoutingProviders } from './app.routing';
@@ -57,6 +58,7 @@ import { BazaOgloszenService }          from './serwisy/firebase-ogloszenia/baza
 import { BazaOfertService }             from './serwisy/firebase-oferty/bazaofert.service';
 import { WalidacjaService }             from './serwisy/walidacja/walidacja.service';
 import { MailsendService }              from './serwisy/mail/mailsend.service';
+import { PagerService }                 from './serwisy/pager/pager.service';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
@@ -109,6 +111,7 @@ export const firebaseConfig = {
     PopupAlertComponent,
     PopupConfirmComponent,
     KontaktComponent,
+    AdministratorProfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -148,6 +151,7 @@ export const firebaseConfig = {
     BazaOfertService,
     WalidacjaService,
     MailsendService,
+    PagerService,
   ],
   bootstrap: [AppComponent]
 })

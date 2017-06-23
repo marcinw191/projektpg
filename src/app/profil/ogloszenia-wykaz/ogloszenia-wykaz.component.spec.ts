@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { OgloszeniaWykazComponent } from './ogloszenia-wykaz.component';
-import {OgloszenieWykazComponent} from "../ogloszenie-wykaz/ogloszenie-wykaz.component";
-import {RouterModule} from "@angular/router";
-import {FormsModule} from "@angular/forms";
-import {BazaOgloszenService} from "../../serwisy/firebase-ogloszenia/bazaogloszen.service";
+import { OgloszenieWykazComponent } from '../ogloszenie-wykaz/ogloszenie-wykaz.component';
+import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
 
 describe('OgloszeniaWykazComponent', () => {
