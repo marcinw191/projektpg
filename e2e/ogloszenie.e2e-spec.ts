@@ -33,8 +33,6 @@ describe('Ogloszenie', () => {
 
   it('powinno dodać ofertę do ogłoszenia nr 1', () => {
     browser.waitForAngularEnabled(false);
-    ogloszeniePage.navbar.zamknijCookie();
-    ogloszeniePage.navbar.zaloguj();
     ogloszeniePage.navigateTo(1);
 
     let result = ogloszeniePage.dodajOferte("100", "505412123", "Proszę o kontakt");

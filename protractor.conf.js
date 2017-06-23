@@ -8,6 +8,7 @@ exports.config = {
   specs: [
     //'./e2e/**/*.e2e-spec.ts'
     './e2e/galeria-ogloszen.e2e-spec.ts',
+    './e2e/logowanie.e2e-spec.ts',
     './e2e/ogloszenie.e2e-spec.ts',
     './e2e/dodaj-ogloszenie.e2e-spec.ts',
   ],
