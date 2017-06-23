@@ -9,7 +9,7 @@ export class Navbar {
     this.EC = ec;
   }
 
-  zalogujWykonawce()
+  zaloguj()
   {
     let login = element(by.id('login'));
     browser.wait(this.EC.elementToBeClickable(login), 50000);
@@ -20,7 +20,7 @@ export class Navbar {
     browser.wait(this.EC.presenceOf(inputUser), 50000);
     browser.wait(this.EC.presenceOf(inputPass), 50000);
     browser.wait(this.EC.presenceOf(submitButton), 50000);
-    inputUser.sendKeys("testWykonawca");
+    inputUser.sendKeys("testUser");
     inputPass.sendKeys("testPass");
     submitButton.click();
     browser.sleep(5000);
