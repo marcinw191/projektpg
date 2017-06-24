@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MailsendService, IMessage } from '../serwisy/mail/mailsend.service';
 import 'rxjs/add/operator/switchMap';
-import { WalidacjaService } from '../serwisy/walidacja/walidacja.service';
+// import { WalidacjaService } from '../serwisy/walidacja/walidacja.service';
 import { DialogService } from 'ngx-bootstrap-modal';
-import { options } from '../app-variables';
+// import { options } from '../app-variables';
 
 @Component({
   selector: 'app-kontakt',
@@ -14,11 +14,11 @@ import { options } from '../app-variables';
 export class KontaktComponent implements OnInit {
   message: IMessage = {};
   adres: string = "Al. Grunwaldzka 472A, 80-309 Gdańsk";
-  private email: string;
-  private opcje: any = options;
+  // private email: string;
+  // private opcje: any = options;
 
   constructor(private mailsendService: MailsendService,
-              private walidacjaService: WalidacjaService,
+              // private walidacjaService: WalidacjaService,
               public dialogService: DialogService) { }
 
   sendEmail(message: IMessage) {

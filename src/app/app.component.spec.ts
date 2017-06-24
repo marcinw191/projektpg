@@ -1,6 +1,6 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { LocationStrategy } from '@angular/common';
-import { RouterModule, Router, RouterOutletMap, ActivatedRoute } from '@angular/router';
+import { RouterModule, Router, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { CookieLawModule }  from 'angular2-cookie-law';
 import { AngularFireModule } from 'angularfire2';
 
@@ -39,7 +39,7 @@ describe('AppComponent', () => {
       providers: [
         AuthService,
         { provide: Router, useValue: mockRouter},
-        RouterOutletMap,
+        RouterOutlet,
         LocationStrategy,
         { provide: ActivatedRoute, useValue: mockRouter },
 
