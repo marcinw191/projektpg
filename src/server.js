@@ -36,7 +36,7 @@ function sendMail(formData) {
   );
   console.log('SMTP Configured');
   var message = {
-    to: 'Adam <adam.gomowski@gmail.com>',
+    to: 'Bartek <bartlomiej.kornowski@gmail.com>',
     subject: 'Wiadomość z serwisu Kaskada',
     text: 'Wiadomość wysłana przez : ' + formData.name + "\n" +
     'Adres kontaktowy e-mail : ' + formData.email + "\n" +
