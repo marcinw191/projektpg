@@ -3,7 +3,8 @@ import { AUTH_CONFIG } from './auth0-variables';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import auth0 from 'auth0-js';
-
+import { DialogService } from 'ngx-bootstrap-modal';
+import { options } from '../../app-variables';
 import { BazaUzytkownikowService } from '../firebase-uzytkownicy/bazauzytkownikow.service';
 
 @Injectable()
@@ -19,10 +20,14 @@ export class AuthService {
     scope: 'openid profile'
   });
 
-  userProfile: any;
-  profile: any;
+  private userProfile: any;
+  private profile: any;
+  private opcje: any = options;
 
-  constructor(private router: Router, private bazaUzytkownikowService: BazaUzytkownikowService) {
+  constructor(
+    private router: Router,
+    private bazaUzytkownikowService: BazaUzytkownikowService,
+    public dialogService: DialogService) {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
@@ -41,13 +46,27 @@ export class AuthService {
             if (wybor == null) {
               this.copyProfileToUser(_profile, nr);
             }
+            else {
+              this.bazaUzytkownikowService.getUserById(users[wybor].user_id).subscribe(user => {
+                this.userProfile = user[0];
+                if (this.userProfile.blokada == 'tak') {
+                  this.logout();
+                  this.opcje.icon = 'error';
+                  this.opcje.size = 'lg';
+                  this.dialogService.alert('',`Konto zablokowane !!! W celu wyjaśnienia sytuacji <br> skontaktuj się z administratorem systemu.`,this.opcje);
+                  this.router.navigateByUrl('/kontakt');
+                  return;
+                }
+              });
+            }
           });
         });
         this.router.navigate(['/']);
       }
       else if (err) {
         this.router.navigate(['/kontakt']);
-        alert(`Error: ${err.error} - Wystąpił błąd w trakcie logowania, zgłoś problem do administratora.`);
+        this.opcje.icon = 'error';
+        this.dialogService.alert('', `Error: ${err.error} - Wystąpił błąd w trakcie logowania, zgłoś problem do administratora.`, this.opcje);
       }
     });
   }

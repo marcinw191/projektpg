@@ -1,16 +1,17 @@
-import { BrowserModule }                    from '@angular/platform-browser';
-import { NgModule }                         from '@angular/core';
-import { CommonModule }                     from '@angular/common';
-import { FormsModule }                      from '@angular/forms';
-import { HttpModule, Http, RequestOptions } from '@angular/http';
-import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
-import { AuthHttp, AuthConfig }             from 'angular2-jwt';
-import { CookieLawModule }                  from 'angular2-cookie-law';
-import { AgmCoreModule }                    from 'angular2-google-maps/core';
-import { AngularFireModule }                from 'angularfire2';
-import { AngularFireDatabaseModule }        from 'angularfire2/database';
-import { ModalModule }                      from 'ngx-bootstrap/modal';
-import { AlertModule }                      from 'ngx-bootstrap';
+import { BrowserModule }                        from '@angular/platform-browser';
+import { NgModule }                             from '@angular/core';
+import { CommonModule }                         from '@angular/common';
+import { FormsModule }                          from '@angular/forms';
+import { HttpModule, Http, RequestOptions }     from '@angular/http';
+import { BrowserAnimationsModule }              from '@angular/platform-browser/animations';
+import { AuthHttp, AuthConfig }                 from 'angular2-jwt';
+import { CookieLawModule }                      from 'angular2-cookie-law';
+import { AgmCoreModule }                        from 'angular2-google-maps/core';
+import { AngularFireModule }                    from 'angularfire2';
+import { AngularFireDatabaseModule }            from 'angularfire2/database';
+import { ModalModule }                          from 'ngx-bootstrap/modal';
+import { AlertModule }                          from 'ngx-bootstrap';
+import { BootstrapModalModule, BuiltInOptions } from 'ngx-bootstrap-modal';
 
 import { AppComponent }                      from './app.component';
 import { NavbarComponent }                   from './navbar/navbar.component';
@@ -38,7 +39,6 @@ import { AdministratorOgloszeniaComponent }  from './administrator/administrator
 import { AdministratorOgloszenieComponent }  from './administrator/administrator-ogloszenie/administrator-ogloszenie.component';
 import { AdministratorOfertyComponent }      from './administrator/administrator-oferty/administrator-oferty.component';
 import { AdministratorOfertaComponent }      from './administrator/administrator-oferta/administrator-oferta.component';
-import { HomeComponent }                     from './home/home.component';
 import { CookielawComponent }                from './cookielaw/cookielaw.component';
 import { PolicyComponent }                   from './cookielaw/policy/policy.component';
 import { AlertComponent }                    from './alert/alert.component';
@@ -46,6 +46,10 @@ import { GoogleMapsComponent }               from './googlemaps/googlemaps.compo
 import { OpisDzialaniaComponent }            from './opis-dzialania/opis-dzialania.component';
 import { CallbackComponent }                 from './callback/callback.component';
 import { Strona404Component }                from './strona404/strona404.component';
+import { PopupAlertComponent }               from './popup/popup-alert/popup-alert.component';
+import { PopupConfirmComponent }             from './popup/popup-confirm/popup-confirm.component';
+import { AdministratorProfilComponent }      from './administrator/administrator-profil/administrator-profil.component';
+import { KontaktComponent }                  from './kontakt/kontakt.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthService }                  from './serwisy/auth0/auth.service';
@@ -53,6 +57,8 @@ import { BazaUzytkownikowService }      from './serwisy/firebase-uzytkownicy/baz
 import { BazaOgloszenService }          from './serwisy/firebase-ogloszenia/bazaogloszen.service';
 import { BazaOfertService }             from './serwisy/firebase-oferty/bazaofert.service';
 import { WalidacjaService }             from './serwisy/walidacja/walidacja.service';
+import { MailsendService }              from './serwisy/mail/mailsend.service';
+import { PagerService }                 from './serwisy/pager/pager.service';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig(), http, options);
@@ -71,7 +77,6 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
     GaleriaOgloszenComponent,
     OgloszenieMiniaturaComponent,
     OgloszenieComponent,
@@ -103,6 +108,10 @@ export const firebaseConfig = {
     LoginTimeComponent,
     CallbackComponent,
     Strona404Component,
+    PopupAlertComponent,
+    PopupConfirmComponent,
+    KontaktComponent,
+    AdministratorProfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,6 +128,15 @@ export const firebaseConfig = {
       apiKey: "AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU",
     }),
     AngularFireDatabaseModule,
+    BootstrapModalModule.forRoot({
+      container: document.body,
+      builtInOptions: <BuiltInOptions>{
+      }
+    }),
+  ],
+  entryComponents: [
+    PopupAlertComponent,
+    PopupConfirmComponent,
   ],
   providers: [
     appRoutingProviders,
@@ -132,6 +150,8 @@ export const firebaseConfig = {
     BazaOgloszenService,
     BazaOfertService,
     WalidacjaService,
+    MailsendService,
+    PagerService,
   ],
   bootstrap: [AppComponent]
 })

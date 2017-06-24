@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router}             from '@angular/router';
+import { DialogService }     from 'ngx-bootstrap-modal';
 
+import { options }                 from '../app-variables';
 import { AuthService }             from '../serwisy/auth0/auth.service';
 import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
 
@@ -11,8 +13,8 @@ import { BazaUzytkownikowService } from '../serwisy/firebase-uzytkownicy/bazauzy
 })
 
 export class ProfilComponent implements OnInit {
-  users : any[];
-  profil: any = {
+  private users : any[];
+  private profil: any = {
     zdjecie     : '',
     nazwa       : '',
     e_mail      : '',
@@ -24,36 +26,39 @@ export class ProfilComponent implements OnInit {
     miejscowosc : '',
     user_id     : '',
   };
-  profil_auth: any;
-  edycja: boolean;
-  typ_zestawienia: number = 0;
-  wybor:number = null;
+  private profil_auth: any;
+  private edycja: boolean;
+  private edycja_button: boolean;
+  private typ_zestawienia: number = 0;
+  private wybor: number = null;
+  private opcje: any = options;
 
   constructor(private auth: AuthService,
               private bazaUzytkownikowService:BazaUzytkownikowService,
-              private router: Router){
+              private router: Router,
+              public dialogService: DialogService) {
   }
 
   ngOnInit() {
     if (this.auth.authenticated()) {
-      this.edycja=false;
+      this.edycja = false;
       // profil pobrany z pliku cookie procesu auth0
       this.profil_auth = this.auth.getProfileAuth();
-      // pobranie profilu z bazy użytkowników na podstawie adresu e-mail
-      this.bazaUzytkownikowService.getUsers().subscribe(users =>
-      {
-        this.users = users;
-        // porównanie id z autoryzacji z id z "bazy"
-        for (let x=0; x<this.users.length; x++) {
-          if (this.users[x].user_id ==  this.profil_auth.sub) {
-            this.wybor=x;
-            this.profil = this.users[this.wybor];
-          }
+      this.bazaUzytkownikowService.getUserById(this.profil_auth.sub).subscribe(users => {
+        if (users.length > 0) {
+          this.profil = users[0];
+          this.edycja_button = true;
+        }
+        else {
+          this.profil.nazwa = "Nie ma takiego użytkownika !!!";
+          this.profil.zdjecie = "../assets/img/Error.png";
+          this.edycja_button = false;
         }
       });
     }
     else {
-      alert('Nie jesteś zalogowany !!!');
+      this.opcje.icon = 'error';
+      this.dialogService.alert('','Nie jesteś zalogowany !!!',this.opcje);
       this.router.navigateByUrl('/');
     }
   }
@@ -69,7 +74,8 @@ export class ProfilComponent implements OnInit {
   updateProfil(event:any) {
     this.profil = event.profil;
     this.bazaUzytkownikowService.updateUser(this.profil.$key,this.profil);
-    alert('Profil zapisany');
+    this.opcje.icon = 'success';
+    this.dialogService.alert('','Profil zapisany',this.opcje);
   }
 
 }

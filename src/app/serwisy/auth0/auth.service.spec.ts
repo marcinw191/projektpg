@@ -4,6 +4,7 @@ import { AngularFireDatabase }  from 'angularfire2/database';
 
 import { AuthService } from './auth.service';
 import { BazaUzytkownikowService } from '../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service';
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 import { MockAuth } from '../../mocks/mock-auth';
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
@@ -26,6 +27,7 @@ describe('AuthService', () => {
         {provide: Router, useValue: mockRouter },
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
         BazaUzytkownikowService,
+        DialogService,
         { provide: AuthService, useValue: mockAuth.getMock()},
         ],
       imports: [ ],

@@ -1,0 +1,40 @@
+<div class="kontakt container">
+  <div class="row">
+    <div class="col-sm-12 col-lg-6">
+      <div class="dane1" >
+        <br>
+        <b>Kaskada Sp. z o.o.</b> <br>
+        Olivia Business Centre <br>
+        Olivia Tower (10. piętro) <br>
+        {{adres}} <br><br>
+        NIP: 000-00-00-000 <br> Regon: 00000000 <br><br>
+      </div>
+      <h4>Jak dojechać</h4>
+      <div>
+        <googlemap id="mapag" [adres]="adres"></googlemap>
+      </div>
+      <div id="dane2">
+        Zarząd:<br>
+        - Bartłomiej<br>
+        - Artur<br>
+        - Marcin<br>
+        - Adam<br><br>
+      </div>
+
+    </div>
+    <div class="col-sm-12 col-lg-6">
+      <div id="formularz" class="dane1">
+        <form (submit)="sendEmail(message)">
+          <h2 class="section-heading dane1">W przypadku pytań, wniosków <br> lub skarg prosimy o kontakt</h2>
+          <label for="name">Imię i nazwisko</label>
+          <input type="text" name="name" id="name" placeholder="podaj imię i nazwisko" [(ngModel)]="message.name">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" placeholder="podaj email" [(ngModel)]="message.email">
+          <label for="message">Wiadomość</label>
+          <textarea name="message" id="message" placeholder="Tu wpisz wiadomość" [(ngModel)]="message.message"></textarea>
+          <button type="submit">Wyślij</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

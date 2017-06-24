@@ -8,6 +8,7 @@ import {BazaOfertService} from "../../serwisy/firebase-oferty/bazaofert.service"
 
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
 import {BazaUzytkownikowService} from "../../serwisy/firebase-uzytkownicy/bazauzytkownikow.service";
+import { DialogService }     from 'ngx-bootstrap-modal';
 
 describe('AdministratorOfertyComponent', () => {
   let component: AdministratorOfertyComponent;
@@ -21,6 +22,7 @@ describe('AdministratorOfertyComponent', () => {
       providers: [
         BazaOfertService,
         BazaUzytkownikowService,
+        DialogService,
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()}
         ]
     })

@@ -1,39 +1,41 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { Location } from '@angular/common';
-import { OgloszenieWykazComponent } from './ogloszenie-wykaz.component';
-import {RouterModule, Router} from "@angular/router";
-import {FormsModule} from "@angular/forms";
-import {BazaOgloszenService} from "../../serwisy/firebase-ogloszenia/bazaogloszen.service";
-import {BazaOfertService} from "../../serwisy/firebase-oferty/bazaofert.service";
+import { RouterModule, Router} from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HomeComponent }            from '../../home/home.component';
-import { AdministratorComponent }   from '../../administrator/administrator.component';
+import { FormsModule} from '@angular/forms';
+import { AlertModule } from 'ngx-bootstrap';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DialogService } from 'ngx-bootstrap-modal';
+
+import { OgloszenieWykazComponent } from './ogloszenie-wykaz.component';
+import { BazaOgloszenService} from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
+import { BazaOfertService} from '../../serwisy/firebase-oferty/bazaofert.service';
+import { AdministratorComponent } from '../../administrator/administrator.component';
 import { AdministratorUzytkownicyComponent } from '../../administrator/administrator-uzytkownicy/administrator-uzytkownicy.component';
 import { AdministratorOgloszeniaComponent } from '../../administrator/administrator-ogloszenia/administrator-ogloszenia.component';
 import { AdministratorOfertyComponent } from '../../administrator/administrator-oferty/administrator-oferty.component';
-import { ProfilComponent }          from '../../profil/profil.component';
-import { OgloszenieComponent }      from '../../ogloszenia/ogloszenie/ogloszenie.component';
-import { PolicyComponent }          from '../../cookielaw/policy/policy.component';
+import { ProfilComponent } from '../profil.component';
+import { OgloszenieComponent } from '../../ogloszenia/ogloszenie/ogloszenie.component';
+import { PolicyComponent } from '../../cookielaw/policy/policy.component';
 import { DodajOgloszenieComponent } from '../../ogloszenia/ogloszenie-dodaj/ogloszenie-dodaj.component';
-import { OpisDzialaniaComponent }   from '../../opis-dzialania/opis-dzialania.component';
-import { Strona404Component }       from '../../strona404/strona404.component';
+import { OpisDzialaniaComponent } from '../../opis-dzialania/opis-dzialania.component';
+import { Strona404Component } from '../../strona404/strona404.component';
 import { AlertComponent} from '../../alert/alert.component';
-import { LoginTimeComponent } from '../../profil/login-time/login-time.component';
+import { LoginTimeComponent } from '../login-time/login-time.component';
 import { GoogleMapsComponent } from '../../googlemaps/googlemaps.component';
 import { GaleriaOgloszenComponent } from '../../ogloszenia/ogloszenia-galeria/ogloszenia-galeria.component';
 import { OgloszenieMiniaturaComponent } from '../../ogloszenia/ogloszenie-miniatura/ogloszenie-miniatura.component';
 import { OfertaWykonaniaComponent } from '../../oferty/oferta-wykonania/oferta-wykonania.component';
-import {ProfilWidokComponent} from "../profil-widok/profil-widok.component";
-import {ProfilWidokPrzyciskiComponent} from "../profil-widok-przyciski/profil-widok-przyciski.component";
-import {ProfilEdycjaComponent} from "../profil-edycja/profil-edycja.component";
-import {OgloszeniaWykazComponent} from "../ogloszenia-wykaz/ogloszenia-wykaz.component";
-import {OfertyWykazComponent} from "../oferty-wykaz/oferty-wykaz.component";
-import {OfertaDodajComponent} from "../../oferty/oferta-dodaj/oferta-dodaj.component";
-import {OfertaWykazComponent} from "../oferta-wykaz/oferta-wykaz.component";
-import {AlertModule} from "ngx-bootstrap";
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import { ProfilWidokComponent } from '../profil-widok/profil-widok.component';
+import { ProfilWidokPrzyciskiComponent } from '../profil-widok-przyciski/profil-widok-przyciski.component';
+import { ProfilEdycjaComponent } from '../profil-edycja/profil-edycja.component';
+import { OgloszeniaWykazComponent } from '../ogloszenia-wykaz/ogloszenia-wykaz.component';
+import { OfertyWykazComponent } from '../oferty-wykaz/oferty-wykaz.component';
+import { OfertaDodajComponent } from '../../oferty/oferta-dodaj/oferta-dodaj.component';
+import { OfertaWykazComponent } from '../oferta-wykaz/oferta-wykaz.component';
 import { MockAngularFireDatabase } from '../../mocks/mock-angularfire';
+import { KontaktComponent } from '../../kontakt/kontakt.component';
 
 
 describe('OgloszenieWykazComponent', () => {
@@ -51,10 +53,10 @@ describe('OgloszenieWykazComponent', () => {
         OgloszenieMiniaturaComponent,
         DodajOgloszenieComponent,
         OpisDzialaniaComponent,
-        HomeComponent,
         ProfilComponent,
         OgloszenieComponent,
         PolicyComponent,
+        KontaktComponent,
         AdministratorComponent,
         Strona404Component,
         AlertComponent,
@@ -81,7 +83,7 @@ describe('OgloszenieWykazComponent', () => {
           { path:'zlecenie',             component: GaleriaOgloszenComponent },
           { path:'dodaj_ogloszenie',     component: DodajOgloszenieComponent },
           { path:'pomoc',                component: OpisDzialaniaComponent},
-          { path:'kontakt',              component: HomeComponent },
+          { path:'kontakt',              component: KontaktComponent },
           { path:'profil',               component: ProfilComponent },
           { path:'ogloszenie/:id',       component: OgloszenieComponent },
           { path:'polityka_prywatnosci', component: PolicyComponent },
@@ -94,6 +96,7 @@ describe('OgloszenieWykazComponent', () => {
         BazaOgloszenService,
         { provide: AngularFireDatabase, useValue: mockFirebase.getMock()},
         BazaOfertService,
+        DialogService,
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

@@ -19,17 +19,15 @@ export class GaleriaOgloszenPage {
 
   wyswietlOgloszenia() {
     let card = element(by.css('.h-100'));
-    browser.wait(this.EC.visibilityOf(card), 5000);
+    browser.wait(this.EC.presenceOf(card), 50000);
     return element.all(by.css('.h-100'));
   }
 
   szukaj(fraza: string){
-    this.wyswietlOgloszenia();
     let szukajInput = element(by.css('.znajdz-ogloszenie'));
-    //browser.wait(this.EC.visibilityOf(szukajInput));
+    browser.wait(this.EC.presenceOf(szukajInput), 50000);
     let szukajButton = element(by.buttonText('SZUKAJ'));
-    //browser.wait(this.EC.visibilityOf(szukajButton));
-    szukajInput.sendKeys("");
+    browser.wait(this.EC.presenceOf(szukajButton), 50000);
     szukajInput.sendKeys(fraza);
     szukajButton.click();
     return this.wyswietlOgloszenia();

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DialogService } from 'ngx-bootstrap-modal';
 
+import { options } from '../../app-variables';
 import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaogloszen.service';
 
 @Component({
@@ -10,11 +12,13 @@ import { BazaOgloszenService } from '../../serwisy/firebase-ogloszenia/bazaoglos
 
 export class AdministratorOgloszenieComponent implements OnInit {
   @Input() key;
-  ogloszenie :any;
-  result     :boolean;
-  blokada    :boolean = false;
+  public ogloszenie: any;
+  private result: boolean;
+  private blokada: boolean = false;
+  private opcje: any = options;
 
-  constructor(private bazaOgloszenService: BazaOgloszenService ) { }
+  constructor(private bazaOgloszenService: BazaOgloszenService,
+              public dialogService: DialogService) { }
 
   ngOnInit() {
     this.bazaOgloszenService.getOgloszenieDetails(this.key).subscribe(ogloszenie =>
@@ -27,20 +31,29 @@ export class AdministratorOgloszenieComponent implements OnInit {
     let ogloszenie: any;
     if (this.blokada) {
       ogloszenie = { blokada: 'tak' };
-      alert('Ogłoszenie zablokowane !!!');
+      this.opcje.icon = 'success';
+      this.opcje.confirmButtonText = 'OK';
+      this.dialogService.alert('', 'Ogłoszenie zablokowane !!!', this.opcje);
     }
     else {
       ogloszenie = { blokada: 'nie' };
-      alert('Ogłoszenie odblokowane !!!');
+      this.opcje.icon = 'success';
+      this.opcje.confirmButtonText = 'OK';
+      this.dialogService.alert('', 'Ogłoszenie odblokowane !!!', this.opcje);
     }
     this.bazaOgloszenService.updateOgloszenie(key, ogloszenie);
   }
 
   deleteOgloszenie(key) {
-    this.result = confirm('Czy usunąć ogłoszenie z bazy ?');
-    if (this.result) {
-      this.bazaOgloszenService.deleteOgloszenie(key);
-    }
+    this.opcje.icon = 'question';
+    this.opcje.confirmButtonText = 'Usuń';
+    this.opcje.cancelButtonText = 'Nie';
+    this.dialogService.confirm('', 'Czy usunąć ogłoszenie z bazy ?', this.opcje).then((res: any) => {
+      this.result = res;
+      if (this.result) {
+        this.bazaOgloszenService.deleteOgloszenie(key);
+      }
+    });
   }
 
 }
