@@ -22,7 +22,7 @@ export class KontaktComponent implements OnInit {
               public dialogService: DialogService) { }
 
   sendEmail(message: IMessage) {
-    if ((this.walidacjaService.walidacja("email",this.email)) && (this.email.length!=0)) {
+    if ((this.walidacjaService.walidacja("email",this.message.email)) && (this.message.email.length!=0)) {
       this.mailsendService.sendEmail(message).subscribe(res => {
           console.log('AppComponent Success', res);
         }, error => {
