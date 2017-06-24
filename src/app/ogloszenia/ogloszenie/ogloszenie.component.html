@@ -23,13 +23,13 @@
         </div>
       </div>
       <div class="row">
-        <h3 class="tytul">{{tytul}}</h3>
+        <h3 class="tytul" id="tytul" *ngIf="tytul">{{tytul}}</h3>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-12 lokalizacja">
+        <div class="col-lg-4 col-md-12 lokalizacja" id="lokalizacja" *ngIf="miasto && ulica && ulica_numer">
           <i class="fa fa-map-marker" aria-hidden="true"></i> {{miasto}}, {{ulica}} {{ulica_numer}}
         </div>
-        <div class="col-lg-6 col-md-12 lokalizacja">
+        <div class="col-lg-6 col-md-12 lokalizacja" id="dataPublikacji" *ngIf="dataPublikacji">
           <i class="fa fa-calendar" aria-hidden="true"></i> Data publikacji: {{dataPublikacji}} {{godzinaPublikacji}}
         </div>
         <div class="col-lg-2 col-md-0"> </div>
@@ -40,12 +40,12 @@
       <ul class="list-unstyled">
         <li class="maxCena rounded">
           <h6 class="opis">Maksymalna cena za wykonanie</h6>
-          <h3 class="wartosc">{{maxCena}} zł</h3>
+          <h3 class="wartosc" id="maxCena"*ngIf="maxCena">{{maxCena}} zł</h3>
         </li>
         <li class="maxCzas rounded">
           <h6 class="opis">Maksymalny czas wykonania</h6>
-          <h3 *ngIf="czasWykonania < 2" class="wartosc">{{czasWykonania}} dzień</h3>
-          <h3 *ngIf="czasWykonania > 1" class="wartosc">{{czasWykonania}} dni</h3>
+          <h3 *ngIf="czasWykonania < 2" class="wartosc" id="maxCzas">{{czasWykonania}} dzień</h3>
+          <h3 *ngIf="czasWykonania > 1" class="wartosc" id="maxCzas">{{czasWykonania}} dni</h3>
         </li>
         <li>
           <div>
@@ -61,7 +61,7 @@
             <div class="col-lg-8 col-md-12">
               <div class="row">
                 <div class="col-lg-12">
-                  <h3 class="zlecajacy">{{zlecajacy.nazwa}}</h3>
+                  <h3 class="zlecajacy" id="zlecajacy" *ngIf="zlecajacy.nazwa">{{zlecajacy.nazwa}}</h3>
                 </div>
               </div>
               <div class="row">

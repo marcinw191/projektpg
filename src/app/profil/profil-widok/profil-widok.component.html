@@ -9,19 +9,19 @@
     <form>
       <div class="form-group row">
         <label class="col-sm-12 col-md-4">Imię i nazwisko / Nazwa firmy :</label>
-        <div class="col-sm-12 col-md-8 tekst">{{profil_view.nazwa}}</div>
+        <div class="col-sm-12 col-md-8 tekst" id="nazwa" *ngIf="profil_view.nazwa">{{profil_view.nazwa}}</div>
       </div>
       <div class="form-group row">
         <label class="col-6 col-sm-5 col-md-4">e-mail :</label>
-        <div class="col-6 col-sm-7 col-md-8 tekst">{{profil_view.e_mail}}</div>
+        <div class="col-6 col-sm-7 col-md-8 tekst" id="email" *ngIf="profil_view.e_mail">{{profil_view.e_mail}}</div>
       </div>
       <div class="form-group row">
         <label class="col-6 col-sm-5 col-md-4">Numer telefonu :</label>
-        <div class="col-6 col-sm-7 col-md-8 tekst">{{profil_view.telefon}}</div>
+        <div class="col-6 col-sm-7 col-md-8 tekst" id="telefon" *ngIf="profil_view.telefon">{{profil_view.telefon}}</div>
       </div>
       <div class="form-group row">
         <label class="col-6 col-sm-5 col-md-4">Typ użytkownika :</label>
-        <div class="col-6 col-sm-7 col-md-8 tekst">{{profil_view.typ}}</div>
+        <div class="col-6 col-sm-7 col-md-8 tekst" id="typ" *ngIf="profil_view.typ">{{profil_view.typ}}</div>
       </div>
       <div class="form-group row">
         <p><br></p>
@@ -29,11 +29,11 @@
       </div>
       <div class="form-group row">
         <label class="col-6 col-sm-5 col-md-4">ulica :</label>
-        <div class="col-6 col-sm-7 col-md-8 tekst">{{profil_view.ulica}} {{profil_view.nr_bud}}</div>
+        <div class="col-6 col-sm-7 col-md-8 tekst" id="adres" *ngIf="profil_view.ulica">{{profil_view.ulica}} {{profil_view.nr_bud}}</div>
       </div>
       <div class="form-group row">
         <label class="col-6 col-sm-5 col-md-4">miejscowość :</label>
-        <div class="col-6 col-sm-7 col-md-8 tekst">{{profil_view.kod}} {{profil_view.miejscowosc}}</div>
+        <div class="col-6 col-sm-7 col-md-8 tekst" id="miasto" *ngIf="profil_view.miejscowosc">{{profil_view.kod}} {{profil_view.miejscowosc}}</div>
       </div>
     </form>
     <div class="modal-footer">

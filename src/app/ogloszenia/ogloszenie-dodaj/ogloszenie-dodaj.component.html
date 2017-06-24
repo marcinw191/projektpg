@@ -2,57 +2,57 @@
   <app-alert *ngIf="zakonczone" [type]="statusDodawania.status" [text]="statusDodawania.text" [id]="statusDodawania.id"></app-alert>
   <form #ogloszenieForm="ngForm">
     <div class="form-group row">
-      <label for="example-text" class="col-sm-12 col-md-4 col-form-label">
+      <label for="tytul" class="col-sm-12 col-md-4 col-form-label">
         Tytuł ogłoszenia
         <p class="limits">(max 50 znaków)</p>
       </label>
       <div class="col-sm-12 col-md-8">
-        <input class="form-control" [(ngModel)]="tytul" required id="example-text" maxlength="50" name="tytul" placeholder="Podaj krótki tytuł ogłoszenia">
+        <input class="form-control" id="tytul" [(ngModel)]="tytul" required maxlength="50" name="tytul" placeholder="Podaj krótki tytuł ogłoszenia">
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-text-area" class="col-sm-12 col-md-4 col-form-label">Opis roboty ogólnobudowlanej</label>
+      <label for="opis" class="col-sm-12 col-md-4 col-form-label">Opis roboty ogólnobudowlanej</label>
       <div class="col-sm-12 col-md-8">
-        <textarea class="form-control" [(ngModel)]="opis" required id="example-text-area" name="opis" rows="5" placeholder="Napisz opis zakresu robót do wykonania"></textarea>
+        <textarea class="form-control" id="opis" [(ngModel)]="opis" required name="opis" rows="5" placeholder="Napisz opis zakresu robót do wykonania"></textarea>
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-price-input" class="col-sm-12 col-md-4 col-form-label">Maksymalna cena za wykonanie</label>
+      <label for="maxCena" class="col-sm-12 col-md-4 col-form-label">Maksymalna cena za wykonanie</label>
       <div class="col-sm-12 col-md-8">
-        <input class="form-control" [(ngModel)]="maxCena" required type="number" name="maxCena" id="example-price-input" placeholder="Podaj cenę w PLN">
+        <input class="form-control" id="maxCena" [(ngModel)]="maxCena" required type="number" name="maxCena" placeholder="Podaj cenę w PLN">
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-time-input" class="col-sm-12 col-md-4 col-form-label">Maksymalny czas wykonania</label>
+      <label for="czasWykonania" class="col-sm-12 col-md-4 col-form-label">Maksymalny czas wykonania</label>
       <div class="col-sm-12 col-md-8">
-        <input class="form-control" [(ngModel)]="czasWykonania" required type="number" name="czasWykonania" id="example-time-input" placeholder="Podaj liczbę dni">
+        <input class="form-control" id="czasWykonania" [(ngModel)]="czasWykonania" required type="number" name="czasWykonania" placeholder="Podaj liczbę dni">
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-tel-input" class="col-sm-12 col-md-4 col-form-label">Numer kontaktowy</label>
+      <label for="telefon" class="col-sm-12 col-md-4 col-form-label">Numer kontaktowy</label>
       <div class="col-sm-12 col-md-8">
-        <input class="form-control" [(ngModel)]="telefon" required type="tel" maxlength="9" name="telefon" id="example-tel-input" placeholder="Podaj numer telefonu">
+        <input class="form-control" id="telefon" [(ngModel)]="telefon" required type="tel" maxlength="9" name="telefon" placeholder="Podaj numer telefonu">
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-text-input1" class="col-sm-12 col-md-4 col-form-label">Adres nieruchomości</label>
+      <label for="ulica" class="col-sm-12 col-md-4 col-form-label">Adres nieruchomości</label>
       <div class="col-sm-12 col-md-6">
-        <input class="form-control" [(ngModel)]="ulica" required type="text" name="ulica" id="example-text-input1" placeholder="Ulica">
+        <input class="form-control" id="ulica" [(ngModel)]="ulica" required type="text" name="ulica" placeholder="Ulica">
       </div>
       <div class="col-sm-12 col-md-2">
-        <input class="form-control" [(ngModel)]="ulica_numer" required type="number" name="ulica_numer" id="example-text-input2" placeholder="Numer">
+        <input class="form-control" id="ulica_numer" [(ngModel)]="ulica_numer" required type="number" name="ulica_numer" placeholder="Numer">
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-text-input3" class="col-sm-12 col-md-4 col-form-label"></label>
+      <label for="miasto" class="col-sm-12 col-md-4 col-form-label"></label>
       <div class="col-sm-12 col-md-8">
-        <input class="form-control" [(ngModel)]="miasto" required type="text" name="miasto" id="example-text-input3" placeholder="Miasto">
+        <input class="form-control" id="miasto" [(ngModel)]="miasto" required type="text" name="miasto" placeholder="Miasto">
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-datetime-local-input" class="col-sm-12 col-md-4 col-form-label">Zakończenie licytacji ofert</label>
+      <label for="koniecLicytacji" class="col-sm-12 col-md-4 col-form-label">Zakończenie licytacji ofert</label>
       <div class="col-sm-12 col-md-8">
-        <input class="form-control" [(ngModel)]="koniecLicytacji" required type="date" name="koniecLicytacji" id="example-datetime-local-input" placeholder="RRRR-MM-DD">
+        <input class="form-control" id="koniecLicytacji" [(ngModel)]="koniecLicytacji" required type="date" name="koniecLicytacji" placeholder="RRRR-MM-DD">
       </div>
     </div>
     <div class="form-group row">
@@ -91,7 +91,7 @@
   </form>
   <div class="form-group row">
     <div class="col-12">
-      <button class="btn btn-primary" (click)="save()" [disabled]="!ogloszenieForm.form.valid || !poprawneOgloszenie">Dodaj ogłoszenie</button>
+      <button class="btn btn-primary" id="dodajOgloszenie" (click)="save()" [disabled]="!ogloszenieForm.form.valid || !poprawneOgloszenie">Dodaj ogłoszenie</button>
     </div>
   </div>
 </div>

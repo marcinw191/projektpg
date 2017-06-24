@@ -6,10 +6,20 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 exports.config = {
   allScriptsTimeout: 20000,
   specs: [
-    './e2e/**/*.e2e-spec.ts'
+    //'./e2e/**/*.e2e-spec.ts'
+    './e2e/galeria-ogloszen.e2e-spec.ts',
+    './e2e/logowanie.e2e-spec.ts',
+    './e2e/ogloszenie.e2e-spec.ts',
+    './e2e/dodaj-ogloszenie.e2e-spec.ts',
+    './e2e/profil.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    'chromeOptions': {
+      args: [
+        '--start-maximized'
+      ]
+    }
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
@@ -26,5 +36,6 @@ exports.config = {
   },
   onPrepare() {
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    browser.manage().window().maximize();
   }
 };
